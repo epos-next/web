@@ -1,0 +1,7 @@
+{
+  "baseUrl": "https://localhost:8000/",
+  "env": {
+    "url": "https://localhost:8000",
+    "server_url": "https://localhost:5001"
+  }
+}
