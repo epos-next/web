@@ -78,6 +78,6 @@ type WhenNextLessonMapper<T> = {
 }
 
 export function whenNextLessonState<T = any>(state: NextLessonState, mapper: WhenNextLessonMapper<T>): T {
-    if (isLoadingNextLessonState(state)) return mapper.onLoading(state);
-    else if (isIdleNextLessonState(state)) return mapper.onIdle(state);
+    if (isIdleNextLessonState(state)) return mapper.onIdle(state);
+    else return mapper.onLoading(state);
 }

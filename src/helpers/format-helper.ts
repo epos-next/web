@@ -1,4 +1,5 @@
 import DateHelper from "@helpers/date-helper";
+import { Lesson } from "../models/lesson";
 
 export default class FormatHelper {
 
@@ -41,5 +42,11 @@ export default class FormatHelper {
         if (h.length === 1) h = "0" + h;
         if (m.length === 1) m = "0" + m;
         return `${h}:${m}`;
+    }
+
+    static formatLessonTime(lesson: Lesson): string {
+        const startDate = new Date(lesson.date);
+        const endDate = new Date(startDate.getTime() + lesson.duration * 60000);
+        return `${this.formatTime(startDate)} – ${this.formatTime(endDate)}`
     }
 }
