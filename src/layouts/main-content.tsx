@@ -1,5 +1,6 @@
 import CreateAdModalWindow, { CreateAdData } from "@layouts/modal-windows/create-ad-modal-window";
 import CreateControlWorkModalWindow, { CreateControlWorkData } from "@layouts/modal-windows/create-control-work-modal-window";
+import TimeLeft from "@layouts/time-left";
 import lodash from "lodash";
 import React from "react";
 import ContentLoader from "react-content-loader";
@@ -75,23 +76,7 @@ const MainContentLayout: React.FC<Props> = (props) => {
 
     return <MainContent>
         {/* time left */ }
-        {
-            props.nextLesson.timeTo !== "" || props.loading
-                ? <GridComponentContainer id="time_left-desktop">
-                    <h4>Осталось</h4>
-                    {
-                        props.nextLesson.timeTo !== ""
-                            ? <TimeLeftContainer>
-                                <TimeLeftText>{ props.nextLesson.timeTo }</TimeLeftText>
-                                <TimeLeftHint>{ props.nextLesson.type }</TimeLeftHint>
-                            </TimeLeftContainer>
-                            : <ContentLoader width={ 242 } height={ 42 }>
-                                <rect width={ 242 } height={ 42 } rx={ 5 } ry={ 5 }/>
-                            </ContentLoader>
-                    }
-                </GridComponentContainer>
-                : <React.Fragment/>
-        }
+        <TimeLeft/>
 
         {/* Next lesson */ }
         {
@@ -197,32 +182,13 @@ const AddIcon = styled.img`
   cursor: pointer;
 `;
 
-const TitleHeader = styled.div`
+export const TitleHeader = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
 `;
 
-const TimeLeftHint = styled.span`
-  font-size: 15px;
-  line-height: 18px;
-  color: #696969;
-`;
-
-const TimeLeftText = styled.h5`
-  font-weight: bold;
-  font-size: 36px;
-  line-height: 44px;
-  color: var(--contrast);
-  margin-right: 30px;
-`;
-
-const TimeLeftContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const GridComponentContainer = styled.div`
+export const GridComponentContainer = styled.div`
   h4 {
     margin-bottom: 15px;
   }

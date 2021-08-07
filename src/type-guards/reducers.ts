@@ -2,8 +2,9 @@ import { AdvertisementState, IdleAdvertisementState } from "@redux/reducers/adve
 import { ControlWorkState, IdleControlWorkState } from "@redux/reducers/control-work-reducer";
 import { HomeworkState, IdleHomeworkState } from "@redux/reducers/homework-reducer";
 import { IdleLessonsState, LessonsState } from "@redux/reducers/lesson-reducer";
+import { IdleNextLessonState, LoadingNextLessonState, NextLessonState } from "@redux/reducers/next-lesson-reducer";
 import { Homework } from "../models/homework";
-import { isAdvertisement, isControlWork, isHomework, isUser } from "./models";
+import { isAdvertisement, isControlWork, isHomework, isLesson, isUser } from "./models";
 import {
     UserState,
     LoadingUserState,
@@ -35,14 +36,14 @@ export function isErrorUserState(state: UserState): state is ErrorUserState {
     return !state.loading && (state as ErrorUserState).error === null
 }
 
-type WhenMapper<T> = {
+type WhenUserMapper<T> = {
     onLoading: (state: LoadingUserState) => T
     onIdle: (state: IdleUserState) => T
     onNotAuthorized: (state: NotAuthorizedUserState) => T
     onError: (state: ErrorUserState) => T
 }
 
-export function whenUserState<T = any>(state: UserState, mapper: WhenMapper<T>): T {
+export function whenUserState<T = any>(state: UserState, mapper: WhenUserMapper<T>): T {
     if (isLoadingUserState(state)) return mapper.onLoading(state);
     else if (isIdleUserState(state)) return mapper.onIdle(state);
     else if (isNotAuthorizedUserState(state)) return mapper.onNotAuthorized(state);
@@ -61,4 +62,22 @@ export function isIdleHomeworkState(state: HomeworkState): state is IdleHomework
 
 export function isIdleLessonsState(state: LessonsState): state is IdleLessonsState {
     return !state.loading && Array.isArray(state.lessons);
+}
+
+export function isLoadingNextLessonState(state: NextLessonState): state is LoadingNextLessonState {
+    return state.loading
+}
+
+export function isIdleNextLessonState(state: NextLessonState): state is IdleNextLessonState {
+    return !state.loading && isLesson(state.nextLesson);
+}
+
+type WhenNextLessonMapper<T> = {
+    onLoading: (state: LoadingNextLessonState) => T
+    onIdle: (state: IdleNextLessonState) => T
+}
+
+export function whenNextLessonState<T = any>(state: NextLessonState, mapper: WhenNextLessonMapper<T>): T {
+    if (isLoadingNextLessonState(state)) return mapper.onLoading(state);
+    else if (isIdleNextLessonState(state)) return mapper.onIdle(state);
 }
