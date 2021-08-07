@@ -3,3 +3,4 @@ node_modules/
 public
 .idea
 .env.production
+.DS_Store
