@@ -7,7 +7,8 @@ import ApiRoutes from "@utils/api/routes";
 
 export default function useLoginPage() {
     // state
-    let email = "",  password = "";
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
     return {
@@ -15,8 +16,8 @@ export default function useLoginPage() {
             isLoading,
         },
         handlers: {
-            onEmailChanged: (event: React.ChangeEvent<HTMLInputElement>) => email = event.target.value,
-            onPasswordChanged: (event: React.ChangeEvent<HTMLInputElement>) => password = event.target.value,
+            onEmailChanged: (event: React.ChangeEvent<HTMLInputElement>) => setEmail(event.target.value),
+            onPasswordChanged: (event: React.ChangeEvent<HTMLInputElement>) => setPassword(event.target.value),
             onSubmit: async (event: React.FormEvent<HTMLFormElement>) => {
                 event.preventDefault();
 
