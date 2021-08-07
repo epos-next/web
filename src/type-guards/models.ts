@@ -1,4 +1,5 @@
 import { Advertisement } from "../models/advertisement";
+import { ControlWork } from "../models/control-work";
 import { User } from "../models/user";
 
 export function isUser(state: any): state is User {
@@ -13,4 +14,12 @@ export function isAdvertisement(state: any): state is Advertisement {
         typeof state.id == "number" &&
         typeof state.content === "string" &&
         state.targetDate instanceof Date;
+}
+
+export function isControlWork(state: any): state is ControlWork {
+    return state !== null &&
+        typeof state.id == "number" &&
+        typeof state.lesson === "string" &&
+        state.date instanceof Date &&
+        typeof state.name === "string";
 }
