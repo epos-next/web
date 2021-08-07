@@ -53,9 +53,11 @@
     "@types/react-redux": "^7.1.16",
     "@types/styled-components": "^5.1.9",
     "babel-loader": "^8.2.2",
+    "cypress": "^8.2.0",
     "eslint-config-airbnb": "^18.2.1",
     "gatsby-plugin-sass": "^4.6.0",
     "gatsby-plugin-typescript": "^3.6.0",
-    "sass": "^1.34.1"
+    "sass": "^1.34.1",
+    "start-server-and-test": "^1.13.1"
   }
 }
