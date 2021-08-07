@@ -62,6 +62,7 @@
     "cypress": "^8.2.0",
     "cypress-axe": "^0.12.2",
     "cypress-localstorage-commands": "^1.5.0",
+    "cypress-plugin-snapshots": "^1.4.4",
     "eslint-config-airbnb": "^18.2.1",
     "gatsby-plugin-sass": "^4.6.0",
     "gatsby-plugin-typescript": "^3.6.0",

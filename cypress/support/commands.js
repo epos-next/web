@@ -25,10 +25,17 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import "cypress-localstorage-commands"
+import 'cypress-plugin-snapshots/commands';
+
 
 Cypress.Commands.add("checkThatAuthCookiesNotExists", () => {
     cy.getCookie('uid').should("not.exist")
     cy.getCookie('accessToken').should("not.exist")
     cy.getCookie('refreshToken').should("not.exist")
-    cy.getCookie('uid').should("not.exist")
+})
+
+Cypress.Commands.add("login", () => {
+    cy.setCookie('uid', '1')
+    cy.setCookie('accessToken', "123.123.123")
+    cy.setCookie('refreshToken', "123.123.123")
 })
