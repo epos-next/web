@@ -1,34 +1,34 @@
 import {
     addAdvertisement,
-    setAdvertisements,
-    setAdvertisementsLoading,
+    setIdleAdvertisementsState,
+    setLoadingAdvertisementsState,
     setIsAdCreatorOpen
 } from "@redux/actions/advertisement-actions";
 import { AnyAction } from "redux";
 import { Advertisement } from "../../models/advertisement";
+import { isIdleAdvertisementState } from "../../type-guards/advertisement-reducer-type-guard";
 
-export type State = {
-    advertisements: Advertisement[],
-    loading: boolean,
-    isCreatorOpen: boolean,
-}
+export type AdvertisementState = LoadingAdvertisementState | IdleAdvertisementState
 
-export const initialState: State = {
-    advertisements: [],
+export type AdvertisementStateAddon = { isCreatorOpen: boolean }
+export type LoadingAdvertisementState = { loading: true } & AdvertisementStateAddon
+export type IdleAdvertisementState = { loading: false, advertisements: Advertisement[] } & AdvertisementStateAddon
+
+export const initialState: LoadingAdvertisementState = {
     loading: true,
     isCreatorOpen: false,
 }
 
-export default (state: State = initialState, action: AnyAction): State => {
+export default (state: AdvertisementState = initialState, action: AnyAction): AdvertisementState => {
 
-    if (setAdvertisementsLoading.match(action)) {
+    if (setLoadingAdvertisementsState.match(action)) {
         return {
             ...state,
-            loading: action.payload,
+            loading: true,
         }
     }
 
-    if (addAdvertisement.match(action)) {
+    if (addAdvertisement.match(action) && isIdleAdvertisementState(state)) {
         const advertisements = [...state.advertisements, action.payload];
         return {
             ...state,
@@ -43,9 +43,10 @@ export default (state: State = initialState, action: AnyAction): State => {
         }
     }
 
-    if (setAdvertisements.match(action)) {
+    if (setIdleAdvertisementsState.match(action)) {
         return {
             ...state,
+            loading: false,
             advertisements: action.payload,
         }
     }
