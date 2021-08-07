@@ -16,7 +16,7 @@ export default function LoginPage() {
         <Form onSubmit={ handlers.onSubmit }>
             <Input onChange={ handlers.onEmailChanged } placeholder="Email" type="email"/>
             <Input onChange={ handlers.onPasswordChanged } placeholder="Пароль" password={ true }/>
-            <Button loading={ values.isLoading }>Войти</Button>
+            <Button id="login-button" loading={ values.isLoading }>Войти</Button>
         </Form>
         <Hint>Email и пароль от аккаунта ЭПОС.Школа </Hint>
         <ToastContainer/>

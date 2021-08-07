@@ -26,3 +26,9 @@
 
 import "cypress-localstorage-commands"
 
+Cypress.Commands.add("checkThatAuthCookiesNotExists", () => {
+    cy.getCookie('uid').should("not.exist")
+    cy.getCookie('accessToken').should("not.exist")
+    cy.getCookie('refreshToken').should("not.exist")
+    cy.getCookie('uid').should("not.exist")
+})

@@ -2,6 +2,7 @@
   "baseUrl": "https://localhost:8000/",
   "env": {
     "url": "https://localhost:8000",
-    "server_url": "https://localhost:5001"
+    "server_url": "https://localhost:5001/api/1.0",
+    "uid": 1
   }
 }
