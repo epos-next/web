@@ -1,0 +1,16 @@
+import {Meta, Story, Canvas} from '@storybook/addon-docs/blocks';
+import WelcomeTile from "../../components/welcome-tile";
+
+export const WelcomeTileStory = ({...args}) => {
+    return <WelcomeTile { ...args } />
+}
+
+<Meta
+    title="Components/Welcome Tile"
+    component={ WelcomeTile }/>
+
+<Canvas>
+    <Story name="Default" args={ {name: "Ярослав"} }>
+        { WelcomeTileStory.bind({}) }
+    </Story>
+</Canvas>

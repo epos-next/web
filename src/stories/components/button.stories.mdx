@@ -1,0 +1,41 @@
+import Button from "../../components/button";
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Button" component={Button} />
+
+<Canvas>
+    <Story name="Primary">
+        <Button>Login</Button>
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="Secondary">
+        <Button type="secondary">Login</Button>
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="Disabled">
+        <Button type="disabled">Login</Button>
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="Loading primary">
+        <Button loading={true}>Login</Button>
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="Loading secondary">
+        <Button loading={true} type="secondary">Login</Button>
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="Loading disabled">
+        <Button loading={true} type="disabled">Login</Button>
+    </Story>
+</Canvas>
+

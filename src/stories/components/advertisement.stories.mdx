@@ -1,0 +1,16 @@
+import Advertisement from "../../components/advertisement";
+import {Meta, Story, Canvas} from '@storybook/addon-docs/blocks';
+
+export const AdvertisementStory = ({...args}) => {
+    return <Advertisement>{ args.children }</Advertisement>
+}
+
+<Meta
+    title="Components/Advertisement"
+    component={ Advertisement }/>
+
+<Canvas>
+    <Story name="Default" args={ {children: "Не забудьте взять листочки!!!"} }>
+        { AdvertisementStory.bind({}) }
+    </Story>
+</Canvas>

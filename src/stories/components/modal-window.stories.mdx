@@ -1,0 +1,22 @@
+import {useState} from "react";
+import {Meta, Story, Canvas} from '@storybook/addon-docs/blocks';
+import ModalWindowBase from "../../components/modal-window-base";
+
+export const BaseStory = ({...args}) => {
+    const [isOpen, setIsOpen] = useState(false);
+    return <main>
+        <button onClick={ () => setIsOpen(true) }>open</button>
+        <ModalWindowBase onClose={ () => setIsOpen(false) } isOpen={ isOpen } >
+            <span>{ args.text }</span>
+        </ModalWindowBase>
+    </main>
+}
+
+<Meta title="Components/Modal window" component={ ModalWindowBase }/>
+
+
+<Canvas>
+    <Story name="Base" args={ { text: "Hello there!" } }>
+        { BaseStory.bind({}) }
+    </Story>
+</Canvas>

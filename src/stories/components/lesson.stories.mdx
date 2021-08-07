@@ -1,0 +1,83 @@
+import {useState} from "react";
+import {Meta, Story, Canvas} from '@storybook/addon-docs/blocks';
+import Lesson from "../../components/lesson";
+import LessonTodo from "../../components/lesson-todo";
+import LessonWithDate from "../../components/lesson-with-date";
+import LessonWithMark from "../../components/lesson-with-mark";
+import LessonWithRoomAndTime from "../../components/lesson-with-room-and-time";
+import LessonWithRoomTimeMark from "../../components/lesson-with-room-time-mark";
+import LessonSkeleton from "../../components/lesson-skeleton";
+
+export const LessonStory = ({...args}) => {
+    return <Lesson { ...args } />
+}
+
+export const LessonTodoStory = ({...args}) => {
+    const [done, setDone] = useState(false);
+    return <LessonTodo { ...args } done={ done } onClick={ setDone }/>
+}
+
+export const LessonWithDateStory = ({...args}) => {
+    return <LessonWithDate { ...args } />
+}
+
+export const LessonWithMarkStory = ({...args}) => {
+    return <LessonWithMark { ...args } />
+}
+
+export const LessonWithRoomAndTimeStory = ({...args}) => {
+    return <LessonWithRoomAndTime { ...args } />
+}
+
+export const LessonWithRoomTimeMarkStory = ({...args}) => {
+    return <LessonWithRoomTimeMark { ...args } />
+}
+
+
+<Meta title="Components/Lesson" component={ Lesson }/>
+
+<Canvas>
+    <Story name="Default" args={ {subject: "Физика", subtitle: "параграф 63"} }>
+        { LessonStory.bind({}) }
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="With todo checkbox" args={ {subject: "Физика", subtitle: "параграф 63"} }>
+        { LessonTodoStory.bind({}) }
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="With date reminder" args={ {
+        subject: "Физика",
+        subtitle: "параграф 63",
+        date: new Date(new Date().setDate(new Date().getDate() + 2))
+    } }>
+        { LessonWithDateStory.bind({}) }
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="With mark" args={ {subject: "Физика", subtitle: "параграф 63", mark: 4} }>
+        { LessonWithMark.bind({}) }
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="With room and time" args={ {subject: "Физика", room: "201", time: "13:00 – 13:45"} }>
+        { LessonWithRoomAndTimeStory.bind({}) }
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="With room, time and mark" args={ {subject: "Физика", room: "201", time: "13:00 – 13:45", mark: 5} }>
+        { LessonWithRoomTimeMark.bind({}) }
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="Loading">
+        <LessonSkeleton/>
+    </Story>
+</Canvas>

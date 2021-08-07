@@ -1,0 +1,130 @@
+@import "toasts.scss";
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: Avenir Next, sans-serif;
+}
+
+select {
+    background-color: initial !important;
+}
+
+/// Color styles
+:root {
+    --primary: #313131;
+    --secondary: #696969;
+    --contrast: #9569FD;
+    --error: #DE4844;
+    --light-contrast: #EDEAFF;
+    --disable: #F9F9FB;
+    --light-error: #F9DBDB;
+    --light-primary: #CBCBCB;
+    --contrast-hover: #8B62ED;
+}
+
+h1 {
+    margin: 0;
+}
+
+/// Text styles
+h2 {
+    font-family: Avenir Next, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 34px;
+    margin: 0;
+    color: var(--primary);
+}
+
+h3 {
+    font-family: Avenir Next, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 0;
+    color: var(--primary);
+
+    @media screen and (max-width: 768px) {
+        font-size: 16px;
+    }
+}
+
+h4 {
+    font-family: Avenir Next, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    margin: 0;
+    color: var(--primary);
+}
+
+span {
+    font-family: Avenir Next, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 20px;
+    margin: 0;
+    color: var(--primary);
+}
+
+p {
+    font-family: Avenir Next, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    margin: 0;
+    color: var(--secondary);
+}
+
+
+/// Fonts
+@font-face {
+    font-family: "Avenir Next";
+    src: url("/fonts/avenirnextcyr-demi.ttf");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Avenir Next";
+    src: url("/fonts/avenirnextcyr-medium.ttf");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Avenir Next";
+    src: url("/fonts/avenirnextcyr-regular.ttf");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+// Button
+.button-type-primary {
+    transition: 200ms transform ease-in-out;
+
+    &:hover {
+        transform: scale(1.02);
+    }
+}
+
+.button-ripple {
+    border-radius: 10px;
+}

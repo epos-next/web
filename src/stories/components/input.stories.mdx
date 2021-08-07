@@ -1,0 +1,56 @@
+import Input from "../../components/input";
+import DateInput from "../../components/date-input";
+import {Meta, Story, Canvas} from '@storybook/addon-docs/blocks';
+
+export const InputStory = ({...args}) => {
+    return <Input { ...args }/>
+}
+
+<Meta
+    title="Components/Input"
+    component={ Input }/>
+
+<Canvas>
+    <Story name="Default" args={ {
+        placeholder: "Email"
+    } }>
+        { InputStory.bind({}) }
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="Error" args={ {
+        placeholder: "Email",
+        error: true
+    } }>
+        { InputStory.bind({}) }
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="Error with text" args={ {
+        placeholder: "Email",
+        error: true,
+        errorText: "This field is required"
+    } }>
+        { InputStory.bind({}) }
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="Password" args={ {
+        placeholder: "Password",
+        password: true
+    } }>
+        { InputStory.bind({}) }
+    </Story>
+</Canvas>
+
+
+<Canvas>
+    <Story name="Date">
+        <DateInput onChange={ date => console.log(date) }/>
+    </Story>
+</Canvas>
+
+

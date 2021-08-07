@@ -1,0 +1,16 @@
+import Textarea from "../../components/textarea";
+import {Meta, Story, Canvas} from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Textarea" component={ Textarea }/>
+
+<Canvas>
+    <Story name="Default">
+        <Textarea/>
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="Error">
+        <Textarea error={ true }/>
+    </Story>
+</Canvas>

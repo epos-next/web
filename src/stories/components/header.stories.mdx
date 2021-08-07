@@ -1,0 +1,23 @@
+import {useState} from "react";
+import Header from "../../components/header";
+import {Meta, Story, Canvas} from '@storybook/addon-docs/blocks';
+
+export const AuthorizedStory = ({...args}) => {
+    const [tab, setTab] = useState("home");
+    const handleTabChanged = (tab) => setTab(tab);
+    return <Header tab={ tab } onTabClick={ handleTabChanged } { ...args }/>
+}
+
+<Meta title="Components/Header" parameters={{ layout: "fullscreen" }} component={ Header }/>
+
+<Canvas>
+    <Story name="Unauthorized">
+        <Header/>
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="Authorized" args={{ userName: "Ярослав Зотов" }}>
+        { AuthorizedStory.bind({}) }
+    </Story>
+</Canvas>

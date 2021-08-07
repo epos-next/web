@@ -1,0 +1,18 @@
+import LoadingIndicator from "../../components/loading-indicator";
+import {Meta, Story, Canvas} from '@storybook/addon-docs/blocks';
+
+export const LoadingIndicatorStory = ({ ...args }) => {
+    return <LoadingIndicator { ...args }/>
+}
+
+<Meta
+    title="Components/Loading indicator"
+    component={ LoadingIndicator }/>
+
+<Canvas>
+    <Story name="Default"  args={{ color: "var(--contrast)" }}>
+        { LoadingIndicatorStory.bind({  }) }
+    </Story>
+</Canvas>
+
+

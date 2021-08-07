@@ -1,0 +1,50 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "noEmit": true,
+    "jsx": "preserve",
+    "experimentalDecorators": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@redux/*": [ "redux/*" ],
+      "@utils/*": [ "utils/*" ],
+      "@components/*": [ "components/*" ],
+      "@helpers/*": [ "helpers/*" ],
+      "@services/*": [ "services/*" ],
+      "@layouts/*": [ "layouts/*" ]
+    },
+    "typeRoots": [
+      ".",
+      "@types",
+      "@types/utils"
+    ],
+    "types": [
+      "jest",
+      "node"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mdx"
+  ]
+}
