@@ -1,7 +1,7 @@
 import { TabQuery } from "@components/header";
 import DateHelper from "@helpers/date-helper";
 import UiHelper from "@helpers/ui-helper";
-import { setIdleAdvertisementsState, setLoadingAdvertisementsState } from "@redux/actions/advertisement-actions";
+import { setAdvertisements, setAdvertisementsLoading } from "@redux/actions/advertisement-actions";
 import { setControlWorks, setControlWorksLoading } from "@redux/actions/control-work-actions";
 import { setHomework, setHomeworkLoading } from "@redux/actions/homework-actions";
 import { setLessonLoading, setLessons, setNextLesson, SetNextLessonAction } from "@redux/actions/lesson-actions";
@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
 import { useQueryParam } from "use-query-params";
 import { Lesson } from "../models/lesson";
+import { User } from "../models/user";
 import { extractTodayLessons } from "./useHomePage";
 import useSideMenu from "./useSideMenu";
 import { navigate } from "gatsby-link";
@@ -53,11 +54,12 @@ export default function useIndexPage() {
                 dispatch(setHomework(data.homework));
 
                 // save advertisements
-                dispatch(setIdleAdvertisementsState(data.advertisements));
+                dispatch(setAdvertisements(data.advertisements));
 
                 // save marks
                 dispatch(setMarks(data.marks));
 
+                dispatch(setAdvertisementsLoading(false));
                 dispatch(setHomeworkLoading(false));
                 dispatch(setControlWorksLoading(false));
                 dispatch(setLessonLoading(false));

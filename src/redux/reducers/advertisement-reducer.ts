@@ -1,34 +1,34 @@
 import {
     addAdvertisement,
-    setIdleAdvertisementsState,
-    setLoadingAdvertisementsState,
+    setAdvertisements,
+    setAdvertisementsLoading,
     setIsAdCreatorOpen
 } from "@redux/actions/advertisement-actions";
 import { AnyAction } from "redux";
 import { Advertisement } from "../../models/advertisement";
-import { isIdleAdvertisementState } from "../../type-guards/advertisement-reducer-type-guard";
 
-export type AdvertisementState = LoadingAdvertisementState | IdleAdvertisementState
+export type State = {
+    advertisements: Advertisement[],
+    loading: boolean,
+    isCreatorOpen: boolean,
+}
 
-export type AdvertisementStateAddon = { isCreatorOpen: boolean }
-export type LoadingAdvertisementState = { loading: true } & AdvertisementStateAddon
-export type IdleAdvertisementState = { loading: false, advertisements: Advertisement[] } & AdvertisementStateAddon
-
-export const initialState: LoadingAdvertisementState = {
+export const initialState: State = {
+    advertisements: [],
     loading: true,
     isCreatorOpen: false,
 }
 
-export default (state: AdvertisementState = initialState, action: AnyAction): AdvertisementState => {
+export default (state: State = initialState, action: AnyAction): State => {
 
-    if (setLoadingAdvertisementsState.match(action)) {
+    if (setAdvertisementsLoading.match(action)) {
         return {
             ...state,
-            loading: true,
+            loading: action.payload,
         }
     }
 
-    if (addAdvertisement.match(action) && isIdleAdvertisementState(state)) {
+    if (addAdvertisement.match(action)) {
         const advertisements = [...state.advertisements, action.payload];
         return {
             ...state,
@@ -43,10 +43,9 @@ export default (state: AdvertisementState = initialState, action: AnyAction): Ad
         }
     }
 
-    if (setIdleAdvertisementsState.match(action)) {
+    if (setAdvertisements.match(action)) {
         return {
             ...state,
-            loading: false,
             advertisements: action.payload,
         }
     }

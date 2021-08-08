@@ -3,9 +3,7 @@ import { CreateControlWorkData } from "@layouts/modal-windows/create-control-wor
 import { addAdvertisement, setIsAdCreatorOpen } from "@redux/actions/advertisement-actions";
 import { addControlWork, setIsControlWorkCreatorOpen } from "@redux/actions/control-work-actions";
 import { invertHomeworkDone } from "@redux/actions/homework-actions";
-import { AdvertisementState } from "@redux/reducers/advertisement-reducer";
 import { State } from "@redux/reducers/root";
-import { UserState } from "@redux/reducers/user-reducer";
 import ApiService from "@services/api-service";
 import moment from "moment";
 import CacheService from "@services/cache-service";
@@ -16,7 +14,7 @@ import { ControlWork } from "../models/control-work";
 import { Homework } from "../models/homework";
 import { Lesson } from "../models/lesson";
 import { Marks } from "../models/marks";
-import { isIdleAdvertisementState } from "../type-guards/advertisement-reducer-type-guard";
+import { User } from "../models/user";
 
 export default function useHomePage() {
     const [showWelcomeTile, setShowWelcomeTile] = useState(CacheService.showWelcomeTile);
@@ -24,7 +22,7 @@ export default function useHomePage() {
     const dispatch = useDispatch();
 
     // User selector
-    const user = useSelector<State, UserState>(state => state.userReducer);
+    const user = useSelector<State, User | null>(state => state.userReducer.user);
 
     // Lessons selectors
     const nextLesson = useSelector<State, Lesson | null>(state => state.lessonReducer.nextLesson);
@@ -41,7 +39,7 @@ export default function useHomePage() {
     const isControlWorkCreatorOpen = useSelector<State, boolean>(state => state.controlWorkReducer.isControlWorkCreatorOpen);
 
     // Advertisements selectors
-    const ads = useSelector<State, AdvertisementState>(state => state.advertisementReducer);
+    const ads = useSelector<State, Advertisement[]>(state => state.advertisementReducer.advertisements);
     const adsLoading = useSelector<State, boolean>(state => state.advertisementReducer.loading);
     const isAdCreatorOpen = useSelector<State, boolean>(state => state.advertisementReducer.isCreatorOpen);
 
@@ -63,7 +61,7 @@ export default function useHomePage() {
             lessonNames: Object.keys(marks ?? {}),
         },
         data: {
-            ads: isIdleAdvertisementState(ads) ? ads.advertisements : [],
+            ads,
             homework,
             controlWorks,
             user,
