@@ -2,7 +2,7 @@ import { AnyAction } from "redux";
 import { setLessonLoading, setLessons, setNextLesson } from "@redux/actions/lesson-actions";
 import { Lesson } from "../../models/lesson";
 
-export type State = {
+export type LessonsState = {
     lessons: Lesson[],
     nextLesson: Lesson | null,
     timeLeftToNextLesson: string, // 22:55
@@ -10,7 +10,7 @@ export type State = {
     loading: boolean,
 }
 
-export const initialState: State = {
+export const initialState: LessonsState = {
     lessons: [],
     nextLesson: null,
     nextLessonType: "",
@@ -18,7 +18,7 @@ export const initialState: State = {
     loading: true,
 }
 
-export default (state: State = initialState, action: AnyAction) => {
+export default (state: LessonsState = initialState, action: AnyAction) => {
 
     if (setLessons.match(action)) {
         return {

@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import lessonReducer, { State as LessonReducerState } from "@redux/reducers/lesson-reducer";
+import lessonReducer, { LessonsState as LessonReducerState } from "@redux/reducers/lesson-reducer";
 import controlWorkReducer, { State as ControlWorkState } from "@redux/reducers/control-work-reducer";
 import homeworkReducer, { State as HomeworkState } from "@redux/reducers/homework-reducer";
 import advertisementReducer, { State as AdvertisementState } from "@redux/reducers/advertisement-reducer";
