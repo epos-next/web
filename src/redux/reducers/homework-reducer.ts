@@ -2,17 +2,17 @@ import { invertHomeworkDone, setHomework, setHomeworkLoading } from "@redux/acti
 import { AnyAction } from "redux";
 import { Homework } from "../../models/homework";
 
-export type State = {
+export type HomeworkState = {
     homework: Homework[],
     loading: boolean,
 }
 
-export const initialState: State = {
+export const initialState: HomeworkState = {
     homework: [],
     loading: true,
 }
 
-export default (state: State = initialState, action: AnyAction) => {
+export default (state: HomeworkState = initialState, action: AnyAction) => {
 
     if (setHomework.match(action)) {
         return {

@@ -1,3 +1,4 @@
+import HomeworkList from "@layouts/homework-list";
 import CreateAdModalWindow, { CreateAdData } from "@layouts/modal-windows/create-ad-modal-window";
 import CreateControlWorkModalWindow, { CreateControlWorkData } from "@layouts/modal-windows/create-control-work-modal-window";
 import NextLessonComponent from "@layouts/next-lesson";
@@ -76,29 +77,7 @@ const MainContentLayout: React.FC<Props> = (props) => {
 
     return <MainContent>
         <NextLessonComponent/>
-
-        {/* Homework */ }
-        {
-            props.homework.length !== 0 || props.loading
-                ? <GridComponentContainer>
-                    <h4>Домашнее задание</h4>
-                    {
-                        props.loading
-                            ? lodash.times(2).map((_, i) => {
-                                return <LessonSkeleton key={ `homework-skeleton-${ i }` }/>
-                            })
-                            : props.homework.map(({ content, done, lesson, id }, i) => {
-                                return <LessonTodo
-                                    onClick={ (done) => props.onHomeworkClick(id, done) }
-                                    key={ `homework-lesson-${ i }` }
-                                    done={ done }
-                                    subject={ lesson }
-                                    subtitle={ content }/>
-                            })
-                    }
-                </GridComponentContainer>
-                : <React.Fragment/>
-        }
+        <HomeworkList/>
 
         {/* Control works */ }
         <GridComponentContainer>
