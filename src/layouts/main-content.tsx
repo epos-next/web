@@ -1,6 +1,5 @@
 import CreateAdModalWindow, { CreateAdData } from "@layouts/modal-windows/create-ad-modal-window";
 import CreateControlWorkModalWindow, { CreateControlWorkData } from "@layouts/modal-windows/create-control-work-modal-window";
-import NextLesson from "@layouts/next-lesson";
 import TimeLeft from "@layouts/time-left";
 import lodash from "lodash";
 import React from "react";
@@ -80,7 +79,24 @@ const MainContentLayout: React.FC<Props> = (props) => {
         <TimeLeft/>
 
         {/* Next lesson */ }
-        <NextLesson/>
+        {
+            props.nextLesson.lesson || props.loading
+                ? <GridComponentContainer id="next_lesson-desktop">
+                    <h4>Следующий урок</h4>
+                    {
+                        props.nextLesson.lesson
+                            ? <LessonWithRoomAndTime
+                                subject={ props.nextLesson.lesson.subject }
+                                room="209"
+                                time="13:00 – 13:45"/>
+                            : <LessonSkeleton key={ `nextLesson-skeleton` }/>
+                    }
+
+                </GridComponentContainer>
+                : props.nextLesson.timeTo === ""
+                    ? <React.Fragment/>
+                    : <span/>
+        }
 
         {/* Homework */ }
         {
