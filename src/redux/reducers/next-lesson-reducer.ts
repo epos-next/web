@@ -2,21 +2,21 @@ import { setIdleNextLesson, setLoadingNextLesson } from "@redux/actions/next-les
 import { AnyAction } from "redux";
 import { Lesson } from "../../models/lesson";
 
-export type NextLessonState = LoadingNextLessonState | IdleNextLessonState
+export type NextLessonsState = LoadingNextLessonsState | IdleNextLessonsState
 
-export type IdleNextLessonState = {
+export type IdleNextLessonsState = {
     loading: false,
     nextLesson: Lesson,
     timeLeftToNextLesson: string, // 22:55
     nextLessonType: string, // до конца 5 урока
 }
-export type LoadingNextLessonState = { loading: true }
+export type LoadingNextLessonsState = { loading: true }
 
-export const initialState: NextLessonState = {
+export const initialState: NextLessonsState = {
     loading: true,
 }
 
-export default (state: NextLessonState = initialState, action: AnyAction): NextLessonState => {
+export default (state: NextLessonsState = initialState, action: AnyAction): NextLessonsState => {
     if (setIdleNextLesson.match(action)) {
         return {
             ...state,

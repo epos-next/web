@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import lessonReducer, { LessonsState  } from "@redux/reducers/lesson-reducer";
-import nextLessonReducer, { NextLessonState  } from "@redux/reducers/next-lesson-reducer";
+import nextLessonReducer, { NextLessonsState  } from "@redux/reducers/next-lesson-reducer";
 import controlWorkReducer, { ControlWorkState } from "@redux/reducers/control-work-reducer";
 import homeworkReducer, { HomeworkState  } from "@redux/reducers/homework-reducer";
 import advertisementReducer, { AdvertisementState } from "@redux/reducers/advertisement-reducer";
@@ -24,7 +24,7 @@ export type State = {
     advertisementReducer: AdvertisementState,
     userReducer: UserState,
     marksReducer: MarksState,
-    nextLessonReducer: NextLessonState,
+    nextLessonReducer: NextLessonsState,
 }
 
 export default rootReducer;
