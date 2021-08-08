@@ -1,27 +1,27 @@
 import {
     addControlWork,
-    setIdleControlWorksState,
-    setLoadingControlWorksState,
+    setControlWorks,
+    setControlWorksLoading,
     setIsControlWorkCreatorOpen
 } from "@redux/actions/control-work-actions";
 import { AnyAction } from "redux";
 import { ControlWork } from "../../models/control-work";
-import { isIdleControlWorkState } from "../../type-guards/reducers";
 
-export type ControlWorkState = IdleControlWorkState | LoadingControlWorkState
+export type State = {
+    controlWorks: ControlWork[],
+    loading: boolean,
+    isControlWorkCreatorOpen: boolean,
+}
 
-export type IdleControlWorkState = { loading: false, controlWorks: ControlWork[] } & ControlWorkStateAddon
-export type LoadingControlWorkState = { loading: true } & ControlWorkStateAddon
-export type ControlWorkStateAddon =  { isControlWorkCreatorOpen: boolean }
-
-export const initialState: ControlWorkState = {
+export const initialState: State = {
+    controlWorks: [],
     loading: true,
     isControlWorkCreatorOpen: false,
 }
 
-export default (state: ControlWorkState = initialState, action: AnyAction): ControlWorkState => {
+export default (state: State = initialState, action: AnyAction): State => {
 
-    if (addControlWork.match(action) && isIdleControlWorkState(state)) {
+    if (addControlWork.match(action)) {
         const controlWorks = [...state.controlWorks, action.payload];
         return {
             ...state,
@@ -29,10 +29,9 @@ export default (state: ControlWorkState = initialState, action: AnyAction): Cont
         }
     }
 
-    if (setIdleControlWorksState.match(action)) {
+    if (setControlWorks.match(action)) {
         return {
             ...state,
-            loading: false,
             controlWorks: action.payload,
         }
     }
@@ -44,10 +43,10 @@ export default (state: ControlWorkState = initialState, action: AnyAction): Cont
         }
     }
 
-    if (setLoadingControlWorksState.match(action)) {
+    if (setControlWorksLoading.match(action)) {
         return {
             ...state,
-            loading: true,
+            loading: action.payload,
         }
     }
 
