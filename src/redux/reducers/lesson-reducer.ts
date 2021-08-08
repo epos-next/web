@@ -1,29 +1,43 @@
 import { AnyAction } from "redux";
-import { setIdleLessonState, setLoadingLessonState } from "@redux/actions/lesson-actions";
+import { setLessonLoading, setLessons, setNextLesson } from "@redux/actions/lesson-actions";
 import { Lesson } from "../../models/lesson";
 
-export type LessonsState = LoadingLessonsState | IdleLessonsState
+export type State = {
+    lessons: Lesson[],
+    nextLesson: Lesson | null,
+    timeLeftToNextLesson: string, // 22:55
+    nextLessonType: string, // до конца 5 урока
+    loading: boolean,
+}
 
-export type IdleLessonsState = { loading: false, lessons: Lesson[] }
-export type LoadingLessonsState = { loading: true }
-
-export const initialState: LessonsState = {
+export const initialState: State = {
+    lessons: [],
+    nextLesson: null,
+    nextLessonType: "",
+    timeLeftToNextLesson: "",
     loading: true,
 }
 
-export default (state: LessonsState = initialState, action: AnyAction): LessonsState => {
-    if (setIdleLessonState.match(action)) {
+export default (state: State = initialState, action: AnyAction) => {
+
+    if (setLessons.match(action)) {
         return {
             ...state,
-            loading: false,
             lessons: action.payload,
         }
     }
 
-    if (setLoadingLessonState.match(action)) {
+    if (setNextLesson.match(action)) {
         return {
             ...state,
-            loading: true,
+            ...action.payload,
+        }
+    }
+
+    if (setLessonLoading.match(action)) {
+        return {
+            ...state,
+            loading: action.payload,
         }
     }
 
