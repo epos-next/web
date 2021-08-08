@@ -4,11 +4,5 @@
     "url": "https://localhost:8000",
     "server_url": "https://localhost:5001/api/1.0",
     "uid": 1
-  },
-  "ignoreTestFiles": [
-    "**/__snapshots__/*",
-    "**/__image_snapshots__/*"
-  ],
-  "viewportWidth": 1200,
-  "viewportHeight": 800
+  }
 }
