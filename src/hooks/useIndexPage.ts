@@ -6,9 +6,8 @@ import { setControlWorks, setControlWorksLoading } from "@redux/actions/control-
 import { setHomework, setHomeworkLoading } from "@redux/actions/homework-actions";
 import { setLessonLoading, setLessons, setNextLesson, SetNextLessonAction } from "@redux/actions/lesson-actions";
 import { setMarks } from "@redux/actions/marks-actions";
-import { setUserIdleState } from "@redux/actions/user-actions";
+import { setUser } from "@redux/actions/user-actions";
 import { State } from "@redux/reducers/root";
-import { UserState } from "@redux/reducers/user-reducer";
 import CacheService from "@services/cache-service";
 import { getData } from "@services/data-service";
 import moment from "moment";
@@ -25,7 +24,7 @@ import { navigate } from "gatsby-link";
 export default function useIndexPage() {
     const [tab, setTab] = useQueryParam<TabQuery>("tab");
     const handleTabChanged = (tab: TabQuery) => setTab(tab);
-    const user = useSelector<State, UserState>(state => state.userReducer);
+    const user = useSelector<State, User | null>(state => state.userReducer.user);
 
     const dispatch = useDispatch();
 
@@ -39,7 +38,7 @@ export default function useIndexPage() {
                 const todayLessons = extractTodayLessons(DateHelper.now, data.lessons);
 
                 // save user
-                dispatch(setUserIdleState(data.user));
+                dispatch(setUser(data.user));
 
                 // save lessons
                 dispatch(setLessons(todayLessons));

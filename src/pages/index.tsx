@@ -7,17 +7,14 @@ import SEO from "../seo";
 import Header from "@components/header";
 import MarksTab from "@layouts/tabs/marks";
 import SideMenuLayout from "@layouts/side-menu";
-import { isIdleUserState } from "../type-guards/user-state-type-guard";
 
 export default function IndexRoute() {
     const { values, handlers } = useIndexPage();
 
-    const userName = isIdleUserState(values.user) ? values.user.user.name : undefined;
-
     return <Page data-tab={ values.tab }>
         <SEO/>
         <Header
-            userName={ userName }
+            userName={ values.user?.name }
             onTabClick={ handlers.handleTabChanged }
             tab={ values.tab }/>
 
