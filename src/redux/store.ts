@@ -2,7 +2,6 @@ import { applyMiddleware, createStore as reduxCreateStore } from "redux";
 import thunk from "redux-thunk";
 import rootReducer, { State } from "./reducers/root";
 import { initialState as lessonState } from "@redux/reducers/lesson-reducer";
-import { initialState as nextLessonState } from "@redux/reducers/next-lesson-reducer";
 import { initialState as controlWorkState } from "@redux/reducers/control-work-reducer";
 import { initialState as homeworkState } from "@redux/reducers/homework-reducer";
 import { initialState as advertisementState } from "@redux/reducers/advertisement-reducer";
@@ -16,7 +15,6 @@ const initialState: State = {
     advertisementReducer: advertisementState,
     userReducer: userState,
     marksReducer: marksState,
-    nextLessonReducer: nextLessonState,
 };
 
 const createStore = () => reduxCreateStore(rootReducer, initialState, applyMiddleware(thunk));

@@ -12,7 +12,7 @@ export const initialState: HomeworkState = {
     loading: true,
 }
 
-export default (state: HomeworkState = initialState, action: AnyAction): HomeworkState => {
+export default (state: HomeworkState = initialState, action: AnyAction) => {
 
     if (setIdleHomeworkState.match(action)) {
         return {
