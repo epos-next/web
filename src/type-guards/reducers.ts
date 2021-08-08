@@ -1,8 +1,6 @@
 import { AdvertisementState, IdleAdvertisementState } from "@redux/reducers/advertisement-reducer";
 import { ControlWorkState, IdleControlWorkState } from "@redux/reducers/control-work-reducer";
-import { HomeworkState, IdleHomeworkState } from "@redux/reducers/homework-reducer";
-import { Homework } from "../models/homework";
-import { isAdvertisement, isControlWork, isHomework, isUser } from "./models";
+import { isAdvertisement, isControlWork, isUser } from "./models";
 import {
     UserState,
     LoadingUserState,
@@ -52,9 +50,4 @@ export function isIdleControlWorkState(state: ControlWorkState): state is IdleCo
     return !(state as ControlWorkState).loading &&
         Array.isArray(state as IdleControlWorkState) &&
         (state as IdleControlWorkState).controlWorks.every(e => isControlWork(e))
-}
-
-export function isIdleHomeworkState(state: HomeworkState): state is IdleHomeworkState {
-
-    return !state.loading && Array.isArray(state.homework) && state.homework.every(e => isHomework(e));
 }

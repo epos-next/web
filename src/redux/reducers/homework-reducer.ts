@@ -1,28 +1,27 @@
-import { invertHomeworkDone, setLoadingHomeworkState, setIdleHomeworkState } from "@redux/actions/homework-actions";
+import { invertHomeworkDone, setHomework, setHomeworkLoading } from "@redux/actions/homework-actions";
 import { AnyAction } from "redux";
 import { Homework } from "../../models/homework";
-import { isIdleHomeworkState } from "../../type-guards/reducers";
 
-export type HomeworkState = IdleHomeworkState | LoadingHomeworkState
+export type State = {
+    homework: Homework[],
+    loading: boolean,
+}
 
-export type IdleHomeworkState = { loading: false, homework: Homework[] }
-export type LoadingHomeworkState = { loading: true }
-
-export const initialState: HomeworkState = {
+export const initialState: State = {
+    homework: [],
     loading: true,
 }
 
-export default (state: HomeworkState = initialState, action: AnyAction) => {
+export default (state: State = initialState, action: AnyAction) => {
 
-    if (setIdleHomeworkState.match(action)) {
+    if (setHomework.match(action)) {
         return {
             ...state,
-            loading: false,
             homework: action.payload,
         }
     }
 
-    if (invertHomeworkDone.match(action) && isIdleHomeworkState(state)) {
+    if (invertHomeworkDone.match(action)) {
         const homework = [...state.homework];
 
         // find index of this homework
@@ -39,10 +38,10 @@ export default (state: HomeworkState = initialState, action: AnyAction) => {
         }
     }
 
-    if (setLoadingHomeworkState.match(action)) {
+    if (setHomeworkLoading.match(action)) {
         return {
             ...state,
-            loading: true,
+            loading: action.payload,
         }
     }
 
