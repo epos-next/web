@@ -2,7 +2,7 @@ import { setMarks } from "@redux/actions/marks-actions";
 import { AnyAction } from "redux";
 import { Marks } from "../../models/marks";
 
-export type State = {
+export type MarksState = {
     marks: Marks,
     loading: false,
 } | {
@@ -10,12 +10,12 @@ export type State = {
     loading: true,
 }
 
-export const initialState: State = {
+export const initialState: MarksState = {
     marks: null,
     loading: true,
 }
 
-export default (state: State = initialState, action: AnyAction): State => {
+export default (state: MarksState = initialState, action: AnyAction): MarksState => {
 
     if (setMarks.match(action)) {
         return {

@@ -7,19 +7,19 @@ import {
 import { AnyAction } from "redux";
 import { Advertisement } from "../../models/advertisement";
 
-export type State = {
+export type AdvertisementState = {
     advertisements: Advertisement[],
     loading: boolean,
     isCreatorOpen: boolean,
 }
 
-export const initialState: State = {
+export const initialState: AdvertisementState = {
     advertisements: [],
     loading: true,
     isCreatorOpen: false,
 }
 
-export default (state: State = initialState, action: AnyAction): State => {
+export default (state: AdvertisementState = initialState, action: AnyAction): AdvertisementState => {
 
     if (setAdvertisementsLoading.match(action)) {
         return {

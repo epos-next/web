@@ -1,0 +1,95 @@
+import LessonSkeleton from "@components/lesson-skeleton";
+import LessonWithDate from "@components/lesson-with-date";
+import UiHelper from "@helpers/ui-helper";
+import { AddIcon, GridComponentContainer, TitleHeader } from "@layouts/main-content";
+import CreateControlWorkModalWindow, { CreateControlWorkData } from "@layouts/modal-windows/create-control-work-modal-window";
+import { addControlWork, setIsControlWorkCreatorOpen } from "@redux/actions/control-work-actions";
+import { ControlWorkState } from "@redux/reducers/control-work-reducer";
+import { MarksState } from "@redux/reducers/marks-reducer";
+import { State } from "@redux/reducers/root";
+import ApiService from "@services/api-service";
+import CacheService from "@services/cache-service";
+import lodash from "lodash";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { ControlWork } from "../models/control-work";
+
+const ControlWorkList: React.FC = () => {
+    const { values, handlers } = useControlWorkList();
+
+    return <React.Fragment>
+        <GridComponentContainer>
+            <TitleHeader>
+                <h4>Контрольные работы</h4>
+                <AddIcon
+                    src="/icons/plus-icon.png"
+                    onClick={ handlers.openControlWorkCreator } />
+            </TitleHeader>
+            {
+                values.loading
+                    ? lodash.times(2).map((_, i) => {
+                        return <LessonSkeleton key={ `control-work-skeleton-${ i }` }/>
+                    })
+                    : values.controlWorks.map(({ lesson, date, name }, i) => {
+                        return <LessonWithDate
+                            key={ `control-work-${ i }` }
+                            date={ date }
+                            subject={ UiHelper.formatSubjectName(lesson) }
+                            subtitle={ name }/>
+                    })
+            }
+        </GridComponentContainer>
+        <CreateControlWorkModalWindow
+            isOpen={ values.isControlWorkCreatorOpen }
+            onClose={ handlers.closeControlWorkCreator }
+            onConfirm={ handlers.createControlWork }
+            lessonNames={ values.lessonNames } />
+    </React.Fragment>
+}
+
+export default ControlWorkList;
+
+const useControlWorkList = () => {
+    const state = useSelector<State, ControlWorkState>(state => state.controlWorkReducer)
+    const marksState = useSelector<State, MarksState>(state => state.marksReducer)
+
+    const dispatch = useDispatch();
+
+    return {
+        values: {
+            loading: state.loading,
+            controlWorks: state.controlWorks,
+            isControlWorkCreatorOpen: state.isControlWorkCreatorOpen,
+            lessonNames: Object.keys(marksState.marks ?? {}),
+        },
+        handlers: {
+            openControlWorkCreator: () => dispatch(setIsControlWorkCreatorOpen(true)),
+            closeControlWorkCreator: () => dispatch(setIsControlWorkCreatorOpen(false)),
+            createControlWork(data: CreateControlWorkData) {
+                const controlWork: ControlWork = {
+                    ...data,
+                    id: Math.ceil(Math.random() * -1000),
+                }
+
+                // Add to redux store
+                dispatch(addControlWork(controlWork));
+
+                // Make a request to api
+                ApiService.createControlWork(controlWork)
+                    .then(id => {
+                        // get an id from server and save in obj
+                        controlWork.id = id;
+
+                        // save to cache
+                        CacheService.addControlWork(controlWork);
+
+                        /// note: if in future I will add ability to delete / update
+                        /// control works, need to save this id in redux store cause
+                        /// just created control works storing without id until user
+                        /// refreshed the page
+                    })
+                    .catch(console.error) // todo
+            },
+        },
+    }
+}

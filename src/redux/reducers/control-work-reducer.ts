@@ -7,19 +7,19 @@ import {
 import { AnyAction } from "redux";
 import { ControlWork } from "../../models/control-work";
 
-export type State = {
+export type ControlWorkState = {
     controlWorks: ControlWork[],
     loading: boolean,
     isControlWorkCreatorOpen: boolean,
 }
 
-export const initialState: State = {
+export const initialState: ControlWorkState = {
     controlWorks: [],
     loading: true,
     isControlWorkCreatorOpen: false,
 }
 
-export default (state: State = initialState, action: AnyAction): State => {
+export default (state: ControlWorkState = initialState, action: AnyAction): ControlWorkState => {
 
     if (addControlWork.match(action)) {
         const controlWorks = [...state.controlWorks, action.payload];

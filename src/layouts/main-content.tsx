@@ -1,3 +1,5 @@
+import AdvertisementList from "@layouts/advertisement-list";
+import ControlWorkList from "@layouts/control-work-list";
 import HomeworkList from "@layouts/homework-list";
 import CreateAdModalWindow, { CreateAdData } from "@layouts/modal-windows/create-ad-modal-window";
 import CreateControlWorkModalWindow, { CreateControlWorkData } from "@layouts/modal-windows/create-control-work-modal-window";
@@ -78,69 +80,20 @@ const MainContentLayout: React.FC<Props> = (props) => {
     return <MainContent>
         <NextLessonComponent/>
         <HomeworkList/>
-
-        {/* Control works */ }
-        <GridComponentContainer>
-            <TitleHeader>
-                <h4>Контрольные работы</h4>
-                <AddIcon onClick={ () => props.onClickOnControlWorkCreator(true) } src="/icons/plus-icon.png"/>
-            </TitleHeader>
-            {
-                props.loading
-                    ? lodash.times(2).map((_, i) => {
-                        return <LessonSkeleton key={ `control-work-skeleton-${ i }` }/>
-                    })
-                    : props.controlWorks.map(({ lesson, date, name }, i) => {
-                        return <LessonWithDate
-                            key={ `control-work-${ i }` }
-                            date={ date }
-                            subject={ UiHelper.formatSubjectName(lesson) }
-                            subtitle={ name }/>
-                    })
-            }
-        </GridComponentContainer>
-        <CreateControlWorkModalWindow
-            onConfirm={ props.onCreateControlWork }
-            lessonNames={ props.lessonNames }
-            onClose={ () => props.onClickOnControlWorkCreator(false) }
-            isOpen={ props.isControlWorkCreatorOpen }/>
-
-        {/* Advertisements */ }
-        <GridComponentContainer>
-            <TitleHeader>
-                <h4>Объявления</h4>
-                <AddIcon onClick={ () => props.onClickOnAdCreator(true) } src="/icons/plus-icon.png"/>
-            </TitleHeader>
-            {
-                props.loading
-                    ? <ContentLoader>
-                        <rect x={ 0 } y={ 0 } rx={ 5 } ry={ 5 } width={ 200 } height={ 14 }/>
-                        <rect x={ 0 } y={ 24 } rx={ 5 } ry={ 5 } width={ 250 } height={ 14 }/>
-                        <rect x={ 0 } y={ 48 } rx={ 5 } ry={ 5 } width={ 210 } height={ 14 }/>
-                    </ContentLoader>
-                    : props.advertisements.map(({ content }, i) => {
-                        const key = `ads-${ i }`;
-                        return <AdvertisementComponent key={ key }>{ content }</AdvertisementComponent>
-                    })
-            }
-        </GridComponentContainer>
-        <CreateAdModalWindow
-            onConfirm={ props.onCreateAd }
-            isOpen={ props.isAdCreatorOpen }
-            onClose={ () => props.onClickOnAdCreator(false) }
-            />
+        <ControlWorkList/>
+        <AdvertisementList/>
     </MainContent>
 }
 
 export default MainContentLayout;
 
-const AddIcon = styled.img`
+export const AddIcon = styled.img`
   width: 18px;
   height: 18px;
   cursor: pointer;
 `;
 
-const TitleHeader = styled.div`
+export const TitleHeader = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
