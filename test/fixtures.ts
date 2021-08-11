@@ -15,6 +15,7 @@ export const lesson: Lesson = {
     groupId: 1,
     id: 1,
 }
+export const lessonsList = lodash.times(35).map((_, i) => ({ ...lesson, id: i }))
 
 export const marks: Marks = {
     "Алгебра": {
@@ -102,7 +103,7 @@ export const bdo: BigDataObject = {
 }
 
 export const bdoJson = {
-    lessons: lodash.times(35).map((_, i) => ({ ...lesson, id: i })),
+    lessons: lessonsList,
     marks: marksJson,
     advertisements: adsList.map(e => ({ ...e, targetDate: e.targetDate.toISOString() })),
     controlWorks: controlWorkList.map(e => ({ ...e, date: e.date.toISOString() })),

@@ -56,7 +56,7 @@ export default class ApiService {
         if (response.status === 400) throw "bad-request";
 
         // Forbidden
-        if (response.status === 403) throw "forbidden";
+        if (response.status === 403 || response.status === 401) throw "forbidden";
 
         // Not found
         if (response.status === 404) throw "not-found";
