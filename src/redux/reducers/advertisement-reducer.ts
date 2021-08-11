@@ -1,55 +1,50 @@
-import {
-    addAdvertisement,
-    setAdvertisements,
-    setAdvertisementsLoading,
-    setIsAdCreatorOpen
-} from "@redux/actions/advertisement-actions";
-import { AnyAction } from "redux";
+import { RootState } from "@redux/store";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Advertisement } from "../../models/advertisement";
 
-export type State = {
+export type AdvertisementState = {
     advertisements: Advertisement[],
     loading: boolean,
     isCreatorOpen: boolean,
 }
 
-export const initialState: State = {
+export const initialState: AdvertisementState = {
     advertisements: [],
     loading: true,
     isCreatorOpen: false,
 }
 
-export default (state: State = initialState, action: AnyAction): State => {
+const advertisementSlice = createSlice({
+    name: "advertisement",
+    initialState,
+    reducers: {
+        setAdvertisementsLoading: (state, action: PayloadAction<boolean>) => {
+            state.loading = action.payload;
+        },
+        addAdvertisement: (state, action: PayloadAction<Advertisement>) => {
+            state.advertisements.push(action.payload);
+        },
+        setIsAdCreatorOpen: (state, action: PayloadAction<boolean>) => {
+            state.isCreatorOpen = action.payload;
+        },
+        setAdvertisements: (state, action: PayloadAction<Advertisement[]>) => {
+            state.advertisements = action.payload;
+        },
+    },
+});
 
-    if (setAdvertisementsLoading.match(action)) {
-        return {
-            ...state,
-            loading: action.payload,
-        }
-    }
+export const {
+    setIsAdCreatorOpen,
+    addAdvertisement,
+    setAdvertisements,
+    setAdvertisementsLoading
+} = advertisementSlice.actions;
 
-    if (addAdvertisement.match(action)) {
-        const advertisements = [...state.advertisements, action.payload];
-        return {
-            ...state,
-            advertisements
-        }
-    }
+// selectors
+export const selectAds = (state: RootState) => state.advertisementState.advertisements;
+export const selectAdsLoading = (state: RootState) => state.advertisementState.loading;
+export const selectIsAdCreatorOpen = (state: RootState) => state.advertisementState.isCreatorOpen;
 
-    if (setIsAdCreatorOpen.match(action)) {
-        return {
-            ...state,
-            isCreatorOpen: action.payload,
-        }
-    }
-
-    if (setAdvertisements.match(action)) {
-        return {
-            ...state,
-            advertisements: action.payload,
-        }
-    }
-
-    return state;
-}
+const advertisementReducer = advertisementSlice.reducer;
+export default advertisementReducer;
 

@@ -1,54 +1,49 @@
-import {
-    addControlWork,
-    setControlWorks,
-    setControlWorksLoading,
-    setIsControlWorkCreatorOpen
-} from "@redux/actions/control-work-actions";
-import { AnyAction } from "redux";
+import { RootState } from "@redux/store";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ControlWork } from "../../models/control-work";
 
-export type State = {
+export type ControlWorkState = {
     controlWorks: ControlWork[],
     loading: boolean,
     isControlWorkCreatorOpen: boolean,
 }
 
-export const initialState: State = {
+export const initialState: ControlWorkState = {
     controlWorks: [],
     loading: true,
     isControlWorkCreatorOpen: false,
 }
 
-export default (state: State = initialState, action: AnyAction): State => {
+export const controlWorkSlice = createSlice({
+    name: "control-work",
+    initialState,
+    reducers: {
+        addControlWork: (state, action: PayloadAction<ControlWork>) => {
+            state.controlWorks.push(action.payload);
+        },
+        setControlWorks: (state, action: PayloadAction<ControlWork[]>) => {
+            state.controlWorks = action.payload;
+        },
+        setIsControlWorkCreatorOpen: (state, action: PayloadAction<boolean>) => {
+            state.isControlWorkCreatorOpen = action.payload;
+        },
+        setControlWorksLoading: (state, action: PayloadAction<boolean>) => {
+            state.loading = action.payload;
+        },
+    },
+})
 
-    if (addControlWork.match(action)) {
-        const controlWorks = [...state.controlWorks, action.payload];
-        return {
-            ...state,
-            controlWorks,
-        }
-    }
+export const {
+    setIsControlWorkCreatorOpen,
+    addControlWork,
+    setControlWorksLoading,
+    setControlWorks
+} = controlWorkSlice.actions;
 
-    if (setControlWorks.match(action)) {
-        return {
-            ...state,
-            controlWorks: action.payload,
-        }
-    }
+// Selectors
+export const selectControlWorks = (state: RootState) => state.controlWorkState.controlWorks;
+export const selectControlWorksLoading = (state: RootState) => state.controlWorkState.loading;
+export const selectIsControlWorkCreatorOpen = (state: RootState) => state.controlWorkState.isControlWorkCreatorOpen;
 
-    if (setIsControlWorkCreatorOpen.match(action)) {
-        return {
-            ...state,
-            isControlWorkCreatorOpen: action.payload,
-        }
-    }
-
-    if (setControlWorksLoading.match(action)) {
-        return {
-            ...state,
-            loading: action.payload,
-        }
-    }
-
-    return state;
-}
+const controlWorkReducer = controlWorkSlice.reducer;
+export default controlWorkReducer;

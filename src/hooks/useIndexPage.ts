@@ -1,35 +1,29 @@
 import { TabQuery } from "@components/header";
 import DateHelper from "@helpers/date-helper";
 import UiHelper from "@helpers/ui-helper";
-import { setAdvertisements, setAdvertisementsLoading } from "@redux/actions/advertisement-actions";
-import { setControlWorks, setControlWorksLoading } from "@redux/actions/control-work-actions";
-import { setHomework, setHomeworkLoading } from "@redux/actions/homework-actions";
-import { setLessonLoading, setLessons, setNextLesson, SetNextLessonAction } from "@redux/actions/lesson-actions";
-import { setMarks } from "@redux/actions/marks-actions";
-import { setUser } from "@redux/actions/user-actions";
-import { State } from "@redux/reducers/root";
+import { useAppDispatch, useAppSelector } from "@redux/hooks";
+import { selectUser } from "@redux/reducers/user-reducer";
 import CacheService from "@services/cache-service";
 import { getData } from "@services/data-service";
 import moment from "moment";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
 import { useQueryParam } from "use-query-params";
 import { Lesson } from "../models/lesson";
-import { User } from "../models/user";
-import { extractTodayLessons } from "./useHomePage";
-import useSideMenu from "./useSideMenu";
 import { navigate } from "gatsby-link";
+import { setUser } from "@redux/reducers/user-reducer";
+import { setLessons, setLessonsLoading, setNextLesson, SetNextLessonAction } from "@redux/reducers/lesson-reducer";
+import { setControlWorks, setControlWorksLoading } from "@redux/reducers/control-work-reducer";
+import { setHomework, setHomeworkLoading } from "@redux/reducers/homework-reducer";
+import { setAdvertisements, setAdvertisementsLoading } from "@redux/reducers/advertisement-reducer";
+import { setMarks } from "@redux/reducers/marks-reducer";
 
 export default function useIndexPage() {
     const [tab, setTab] = useQueryParam<TabQuery>("tab");
     const handleTabChanged = (tab: TabQuery) => setTab(tab);
-    const user = useSelector<State, User | null>(state => state.userReducer.user);
+    const user = useAppSelector(selectUser)
 
-    const dispatch = useDispatch();
-
-    // Side menu
-    const { lessonsLoading, lessons, onDateChanged, selectedDate } = useSideMenu();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         getData(
@@ -61,7 +55,7 @@ export default function useIndexPage() {
                 dispatch(setAdvertisementsLoading(false));
                 dispatch(setHomeworkLoading(false));
                 dispatch(setControlWorksLoading(false));
-                dispatch(setLessonLoading(false));
+                dispatch(setLessonsLoading(false));
             },
             (e: any) => {
                 if (e === "forbidden") {
@@ -86,13 +80,9 @@ export default function useIndexPage() {
         values: {
             user,
             tab: tab ?? "home",
-            lessons,
-            lessonsLoading,
-            selectedDate,
         },
         handlers: {
             handleTabChanged,
-            onDateChanged,
         }
     }
 }
@@ -185,4 +175,14 @@ const calculateNextLesson = async (lessons: Lesson[], dispatch: Dispatch): Promi
 
     // When lessons ended
     dispatch(setNextLesson(noLessonAction))
+}
+
+export const extractTodayLessons = (date: Date, data: Lesson[]): Lesson[] => {
+    // Checking for null or undefined
+    if (!date) return [];
+
+    const target = moment(date).format(moment.HTML5_FMT.DATE);
+    return data
+        .filter(x => x.date.includes(target))
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 }

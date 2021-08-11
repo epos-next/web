@@ -1,49 +1,43 @@
-import { invertHomeworkDone, setHomework, setHomeworkLoading } from "@redux/actions/homework-actions";
-import { AnyAction } from "redux";
+import { RootState } from "@redux/store";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Homework } from "../../models/homework";
 
-export type State = {
+export type HomeworkState = {
     homework: Homework[],
     loading: boolean,
 }
 
-export const initialState: State = {
+export const initialState: HomeworkState = {
     homework: [],
     loading: true,
 }
 
-export default (state: State = initialState, action: AnyAction) => {
+export const homeworkSlice = createSlice({
+    name: "homework",
+    initialState,
+    reducers: {
+        setHomework: (state, action: PayloadAction<Homework[]>) => {
+            state.homework = action.payload;
+        },
+        invertHomeworkDone: (state, action: PayloadAction<number>) => {
+            // find index of this homework
+            const index = state.homework.findIndex(x => x.id === action.payload);
 
-    if (setHomework.match(action)) {
-        return {
-            ...state,
-            homework: action.payload,
+            // flip done value
+            if (index !== -1) {
+                state.homework[index].done = !state.homework[index].done;
+            }
+        },
+        setHomeworkLoading: (state, action: PayloadAction<boolean>) => {
+            state.loading = action.payload;
         }
     }
+});
 
-    if (invertHomeworkDone.match(action)) {
-        const homework = [...state.homework];
+export const { invertHomeworkDone, setHomework, setHomeworkLoading } = homeworkSlice.actions;
 
-        // find index of this homework
-        const index = homework.findIndex(x => x.id === action.payload);
+export const selectHomework = (state: RootState) => state.homeworkState.homework;
+export const selectHomeworkLoading = (state: RootState) => state.homeworkState.loading;
 
-        // flip done value
-        if (index !== -1) {
-            homework[index].done = !homework[index].done;
-        }
-
-        return {
-            ...state,
-            homework,
-        }
-    }
-
-    if (setHomeworkLoading.match(action)) {
-        return {
-            ...state,
-            loading: action.payload,
-        }
-    }
-
-    return state;
-}
+const homeworkReducer = homeworkSlice.reducer;
+export default homeworkReducer;

@@ -1,12 +1,11 @@
-import { State } from "@redux/reducers/root";
-import { useSelector } from "react-redux";
-import { Marks } from "../models/marks";
+import { useAppSelector } from "@redux/hooks";
+import { selectMarks, selectMarksLoading } from "@redux/reducers/marks-reducer";
 
 export default function useMarksPage() {
 
     // Get state
-    const marks = useSelector<State, Marks | null>(state => state.marksReducer.marks);
-    const loading = useSelector<State, boolean>(state => state.marksReducer.loading);
+    const marks = useAppSelector(selectMarks);
+    const loading = useAppSelector(selectMarksLoading);
 
     return {
         state: {

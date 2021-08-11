@@ -1,8 +1,8 @@
-import { AnyAction } from "redux";
-import { setLessonLoading, setLessons, setNextLesson } from "@redux/actions/lesson-actions";
+import { RootState } from "@redux/store";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Lesson } from "../../models/lesson";
 
-export type State = {
+export type LessonsState = {
     lessons: Lesson[],
     nextLesson: Lesson | null,
     timeLeftToNextLesson: string, // 22:55
@@ -10,7 +10,7 @@ export type State = {
     loading: boolean,
 }
 
-export const initialState: State = {
+export const initialState: LessonsState = {
     lessons: [],
     nextLesson: null,
     nextLessonType: "",
@@ -18,28 +18,38 @@ export const initialState: State = {
     loading: true,
 }
 
-export default (state: State = initialState, action: AnyAction) => {
-
-    if (setLessons.match(action)) {
-        return {
-            ...state,
-            lessons: action.payload,
+export const lessonSlice = createSlice({
+    name: "lessons",
+    initialState,
+    reducers: {
+        setLessons: (state, action: PayloadAction<Lesson[]>) => {
+            state.lessons = action.payload;
+        },
+        setNextLesson: (state, action: PayloadAction<SetNextLessonAction>) => {
+            state.nextLesson = action.payload.nextLesson;
+            state.timeLeftToNextLesson = action.payload.timeLeftToNextLesson;
+            state.nextLessonType = action.payload.nextLessonType;
+        },
+        setLessonsLoading: (state, action: PayloadAction<boolean>) => {
+            state.loading = action.payload;
         }
     }
+})
 
-    if (setNextLesson.match(action)) {
-        return {
-            ...state,
-            ...action.payload,
-        }
-    }
+export const { setNextLesson, setLessons, setLessonsLoading } = lessonSlice.actions;
 
-    if (setLessonLoading.match(action)) {
-        return {
-            ...state,
-            loading: action.payload,
-        }
-    }
 
-    return state;
+export const selectLessons = (state: RootState) => state.lessonsState.lessons;
+export const selectLessonLoading = (state: RootState) => state.lessonsState.loading;
+export const selectNextLesson = (state: RootState) => state.lessonsState.nextLesson;
+export const selectTimeLeftToNextLesson = (state: RootState) => state.lessonsState.timeLeftToNextLesson;
+export const selectNextLessonType = (state: RootState) => state.lessonsState.nextLessonType;
+
+const lessonReducer = lessonSlice.reducer;
+export default lessonReducer;
+
+export type SetNextLessonAction = {
+    nextLesson: Lesson | null,
+    timeLeftToNextLesson: string, // 22:55
+    nextLessonType: string, // до конца 5 урока
 }

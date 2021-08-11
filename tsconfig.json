@@ -19,19 +19,20 @@
     "noEmit": true,
     "jsx": "preserve",
     "experimentalDecorators": true,
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
-      "@redux/*": [ "redux/*" ],
-      "@utils/*": [ "utils/*" ],
-      "@components/*": [ "components/*" ],
-      "@helpers/*": [ "helpers/*" ],
-      "@services/*": [ "services/*" ],
-      "@layouts/*": [ "layouts/*" ]
+      "@redux/*": [ "src/redux/*" ],
+      "@utils/*": [ "src/utils/*" ],
+      "@components/*": [ "src/components/*" ],
+      "@helpers/*": [ "src/helpers/*" ],
+      "@services/*": [ "src/services/*" ],
+      "@layouts/*": [ "src/layouts/*" ]
     },
     "typeRoots": [
       ".",
       "@types",
-      "@types/utils"
+      "@types/utils",
+      "node_modules/@types"
     ],
     "types": [
       "jest",
@@ -45,6 +46,10 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.mdx"
-  ]
+    "**/*.mdx",
+    "jest-preload.js"
+  ],
+  "typeAcquisition": {
+    "include": ["jest"]
+  }
 }
