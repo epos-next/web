@@ -65,9 +65,7 @@ export default class CacheService {
             this.setUser(data.user);
 
             // set "cached-schedule"
-            const now = moment();
-            const start = now.startOf("isoWeek").toDate();
-            this.setWeekSchedule(data.lessons, start);
+            this.setWeekSchedule(data.lessons);
 
             // set "cached-homework"
             this.setHomework(data.homework);
@@ -93,17 +91,47 @@ export default class CacheService {
         return obj[str] ?? null;
     }
 
-    static setWeekSchedule(lessons: Lesson[], startOfTheWeek: Date) {
+    static setWeekSchedule(lessons: Lesson[]) {
         const raw = localStorage.getItem("cached-schedule") ?? "{}";
         const obj = JSON.parse(raw);
 
-        for (let i = 0; i < 7; i++) {
-            const date = moment(startOfTheWeek).add(i, "days").toDate();
-            const todayLessons = extractTodayLessons(date, lessons);
-            const str = moment(date).startOf("day").toISOString();
-            obj[str] = todayLessons;
-            // CacheService.setScheduleAt(date, todayLessons);
+        /**
+         *  Let's store obj keys (iso string) of dates, which we already update
+         *  to prevent lessons duplication.
+         *  If key in obj and not in updatedKeys => in obj[key] old dates and we need to remove it and mark this key
+         *  If key in obj and in updatedKeys => in obj[key] new dates and we add this date to array
+         *  If key not in obj and not in updatedKeys => new date, create obj[key] = [thisDate] and mark this key
+         *  fourth situation never happens
+         */
+        const updatedKeys: string[] = [];
+
+        for (let lesson of lessons) {
+            const key = moment(lesson.date).startOf("day").toISOString();
+
+            // in obj[key] old dates, we need to remove it and mark this key
+            if (key in obj && !updatedKeys.includes(key)) {
+                obj[key] = [lesson]
+                updatedKeys.push(key)
+            }
+
+            // in obj[key] new dates and we add this date to array
+            if (key in obj && updatedKeys.includes(key)) {
+                obj[key].push(lesson);
+            }
+
+            // new date, create obj[key] = [thisDate] and mark this key
+            if (!(key in obj)) {
+                obj[key] = [lesson]
+                updatedKeys.push(key)
+            }
         }
+
+        /**
+         * Time complexity of this algorithm is O(n^2) if every lesson have unique date
+         * But usually this function will used to set week schedule, so usually <= 7 dates
+         * And time complexity of this params is O(7n), or just O(n)
+         * Old implementation had the same complexity but didn't work on bigger amount of dates
+         */
 
         localStorage.setItem("cached-schedule", JSON.stringify(obj));
     }
