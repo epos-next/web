@@ -1,10 +1,4 @@
-import {
-    addAdvertisement,
-    setAdvertisements,
-    setAdvertisementsLoading,
-    setIsAdCreatorOpen
-} from "@redux/actions/advertisement-actions";
-import { AnyAction } from "redux";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Advertisement } from "../../models/advertisement";
 
 export type AdvertisementState = {
@@ -19,37 +13,32 @@ export const initialState: AdvertisementState = {
     isCreatorOpen: false,
 }
 
-export default (state: AdvertisementState = initialState, action: AnyAction): AdvertisementState => {
+const advertisementSlice = createSlice({
+    name: "advertisement",
+    initialState,
+    reducers: {
+        setAdvertisementsLoading: (state, action: PayloadAction<boolean>) => {
+            state.loading = action.payload;
+        },
+        addAdvertisement: (state, action: PayloadAction<Advertisement>) => {
+            state.advertisements.push(action.payload);
+        },
+        setIsAdCreatorOpen: (state, action: PayloadAction<boolean>) => {
+            state.isCreatorOpen = action.payload;
+        },
+        setAdvertisements: (state, action: PayloadAction<Advertisement[]>) => {
+            state.advertisements = action.payload;
+        },
+    },
+});
 
-    if (setAdvertisementsLoading.match(action)) {
-        return {
-            ...state,
-            loading: action.payload,
-        }
-    }
+export const {
+    setIsAdCreatorOpen,
+    addAdvertisement,
+    setAdvertisements,
+    setAdvertisementsLoading
+} = advertisementSlice.actions;
 
-    if (addAdvertisement.match(action)) {
-        const advertisements = [...state.advertisements, action.payload];
-        return {
-            ...state,
-            advertisements
-        }
-    }
-
-    if (setIsAdCreatorOpen.match(action)) {
-        return {
-            ...state,
-            isCreatorOpen: action.payload,
-        }
-    }
-
-    if (setAdvertisements.match(action)) {
-        return {
-            ...state,
-            advertisements: action.payload,
-        }
-    }
-
-    return state;
-}
+const advertisementReducer = advertisementSlice.reducer;
+export default advertisementReducer;
 

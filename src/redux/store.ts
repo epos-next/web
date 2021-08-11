@@ -1,3 +1,4 @@
+import advertisementReducer from "@redux/reducers/advertisement-reducer";
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import lessonReducer from "@redux/reducers/lesson-reducer";
 import homeworkReducer from "@redux/reducers/homework-reducer";
@@ -12,6 +13,7 @@ export const store = configureStore({
         marksState: marksReducer,
         homeworkState: homeworkReducer,
         controlWorkState: controlWorkReducer,
+        advertisementState: advertisementReducer,
     }
 })
 
