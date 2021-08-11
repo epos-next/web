@@ -7,7 +7,7 @@ import moment from "moment";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Lesson } from "../models/lesson";
-import { extractTodayLessons } from "./useHomePage";
+import { extractTodayLessons } from "./useIndexPage";
 
 export default function useSideMenu() {
     const [selectedDate, setSelectedDate] = useState(DateHelper.now);

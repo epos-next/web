@@ -17,7 +17,6 @@ import { Dispatch } from "redux";
 import { useQueryParam } from "use-query-params";
 import { Lesson } from "../models/lesson";
 import { User } from "../models/user";
-import { extractTodayLessons } from "./useHomePage";
 import useSideMenu from "./useSideMenu";
 import { navigate } from "gatsby-link";
 
@@ -185,4 +184,14 @@ const calculateNextLesson = async (lessons: Lesson[], dispatch: Dispatch): Promi
 
     // When lessons ended
     dispatch(setNextLesson(noLessonAction))
+}
+
+export const extractTodayLessons = (date: Date, data: Lesson[]): Lesson[] => {
+    // Checking for null or undefined
+    if (!date) return [];
+
+    const target = moment(date).format(moment.HTML5_FMT.DATE);
+    return data
+        .filter(x => x.date.includes(target))
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 }

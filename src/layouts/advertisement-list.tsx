@@ -9,6 +9,7 @@ import CacheService from "@services/cache-service";
 import React from "react";
 import ContentLoader from "react-content-loader";
 import { useDispatch, useSelector } from "react-redux";
+import useIsLoading from "../hooks/useIsLoading";
 import { Advertisement } from "../models/advertisement";
 
 const AdvertisementList: React.FC = () => {
@@ -47,7 +48,7 @@ const useAdvertisementList = () => {
 
     return {
         values: {
-            loading: state.loading,
+            loading: useIsLoading(),
             advertisements: state.advertisements,
             isAdCreatorOpen: state.isCreatorOpen,
         },

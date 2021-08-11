@@ -7,19 +7,20 @@ import React from "react";
 import ContentLoader from "react-content-loader";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-
+import useIsLoading from "../hooks/useIsLoading";
 
 const NextLessonComponent: React.FC = () => {
     const state = useSelector<State, LessonsState>(state => state.lessonReducer);
+    const isLoading = useIsLoading()
 
     return <React.Fragment>
         {/* time left */ }
         {
-            state.timeLeftToNextLesson !== "" || state.loading
+            state.timeLeftToNextLesson !== "" || isLoading
                 ? <GridComponentContainer id="time_left-desktop">
                     <h4>Осталось</h4>
                     {
-                        state.timeLeftToNextLesson !== ""
+                        !isLoading && state.timeLeftToNextLesson !== ""
                             ? <TimeLeftContainer>
                                 <TimeLeftText>{ state.timeLeftToNextLesson }</TimeLeftText>
                                 <TimeLeftHint>{ state.nextLessonType }</TimeLeftHint>
@@ -34,11 +35,11 @@ const NextLessonComponent: React.FC = () => {
 
         {/* Next lesson */ }
         {
-            state.nextLesson !== null || state.loading
+            state.nextLesson !== null || isLoading
                 ? <GridComponentContainer id="next_lesson-desktop">
                     <h4>Следующий урок</h4>
                     {
-                        state.nextLesson != null
+                        !isLoading && state.nextLesson != null
                             ? <LessonWithRoomAndTime
                                 subject={ state.nextLesson.subject }
                                 room="209"

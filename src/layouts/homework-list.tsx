@@ -8,10 +8,12 @@ import CacheService from "@services/cache-service";
 import lodash from "lodash";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import useIsLoading from "../hooks/useIsLoading";
 
 const HomeworkList: React.FC= () => {
     const state = useSelector<State, HomeworkState>(state => state.homeworkReducer);
     const dispatch = useDispatch();
+    const isLoading = useIsLoading()
 
     function onHomeworkClick(id: number, done: boolean) {
         dispatch(invertHomeworkDone(id));
@@ -22,7 +24,7 @@ const HomeworkList: React.FC= () => {
         return <GridComponentContainer>
             <h4>Домашнее задание</h4>
             {
-                state.loading
+                isLoading
                     ? lodash.times(2).map((_, i) => {
                         return <LessonSkeleton key={ `homework-skeleton-${ i }` }/>
                     })

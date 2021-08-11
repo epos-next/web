@@ -12,6 +12,7 @@ import CacheService from "@services/cache-service";
 import lodash from "lodash";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import useIsLoading from "../hooks/useIsLoading";
 import { ControlWork } from "../models/control-work";
 
 const ControlWorkList: React.FC = () => {
@@ -57,7 +58,7 @@ const useControlWorkList = () => {
 
     return {
         values: {
-            loading: state.loading,
+            loading: useIsLoading(),
             controlWorks: state.controlWorks,
             isControlWorkCreatorOpen: state.isControlWorkCreatorOpen,
             lessonNames: Object.keys(marksState.marks ?? {}),
