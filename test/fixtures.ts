@@ -94,11 +94,20 @@ export const user: User = {
 }
 
 export const bdo: BigDataObject = {
-    lessons: lodash.times(35).map((_, i) => ({ ...lesson, id: i })),
+    lessons: lessonsList,
     marks,
     advertisements: adsList,
     controlWorks: controlWorkList,
     homework: homeworkList,
+    user,
+}
+
+export const bdo2: BigDataObject = {
+    lessons: [...lessonsList, lesson],
+    marks,
+    advertisements: [...adsList, ad],
+    controlWorks: [...controlWorkList, controlWork],
+    homework: [...homeworkList, homework],
     user,
 }
 
