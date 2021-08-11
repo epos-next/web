@@ -3,41 +3,32 @@ import lodash from "lodash";
 import styled, { keyframes } from "styled-components";
 import UiHelper from "@helpers/ui-helper";
 import FormatHelper from "@helpers/format-helper";
-import { BigDataObject } from "@services/api-service";
 import CalendarComponent from "@components/calendar";
 import LessonSkeleton from "@components/lesson-skeleton";
 import LessonWithRoomAndTime from "@components/lesson-with-room-and-time";
+import useIsLoading from "../hooks/useIsLoading";
+import useSideMenu from "../hooks/useSideMenu";
 
-export type Props = {
-    /** Lessons which will be displaying next to calendar */
-    lessons: BigDataObject["lessons"] & { mark?: number },
 
-    /** Triggering while user change the date */
-    onDateChanged: (date: Date) => any,
+const SideMenuLayout: React.FC = () => {
+    // Side menu
+    const { lessons, onDateChanged, selectedDate } = useSideMenu();
+    const loading = useIsLoading();
 
-    /** will show skeleton loading */
-    loading: boolean;
-
-    /** will used to show message like "No is summer, go take a rest" */
-    date: Date,
-}
-
-// TODO: need to stop using props
-const SideMenuLayout: React.FC<Props> = (props) => {
-    const isNowSummer = props.date.getMonth() >= 5 && props.date.getMonth() <= 7;
+    const isNowSummer = selectedDate.getMonth() >= 5 && selectedDate.getMonth() <= 7;
 
     return <SideMenu className="side_menu-layout">
-        <CalendarComponent onDayChanged={ props.onDateChanged }/>
+        <CalendarComponent onDayChanged={ onDateChanged }/>
         <Lessons>
             <h3>Уроки</h3>
 
             {/* Lessons list */ }
             {
-                props.loading
+                loading
                     ? lodash.times(6).map((e, i) => {
                         return <LessonSkeleton key={ `lesson-skeleton-${ i }` }/>
                     })
-                    : props.lessons.map(({ subject, room, date, duration }, i) => {
+                    : lessons.map(({ subject, room, date, duration }, i) => {
                         const startDate = new Date(date);
                         const endDate = new Date(startDate.getTime() + duration * 60000);
                         const time = `${ FormatHelper.formatTime(startDate) } – ${ FormatHelper.formatTime(endDate) }`;
@@ -58,9 +49,9 @@ const SideMenuLayout: React.FC<Props> = (props) => {
 
             {/* Showing "No lesson found" message  */ }
             {
-                isNowSummer && !props.loading
+                isNowSummer && !loading
                     ? <NoFoundText>Сейчас лето, дурачек)<br/>Иди отдыхай</NoFoundText>
-                    : props.lessons.length === 0 && !props.loading
+                    : lessons.length === 0 && !loading
                     ? <NoFoundText>
                         Уроков в этот день нет
                     </NoFoundText>

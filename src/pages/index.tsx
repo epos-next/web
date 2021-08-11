@@ -27,11 +27,7 @@ export default function IndexRoute() {
                 }
             </Content>
             <Divider/>
-            <SideMenuLayout
-                date={ values.selectedDate }
-                loading={ values.lessonsLoading }
-                onDateChanged={ handlers.onDateChanged }
-                lessons={ values.lessons }/>
+            <SideMenuLayout/>
         </Group>
         <ToastContainer/>
     </Page>

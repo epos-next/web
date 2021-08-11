@@ -10,7 +10,6 @@ import { useEffect } from "react";
 import { Dispatch } from "redux";
 import { useQueryParam } from "use-query-params";
 import { Lesson } from "../models/lesson";
-import useSideMenu from "./useSideMenu";
 import { navigate } from "gatsby-link";
 import { setUser } from "@redux/reducers/user-reducer";
 import { setLessons, setLessonsLoading, setNextLesson, SetNextLessonAction } from "@redux/reducers/lesson-reducer";
@@ -25,9 +24,6 @@ export default function useIndexPage() {
     const user = useAppSelector(selectUser)
 
     const dispatch = useAppDispatch();
-
-    // Side menu
-    const { lessonsLoading, lessons, onDateChanged, selectedDate } = useSideMenu();
 
     useEffect(() => {
         getData(
@@ -84,13 +80,9 @@ export default function useIndexPage() {
         values: {
             user,
             tab: tab ?? "home",
-            lessons,
-            lessonsLoading,
-            selectedDate,
         },
         handlers: {
             handleTabChanged,
-            onDateChanged,
         }
     }
 }
