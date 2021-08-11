@@ -31,7 +31,8 @@
     "typeRoots": [
       ".",
       "@types",
-      "@types/utils"
+      "@types/utils",
+      "node_modules/@types"
     ],
     "types": [
       "jest",
@@ -45,6 +46,10 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.mdx"
-  ]
+    "**/*.mdx",
+    "jest-preload.js"
+  ],
+  "typeAcquisition": {
+    "include": ["jest"]
+  }
 }
