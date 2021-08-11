@@ -1,5 +1,4 @@
-import { invertHomeworkDone, setHomework, setHomeworkLoading } from "@redux/actions/homework-actions";
-import { AnyAction } from "redux";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Homework } from "../../models/homework";
 
 export type HomeworkState = {
@@ -12,38 +11,29 @@ export const initialState: HomeworkState = {
     loading: true,
 }
 
-export default (state: HomeworkState = initialState, action: AnyAction) => {
+export const homeworkSlice = createSlice({
+    name: "homework",
+    initialState,
+    reducers: {
+        setHomework: (state, action: PayloadAction<Homework[]>) => {
+            state.homework = action.payload;
+        },
+        invertHomeworkDone: (state, action: PayloadAction<number>) => {
+            // find index of this homework
+            const index = state.homework.findIndex(x => x.id === action.payload);
 
-    if (setHomework.match(action)) {
-        return {
-            ...state,
-            homework: action.payload,
+            // flip done value
+            if (index !== -1) {
+                state.homework[index].done = !state.homework[index].done;
+            }
+        },
+        setHomeworkLoading: (state, action: PayloadAction<boolean>) => {
+            state.loading = action.payload;
         }
     }
+});
 
-    if (invertHomeworkDone.match(action)) {
-        const homework = [...state.homework];
+export const { invertHomeworkDone, setHomework, setHomeworkLoading } = homeworkSlice.actions;
 
-        // find index of this homework
-        const index = homework.findIndex(x => x.id === action.payload);
-
-        // flip done value
-        if (index !== -1) {
-            homework[index].done = !homework[index].done;
-        }
-
-        return {
-            ...state,
-            homework,
-        }
-    }
-
-    if (setHomeworkLoading.match(action)) {
-        return {
-            ...state,
-            loading: action.payload,
-        }
-    }
-
-    return state;
-}
+const homeworkReducer = homeworkSlice.reducer;
+export default homeworkReducer;
