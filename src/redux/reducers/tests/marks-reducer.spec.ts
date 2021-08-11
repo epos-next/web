@@ -26,6 +26,7 @@ describe("Testing marks reducer", () => {
             ],
         }
     }
+
     it("should handle initial state", () => {
         const state = marksReducer(undefined, { type: "test" })
         expect(state.marks).toBeNull();

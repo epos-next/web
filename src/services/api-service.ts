@@ -29,7 +29,7 @@ export default class ApiService {
         }
 
         // Forbidden
-        if (response.status === 401) throw "forbidden";
+        if (response.status === 401 || response.status === 403) throw "forbidden";
 
         // Not found
         if (response.status === 404) throw "not-found";
