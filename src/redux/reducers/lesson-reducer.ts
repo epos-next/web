@@ -1,5 +1,4 @@
-import { AnyAction } from "redux";
-import { setLessonLoading, setLessons, setNextLesson } from "@redux/actions/lesson-actions";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Lesson } from "../../models/lesson";
 
 export type LessonsState = {
@@ -18,28 +17,31 @@ export const initialState: LessonsState = {
     loading: true,
 }
 
-export default (state: LessonsState = initialState, action: AnyAction) => {
-
-    if (setLessons.match(action)) {
-        return {
-            ...state,
-            lessons: action.payload,
+export const lessonSlice = createSlice({
+    name: "lessons",
+    initialState,
+    reducers: {
+        setLessons: (state, action: PayloadAction<Lesson[]>) => {
+            state.lessons = action.payload;
+        },
+        setNextLesson: (state, action: PayloadAction<SetNextLessonAction>) => {
+            state.nextLesson = action.payload.nextLesson;
+            state.timeLeftToNextLesson = action.payload.timeLeftToNextLesson;
+            state.nextLessonType = action.payload.nextLessonType;
+        },
+        setLessonsLoading: (state, action: PayloadAction<boolean>) => {
+            state.loading = action.payload;
         }
     }
+})
 
-    if (setNextLesson.match(action)) {
-        return {
-            ...state,
-            ...action.payload,
-        }
-    }
+export const { setNextLesson, setLessons, setLessonsLoading } = lessonSlice.actions;
 
-    if (setLessonLoading.match(action)) {
-        return {
-            ...state,
-            loading: action.payload,
-        }
-    }
+const lessonReducer = lessonSlice.reducer;
+export default lessonReducer;
 
-    return state;
+export type SetNextLessonAction = {
+    nextLesson: Lesson | null,
+    timeLeftToNextLesson: string, // 22:55
+    nextLessonType: string, // до конца 5 урока
 }

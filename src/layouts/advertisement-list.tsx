@@ -3,7 +3,7 @@ import { AddIcon, GridComponentContainer, TitleHeader } from "@layouts/main-cont
 import CreateAdModalWindow, { CreateAdData } from "@layouts/modal-windows/create-ad-modal-window";
 import { addAdvertisement, setIsAdCreatorOpen } from "@redux/actions/advertisement-actions";
 import { AdvertisementState } from "@redux/reducers/advertisement-reducer";
-import { State } from "@redux/reducers/root";
+import { RootState } from "@redux/reducers/root";
 import ApiService from "@services/api-service";
 import CacheService from "@services/cache-service";
 import React from "react";
@@ -43,7 +43,7 @@ const AdvertisementList: React.FC = () => {
 }
 
 const useAdvertisementList = () => {
-    const state = useSelector<State, AdvertisementState>(state => state.advertisementReducer)
+    const state = useSelector<RootState, AdvertisementState>(state => state.advertisementReducer)
     const dispatch = useDispatch();
 
     return {

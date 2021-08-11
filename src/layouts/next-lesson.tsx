@@ -2,7 +2,7 @@ import LessonSkeleton from "@components/lesson-skeleton";
 import LessonWithRoomAndTime from "@components/lesson-with-room-and-time";
 import { GridComponentContainer } from "@layouts/main-content";
 import { LessonsState } from "@redux/reducers/lesson-reducer";
-import { State } from "@redux/reducers/root";
+import { RootState } from "@redux/reducers/root";
 import React from "react";
 import ContentLoader from "react-content-loader";
 import { useSelector } from "react-redux";
@@ -10,7 +10,7 @@ import styled from "styled-components";
 import useIsLoading from "../hooks/useIsLoading";
 
 const NextLessonComponent: React.FC = () => {
-    const state = useSelector<State, LessonsState>(state => state.lessonReducer);
+    const state = useSelector<RootState, LessonsState>(state => state.lessonReducer);
     const isLoading = useIsLoading()
 
     return <React.Fragment>

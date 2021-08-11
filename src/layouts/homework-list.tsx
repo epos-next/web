@@ -3,7 +3,7 @@ import LessonTodo from "@components/lesson-todo";
 import { GridComponentContainer } from "@layouts/main-content";
 import { invertHomeworkDone } from "@redux/actions/homework-actions";
 import { HomeworkState } from "@redux/reducers/homework-reducer";
-import { State } from "@redux/reducers/root";
+import { RootState } from "@redux/reducers/root";
 import CacheService from "@services/cache-service";
 import lodash from "lodash";
 import React from "react";
@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import useIsLoading from "../hooks/useIsLoading";
 
 const HomeworkList: React.FC= () => {
-    const state = useSelector<State, HomeworkState>(state => state.homeworkReducer);
+    const state = useSelector<RootState, HomeworkState>(state => state.homeworkReducer);
     const dispatch = useDispatch();
     const isLoading = useIsLoading()
 

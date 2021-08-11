@@ -1,6 +1,6 @@
 import DateHelper from "@helpers/date-helper";
 import { setLessonLoading, setLessons } from "@redux/actions/lesson-actions";
-import { State } from "@redux/reducers/root";
+import { RootState } from "@redux/reducers/root";
 import ApiService from "@services/api-service";
 import CacheService from "@services/cache-service";
 import moment from "moment";
@@ -15,8 +15,8 @@ export default function useSideMenu() {
     const dispatch = useDispatch();
 
     // Lessons selectors
-    const lessons = useSelector<State, Lesson[]>(state => state.lessonReducer.lessons);
-    const lessonsLoading = useSelector<State, boolean>(state => state.lessonReducer.loading);
+    const lessons = useSelector<RootState, Lesson[]>(state => state.lessonReducer.lessons);
+    const lessonsLoading = useSelector<RootState, boolean>(state => state.lessonReducer.loading);
 
     return {
         lessons,

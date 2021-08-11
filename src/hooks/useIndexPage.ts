@@ -7,7 +7,7 @@ import { setHomework, setHomeworkLoading } from "@redux/actions/homework-actions
 import { setLessonLoading, setLessons, setNextLesson, SetNextLessonAction } from "@redux/actions/lesson-actions";
 import { setMarks } from "@redux/actions/marks-actions";
 import { setUser } from "@redux/actions/user-actions";
-import { State } from "@redux/reducers/root";
+import { RootState } from "@redux/reducers/root";
 import CacheService from "@services/cache-service";
 import { getData } from "@services/data-service";
 import moment from "moment";
@@ -23,7 +23,7 @@ import { navigate } from "gatsby-link";
 export default function useIndexPage() {
     const [tab, setTab] = useQueryParam<TabQuery>("tab");
     const handleTabChanged = (tab: TabQuery) => setTab(tab);
-    const user = useSelector<State, User | null>(state => state.userReducer.user);
+    const user = useSelector<RootState, User | null>(state => state.userReducer.user);
 
     const dispatch = useDispatch();
 

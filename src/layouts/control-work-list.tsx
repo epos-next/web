@@ -6,7 +6,7 @@ import CreateControlWorkModalWindow, { CreateControlWorkData } from "@layouts/mo
 import { addControlWork, setIsControlWorkCreatorOpen } from "@redux/actions/control-work-actions";
 import { ControlWorkState } from "@redux/reducers/control-work-reducer";
 import { MarksState } from "@redux/reducers/marks-reducer";
-import { State } from "@redux/reducers/root";
+import { RootState } from "@redux/reducers/root";
 import ApiService from "@services/api-service";
 import CacheService from "@services/cache-service";
 import lodash from "lodash";
@@ -51,8 +51,8 @@ const ControlWorkList: React.FC = () => {
 export default ControlWorkList;
 
 const useControlWorkList = () => {
-    const state = useSelector<State, ControlWorkState>(state => state.controlWorkReducer)
-    const marksState = useSelector<State, MarksState>(state => state.marksReducer)
+    const state = useSelector<RootState, ControlWorkState>(state => state.controlWorkReducer)
+    const marksState = useSelector<RootState, MarksState>(state => state.marksReducer)
 
     const dispatch = useDispatch();
 

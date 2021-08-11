@@ -1,4 +1,4 @@
-import { State } from "@redux/reducers/root";
+import { RootState } from "@redux/reducers/root";
 import { useSelector } from "react-redux";
 
 /**
@@ -6,12 +6,12 @@ import { useSelector } from "react-redux";
  * else false
  */
 const useIsLoading = () => {
-    const ads = useSelector<State, boolean>(state => state.advertisementReducer.loading);
-    const controlWorks = useSelector<State, boolean>(state => state.controlWorkReducer.loading);
-    const homework = useSelector<State, boolean>(state => state.homeworkReducer.loading);
-    const lessons = useSelector<State, boolean>(state => state.lessonReducer.loading);
-    const marks = useSelector<State, boolean>(state => state.marksReducer.loading);
-    const user = useSelector<State>(state => state.userReducer) === null;
+    const ads = useSelector<RootState, boolean>(state => state.advertisementReducer.loading);
+    const controlWorks = useSelector<RootState, boolean>(state => state.controlWorkReducer.loading);
+    const homework = useSelector<RootState, boolean>(state => state.homeworkReducer.loading);
+    const lessons = useSelector<RootState, boolean>(state => state.lessonReducer.loading);
+    const marks = useSelector<RootState, boolean>(state => state.marksReducer.loading);
+    const user = useSelector<RootState>(state => state.userReducer) === null;
 
     return ads || controlWorks || homework || lessons || marks || user;
 }
