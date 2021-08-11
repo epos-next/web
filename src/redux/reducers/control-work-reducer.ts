@@ -1,10 +1,4 @@
-import {
-    addControlWork,
-    setControlWorks,
-    setControlWorksLoading,
-    setIsControlWorkCreatorOpen
-} from "@redux/actions/control-work-actions";
-import { AnyAction } from "redux";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ControlWork } from "../../models/control-work";
 
 export type ControlWorkState = {
@@ -19,36 +13,31 @@ export const initialState: ControlWorkState = {
     isControlWorkCreatorOpen: false,
 }
 
-export default (state: ControlWorkState = initialState, action: AnyAction): ControlWorkState => {
+export const controlWorkSlice = createSlice({
+    name: "control-work",
+    initialState,
+    reducers: {
+        addControlWork: (state, action: PayloadAction<ControlWork>) => {
+            state.controlWorks.push(action.payload);
+        },
+        setControlWorks: (state, action: PayloadAction<ControlWork[]>) => {
+            state.controlWorks = action.payload;
+        },
+        setIsControlWorkCreatorOpen: (state, action: PayloadAction<boolean>) => {
+            state.isControlWorkCreatorOpen = action.payload;
+        },
+        setControlWorksLoading: (state, action: PayloadAction<boolean>) => {
+            state.isControlWorkCreatorOpen = action.payload;
+        },
+    },
+})
 
-    if (addControlWork.match(action)) {
-        const controlWorks = [...state.controlWorks, action.payload];
-        return {
-            ...state,
-            controlWorks,
-        }
-    }
+export const {
+    setIsControlWorkCreatorOpen,
+    addControlWork,
+    setControlWorksLoading,
+    setControlWorks
+} = controlWorkSlice.actions;
 
-    if (setControlWorks.match(action)) {
-        return {
-            ...state,
-            controlWorks: action.payload,
-        }
-    }
-
-    if (setIsControlWorkCreatorOpen.match(action)) {
-        return {
-            ...state,
-            isControlWorkCreatorOpen: action.payload,
-        }
-    }
-
-    if (setControlWorksLoading.match(action)) {
-        return {
-            ...state,
-            loading: action.payload,
-        }
-    }
-
-    return state;
-}
+const controlWorkReducer = controlWorkSlice.reducer;
+export default controlWorkReducer;
