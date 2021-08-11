@@ -127,4 +127,25 @@ export const schedule = {
     "2021-12-22T19:00:00.000Z": lodash.times(5).map(() => ({ ...lesson, date: new Date(2021, 11, 23).toISOString() })),
 }
 
+const lessonsDates = [
+    new Date(2021, 11, 21),
+    new Date(2021, 11, 22),
+    new Date(2021, 11, 23),
+    new Date(2021, 11, 24),
+    new Date(2021, 11, 25),
+    new Date(2021, 11, 26),
+    new Date(2021, 11, 27),
+]
+export const savedRandomLessonByISODates: any = {}
+
+export let randomLessons: any = []
+
+for (let date of lessonsDates) {
+    const r = Math.floor(Math.random() * 100) + 1
+    savedRandomLessonByISODates[date.toISOString()] = lodash.times(r, (i) => ({ ...lesson, date: date.toISOString(), id: i }));
+    randomLessons.push(...savedRandomLessonByISODates[date.toISOString()])
+}
+
+randomLessons = lodash.shuffle(randomLessons)
+
 

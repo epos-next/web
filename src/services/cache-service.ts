@@ -115,12 +115,12 @@ export default class CacheService {
             }
 
             // in obj[key] new dates and we add this date to array
-            if (key in obj && updatedKeys.includes(key)) {
+            else if (key in obj && updatedKeys.includes(key)) {
                 obj[key].push(lesson);
             }
 
             // new date, create obj[key] = [thisDate] and mark this key
-            if (!(key in obj)) {
+            else if (!(key in obj)) {
                 obj[key] = [lesson]
                 updatedKeys.push(key)
             }

@@ -1,6 +1,6 @@
 import CacheService from "@services/cache-service";
 import moment from "moment";
-import { bdo, schedule } from "../../../test/fixtures";
+import { bdo, randomLessons, savedRandomLessonByISODates, schedule } from "../../../test/fixtures";
 
 describe("Testing cache service", () => {
 
@@ -154,6 +154,95 @@ describe("Testing cache service", () => {
 
         it("should return null if localStorage is null", () => {
             expect(CacheService.getScheduleAt(new Date(2021, 11, 21))).toEqual(null)
+        });
+    })
+
+    describe("testing setWeekSchedule", () => {
+
+        it("should correct set empty week schedule", () => {
+            global["localStorage"] = {
+                key: jest.fn(),
+                length: 0,
+                removeItem: jest.fn(),
+                setItem: jest.fn((_, value) => {
+                    const obj = JSON.parse(value);
+                    for (let key of Object.keys(obj)) {
+                        obj[key].sort((a: any, b: any) => a.id >= b.id ? 1 : -1);
+                    }
+                    expect(obj).toEqual(savedRandomLessonByISODates)
+                }),
+                clear: jest.fn(),
+                getItem: jest.fn().mockReturnValue(null)
+            };
+
+            CacheService.setWeekSchedule(randomLessons);
+        });
+
+        it("should use previously cached week schedule", () => {
+            global["localStorage"] = {
+                key: jest.fn(),
+                length: 0,
+                removeItem: jest.fn(),
+                setItem: jest.fn((_, value) => {
+                    expect(JSON.parse(value)).toEqual({
+                        "2021-12-20T19:00:00.000Z": [
+                            {
+                                "date": "2021-12-20T19:00:00.000Z",
+                                "duration": 40,
+                                "groupId": 1,
+                                "id": 3,
+                                "room": "202",
+                                "subject": "Алгебра"
+                            }
+                        ],
+                        "2021-12-21T19:00:00.000Z": [
+                            {
+                                "date": "2021-12-21T19:00:00.000Z",
+                                "duration": 40,
+                                "groupId": 1,
+                                "id": 1,
+                                "room": "202",
+                                "subject": "Алгебра"
+                            }
+                        ]
+                    })
+                }),
+                clear: jest.fn(),
+                getItem: jest.fn(() => {
+                    return JSON.stringify({
+                        "2021-12-20T19:00:00.000Z": [
+                            {
+                                "date": "2021-12-20T19:00:00.000Z",
+                                "duration": 40,
+                                "groupId": 1,
+                                "id": 0,
+                                "room": "202",
+                                "subject": "Алгебра"
+                            }
+                        ],
+                    })
+                })
+            };
+
+            CacheService.setWeekSchedule([
+                {
+                    "date": "2021-12-20T19:00:00.000Z",
+                    "duration": 40,
+                    "groupId": 1,
+                    "id": 3,
+                    "room": "202",
+                    "subject": "Алгебра"
+                },
+                {
+                    "date": "2021-12-21T19:00:00.000Z",
+                    "duration": 40,
+                    "groupId": 1,
+                    "id": 1,
+                    "room": "202",
+                    "subject": "Алгебра"
+                },
+
+            ]);
         });
     })
 });
