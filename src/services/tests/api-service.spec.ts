@@ -3,7 +3,7 @@ import client from "@utils/api/client";
 import ApiRoutes from "@utils/api/routes";
 import MockAdapter from 'axios-mock-adapter';
 import * as queryString from "querystring";
-import { bdo, bdoJson, lessonsList } from "../../../test/fixtures";
+import { bdo, bdoJson, controlWork, lessonsList } from "../../../test/fixtures";
 
 describe("Testing api service", () => {
 
@@ -137,5 +137,64 @@ describe("Testing api service", () => {
 
             await expect(() => ApiService.getLessons(from, to)).rejects.toEqual("server-error")
         })
+    })
+
+    describe("testing createControlWork()", () => {
+        it("should call correct endpoint with correct data", async () => {
+            const mock = new MockAdapter(client);
+            const data = { success: true, id: 1 }
+            mock.onPost(ApiRoutes.createControlWork).replyOnce(200, data);
+
+            await ApiService.createControlWork(controlWork)
+
+            expect(mock.history.post.length).toBe(1);
+            expect(mock.history.post[0].data).toEqual(JSON.stringify({
+                lesson: "Физика",
+                date: controlWork.date.toISOString(),
+                name: "Кр",
+            }));
+        });
+
+        it("should return correct id", async () => {
+            const mock = new MockAdapter(client);
+            const data = { success: true, id: 1 }
+            mock.onPost(ApiRoutes.createControlWork).replyOnce(200, data);
+
+            expect(await ApiService.createControlWork(controlWork)).toEqual(1)
+            expect(mock.history.post.length).toBe(1);
+        });
+
+        it("should handle status 400", async () => {
+            const mock = new MockAdapter(client);
+            const data = { success: false, error: "not-validated" }
+            mock.onPost(ApiRoutes.createControlWork).replyOnce(400, data);
+
+            const action = async () => await ApiService.createControlWork(controlWork)
+            await expect(action).rejects.toEqual("bad-request")
+            expect(mock.history.post.length).toBe(1);
+        });
+
+        it("should handle status 403", async () => {
+            const mock = new MockAdapter(client);
+            const data = { success: false, error: "forbidden" }
+            mock.onPost(ApiRoutes.createControlWork).replyOnce(403, data);
+            mock.onPost(ApiRoutes.updateToken).replyOnce(200, {
+                "success": false,
+                "error": "not-validated-error"
+            });
+
+            const action = async () => await ApiService.createControlWork(controlWork)
+            await expect(action).rejects.toEqual("forbidden")
+            expect(mock.history.post.length).toBe(1);
+        });
+
+        it("should handle unexpected status", async () => {
+            const mock = new MockAdapter(client);
+            mock.onPost(ApiRoutes.createControlWork).replyOnce(500);
+
+            const action = async () => await ApiService.createControlWork(controlWork)
+            await expect(action).rejects.toEqual("server-error")
+            expect(mock.history.post.length).toBe(1);
+        });
     })
 })

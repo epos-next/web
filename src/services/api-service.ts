@@ -75,7 +75,11 @@ export default class ApiService {
     static async createControlWork(controlWork: ControlWork): Promise<number> {
         const response = await client.post(
             ApiRoutes.createControlWork,
-            controlWork
+            {
+                lesson: controlWork.lesson,
+                date: controlWork.date,
+                name: controlWork.name,
+            }
         );
 
         // Ok
