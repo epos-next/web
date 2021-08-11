@@ -107,7 +107,10 @@ export default class ApiService {
     static async createAdvertisement(ad: Advertisement): Promise<number> {
         const response = await client.post(
             ApiRoutes.createAd,
-            ad
+            {
+                content: ad.content,
+                targetDate: ad.targetDate
+            }
         );
 
         // Ok
@@ -119,7 +122,7 @@ export default class ApiService {
         if (response.status === 400) throw "bad-request";
 
         // Forbidden
-        if (response.status === 403) throw "forbidden";
+        if (response.status === 403 || response.status === 401) throw "forbidden";
 
         // Server error
         throw "server-error";
