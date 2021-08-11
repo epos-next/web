@@ -47,4 +47,21 @@ describe("Testing cache service", () => {
             expect(CacheService.showWelcomeTile).toBe(true);
         })
     });
+
+    it("should save marker that no need to show welcome tile", () => {
+        const localStorageMock = {
+            key: jest.fn(),
+            length: 0,
+            removeItem: jest.fn(),
+            setItem: jest.fn(),
+            clear: jest.fn(),
+            getItem: jest.fn()
+        };
+        global["localStorage"] = localStorageMock
+
+        CacheService.doNotShowWelcomeTile()
+        expect(localStorageMock.setItem).toBeCalledWith("need-show-welcome-tile", "false")
+    });
+
+
 });
