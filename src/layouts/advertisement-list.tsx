@@ -1,16 +1,15 @@
 import AdvertisementComponent from "@components/advertisement";
 import { AddIcon, GridComponentContainer, TitleHeader } from "@layouts/main-content";
 import CreateAdModalWindow, { CreateAdData } from "@layouts/modal-windows/create-ad-modal-window";
-import { addAdvertisement, setIsAdCreatorOpen } from "@redux/actions/advertisement-actions";
-import { AdvertisementState } from "@redux/reducers/advertisement-reducer";
-import { RootState } from "@redux/reducers/root";
+import { useAppDispatch, useAppSelector } from "@redux/hooks";
+import { selectAds, selectIsAdCreatorOpen } from "@redux/reducers/advertisement-reducer";
 import ApiService from "@services/api-service";
 import CacheService from "@services/cache-service";
 import React from "react";
 import ContentLoader from "react-content-loader";
-import { useDispatch, useSelector } from "react-redux";
 import useIsLoading from "../hooks/useIsLoading";
 import { Advertisement } from "../models/advertisement";
+import { setIsAdCreatorOpen, addAdvertisement } from "@redux/reducers/advertisement-reducer"
 
 const AdvertisementList: React.FC = () => {
     const { values, handlers } = useAdvertisementList()
@@ -43,14 +42,13 @@ const AdvertisementList: React.FC = () => {
 }
 
 const useAdvertisementList = () => {
-    const state = useSelector<RootState, AdvertisementState>(state => state.advertisementReducer)
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     return {
         values: {
             loading: useIsLoading(),
-            advertisements: state.advertisements,
-            isAdCreatorOpen: state.isCreatorOpen,
+            advertisements: useAppSelector(selectAds),
+            isAdCreatorOpen: useAppSelector(selectIsAdCreatorOpen),
         },
         handlers: {
             openAdCreator: () => dispatch(setIsAdCreatorOpen(true)),

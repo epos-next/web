@@ -1,3 +1,4 @@
+import { RootState } from "@redux/store";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Homework } from "../../models/homework";
 
@@ -34,6 +35,9 @@ export const homeworkSlice = createSlice({
 });
 
 export const { invertHomeworkDone, setHomework, setHomeworkLoading } = homeworkSlice.actions;
+
+export const selectHomework = (state: RootState) => state.homeworkState.homework;
+export const selectHomeworkLoading = (state: RootState) => state.homeworkState.loading;
 
 const homeworkReducer = homeworkSlice.reducer;
 export default homeworkReducer;

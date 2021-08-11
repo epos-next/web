@@ -13,7 +13,6 @@ const MarksTab: React.FC = () => {
         <LoadingIndicator color="var(--light-primary)"/>
     </LoadingContainer>
 
-    console.log(state.marks);
 
     const periodsAmount = state.marks[Object.keys(state.marks)[0]].periods.length;
     const periods: MarksModel[""]["periods"][] = [];

@@ -1,3 +1,4 @@
+import { RootState } from "@redux/store";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Advertisement } from "../../models/advertisement";
 
@@ -38,6 +39,11 @@ export const {
     setAdvertisements,
     setAdvertisementsLoading
 } = advertisementSlice.actions;
+
+// selectors
+export const selectAds = (state: RootState) => state.advertisementState.advertisements;
+export const selectAdsLoading = (state: RootState) => state.advertisementState.loading;
+export const selectIsAdCreatorOpen = (state: RootState) => state.advertisementState.isCreatorOpen;
 
 const advertisementReducer = advertisementSlice.reducer;
 export default advertisementReducer;

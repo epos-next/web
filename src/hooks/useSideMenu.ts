@@ -1,22 +1,20 @@
 import DateHelper from "@helpers/date-helper";
-import { setLessonLoading, setLessons } from "@redux/actions/lesson-actions";
-import { RootState } from "@redux/reducers/root";
+import { useAppDispatch, useAppSelector } from "@redux/hooks";
+import { selectLessonLoading, selectLessons, setLessons, setLessonsLoading } from "@redux/reducers/lesson-reducer";
 import ApiService from "@services/api-service";
 import CacheService from "@services/cache-service";
 import moment from "moment";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Lesson } from "../models/lesson";
 import { extractTodayLessons } from "./useIndexPage";
 
 export default function useSideMenu() {
     const [selectedDate, setSelectedDate] = useState(DateHelper.now);
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     // Lessons selectors
-    const lessons = useSelector<RootState, Lesson[]>(state => state.lessonReducer.lessons);
-    const lessonsLoading = useSelector<RootState, boolean>(state => state.lessonReducer.loading);
+    const lessons = useAppSelector(selectLessons);
+    const lessonsLoading = useAppSelector(selectLessonLoading);
 
     return {
         lessons,
@@ -40,7 +38,7 @@ export default function useSideMenu() {
 
             if (!cachedSchedule) {
                 // show loading state
-                dispatch(setLessonLoading(true));
+                dispatch(setLessonsLoading(true));
 
                 // Fetching lessons
                 const lessons = await ApiService.getLessons(from, to);
@@ -52,7 +50,7 @@ export default function useSideMenu() {
                 CacheService.setWeekSchedule(lessons, from);
 
                 // show normal state view
-                dispatch(setLessonLoading(false));
+                dispatch(setLessonsLoading(false));
             } else {
                 // Get lessons from cache and save in redux store
                 dispatch(setLessons(cachedSchedule));

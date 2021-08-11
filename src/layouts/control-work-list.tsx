@@ -3,15 +3,18 @@ import LessonWithDate from "@components/lesson-with-date";
 import UiHelper from "@helpers/ui-helper";
 import { AddIcon, GridComponentContainer, TitleHeader } from "@layouts/main-content";
 import CreateControlWorkModalWindow, { CreateControlWorkData } from "@layouts/modal-windows/create-control-work-modal-window";
-import { addControlWork, setIsControlWorkCreatorOpen } from "@redux/actions/control-work-actions";
-import { ControlWorkState } from "@redux/reducers/control-work-reducer";
-import { MarksState } from "@redux/reducers/marks-reducer";
-import { RootState } from "@redux/reducers/root";
+import { useAppDispatch, useAppSelector } from "@redux/hooks";
+import {
+    addControlWork,
+    setIsControlWorkCreatorOpen,
+    selectControlWorks,
+    selectIsControlWorkCreatorOpen
+} from "@redux/reducers/control-work-reducer";
+import { selectMarksLessons } from "@redux/reducers/marks-reducer";
 import ApiService from "@services/api-service";
 import CacheService from "@services/cache-service";
 import lodash from "lodash";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import useIsLoading from "../hooks/useIsLoading";
 import { ControlWork } from "../models/control-work";
 
@@ -24,7 +27,7 @@ const ControlWorkList: React.FC = () => {
                 <h4>Контрольные работы</h4>
                 <AddIcon
                     src="/icons/plus-icon.png"
-                    onClick={ handlers.openControlWorkCreator } />
+                    onClick={ handlers.openControlWorkCreator }/>
             </TitleHeader>
             {
                 values.loading
@@ -44,24 +47,21 @@ const ControlWorkList: React.FC = () => {
             isOpen={ values.isControlWorkCreatorOpen }
             onClose={ handlers.closeControlWorkCreator }
             onConfirm={ handlers.createControlWork }
-            lessonNames={ values.lessonNames } />
+            lessonNames={ values.lessonNames }/>
     </React.Fragment>
 }
 
 export default ControlWorkList;
 
 const useControlWorkList = () => {
-    const state = useSelector<RootState, ControlWorkState>(state => state.controlWorkReducer)
-    const marksState = useSelector<RootState, MarksState>(state => state.marksReducer)
-
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     return {
         values: {
             loading: useIsLoading(),
-            controlWorks: state.controlWorks,
-            isControlWorkCreatorOpen: state.isControlWorkCreatorOpen,
-            lessonNames: Object.keys(marksState.marks ?? {}),
+            controlWorks: useAppSelector(selectControlWorks),
+            isControlWorkCreatorOpen: useAppSelector(selectIsControlWorkCreatorOpen),
+            lessonNames: useAppSelector(selectMarksLessons),
         },
         handlers: {
             openControlWorkCreator: () => dispatch(setIsControlWorkCreatorOpen(true)),

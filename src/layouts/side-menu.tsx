@@ -22,6 +22,7 @@ export type Props = {
     date: Date,
 }
 
+// TODO: need to stop using props
 const SideMenuLayout: React.FC<Props> = (props) => {
     const isNowSummer = props.date.getMonth() >= 5 && props.date.getMonth() <= 7;
 

@@ -1,17 +1,22 @@
-import { RootState } from "@redux/reducers/root";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@redux/hooks";
+import { selectAdsLoading } from "@redux/reducers/advertisement-reducer";
+import { selectControlWorksLoading } from "@redux/reducers/control-work-reducer";
+import { selectHomeworkLoading } from "@redux/reducers/homework-reducer";
+import { selectLessonLoading } from "@redux/reducers/lesson-reducer";
+import { selectMarksLoading } from "@redux/reducers/marks-reducer";
+import { selectUserLoading } from "@redux/reducers/user-reducer";
 
 /**
  * return true if at least one necessary part of application is loading
  * else false
  */
 const useIsLoading = () => {
-    const ads = useSelector<RootState, boolean>(state => state.advertisementReducer.loading);
-    const controlWorks = useSelector<RootState, boolean>(state => state.controlWorkReducer.loading);
-    const homework = useSelector<RootState, boolean>(state => state.homeworkReducer.loading);
-    const lessons = useSelector<RootState, boolean>(state => state.lessonReducer.loading);
-    const marks = useSelector<RootState, boolean>(state => state.marksReducer.loading);
-    const user = useSelector<RootState>(state => state.userReducer) === null;
+    const ads = useAppSelector(selectAdsLoading)
+    const controlWorks = useAppSelector(selectControlWorksLoading)
+    const homework = useAppSelector(selectHomeworkLoading);
+    const lessons = useAppSelector(selectLessonLoading);
+    const marks = useAppSelector(selectMarksLoading);
+    const user = useAppSelector(selectUserLoading);
 
     return ads || controlWorks || homework || lessons || marks || user;
 }

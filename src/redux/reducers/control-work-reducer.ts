@@ -1,3 +1,4 @@
+import { RootState } from "@redux/store";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ControlWork } from "../../models/control-work";
 
@@ -38,6 +39,11 @@ export const {
     setControlWorksLoading,
     setControlWorks
 } = controlWorkSlice.actions;
+
+// Selectors
+export const selectControlWorks = (state: RootState) => state.controlWorkState.controlWorks;
+export const selectControlWorksLoading = (state: RootState) => state.controlWorkState.loading;
+export const selectIsControlWorkCreatorOpen = (state: RootState) => state.controlWorkState.isControlWorkCreatorOpen;
 
 const controlWorkReducer = controlWorkSlice.reducer;
 export default controlWorkReducer;

@@ -1,26 +1,24 @@
 import LessonSkeleton from "@components/lesson-skeleton";
 import LessonTodo from "@components/lesson-todo";
 import { GridComponentContainer } from "@layouts/main-content";
-import { invertHomeworkDone } from "@redux/actions/homework-actions";
-import { HomeworkState } from "@redux/reducers/homework-reducer";
-import { RootState } from "@redux/reducers/root";
+import { useAppDispatch, useAppSelector } from "@redux/hooks";
+import { selectHomework, invertHomeworkDone } from "@redux/reducers/homework-reducer";
 import CacheService from "@services/cache-service";
 import lodash from "lodash";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import useIsLoading from "../hooks/useIsLoading";
 
 const HomeworkList: React.FC= () => {
-    const state = useSelector<RootState, HomeworkState>(state => state.homeworkReducer);
-    const dispatch = useDispatch();
+    const homework = useAppSelector(selectHomework)
     const isLoading = useIsLoading()
+    const dispatch = useAppDispatch()
 
     function onHomeworkClick(id: number, done: boolean) {
         dispatch(invertHomeworkDone(id));
         CacheService.setIsHomeworkDone(id, done);
     }
 
-    if (state.homework.length !== 0 || state.loading) {
+    if (homework.length !== 0 || isLoading) {
         return <GridComponentContainer>
             <h4>Домашнее задание</h4>
             {
@@ -28,7 +26,7 @@ const HomeworkList: React.FC= () => {
                     ? lodash.times(2).map((_, i) => {
                         return <LessonSkeleton key={ `homework-skeleton-${ i }` }/>
                     })
-                    : state.homework.map(({ content, done, lesson, id }, i) => {
+                    : homework.map(({ content, done, lesson, id }, i) => {
                         return <LessonTodo
                             onClick={ (done) => onHomeworkClick(id, done) }
                             key={ `homework-lesson-${ i }` }

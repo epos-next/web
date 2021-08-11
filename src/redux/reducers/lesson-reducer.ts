@@ -1,3 +1,4 @@
+import { RootState } from "@redux/store";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Lesson } from "../../models/lesson";
 
@@ -36,6 +37,13 @@ export const lessonSlice = createSlice({
 })
 
 export const { setNextLesson, setLessons, setLessonsLoading } = lessonSlice.actions;
+
+
+export const selectLessons = (state: RootState) => state.lessonsState.lessons;
+export const selectLessonLoading = (state: RootState) => state.lessonsState.loading;
+export const selectNextLesson = (state: RootState) => state.lessonsState.nextLesson;
+export const selectTimeLeftToNextLesson = (state: RootState) => state.lessonsState.timeLeftToNextLesson;
+export const selectNextLessonType = (state: RootState) => state.lessonsState.nextLessonType;
 
 const lessonReducer = lessonSlice.reducer;
 export default lessonReducer;
