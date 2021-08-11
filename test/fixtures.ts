@@ -1,5 +1,6 @@
 import { BigDataObject } from "@services/api-service";
 import lodash from "lodash";
+import { repeat } from "rxjs/operators";
 import { Advertisement } from "../src/models/advertisement";
 import { ControlWork } from "../src/models/control-work";
 import { Homework } from "../src/models/homework";
@@ -86,7 +87,7 @@ export const homework: Homework = {
     lesson: "Физика",
     content: "Some test data adsadasd"
 }
-export const homeworkList = lodash.times(123).map((_, i) => ({...homework, id: i}))
+export const homeworkList = lodash.times(123).map((_, i) => ({ ...homework, id: i }))
 
 export const user: User = {
     name: "Mike Wazowski",
@@ -120,5 +121,10 @@ export const bdoJson = {
     user,
 }
 
+export const schedule = {
+    "2021-12-20T19:00:00.000Z": lodash.times(6).map(() => ({ ...lesson, date: new Date(2021, 11, 21).toISOString() })),
+    "2021-12-21T19:00:00.000Z": lodash.times(7).map(() => ({ ...lesson, date: new Date(2021, 11, 22).toISOString() })),
+    "2021-12-22T19:00:00.000Z": lodash.times(5).map(() => ({ ...lesson, date: new Date(2021, 11, 23).toISOString() })),
+}
 
 

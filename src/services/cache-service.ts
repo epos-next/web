@@ -85,10 +85,12 @@ export default class CacheService {
 
     static getScheduleAt(date: Date): Lesson[] | null {
         const str = moment(date).startOf("day").toISOString();
-        const raw = localStorage.getItem("cached-schedule") ?? "null";
+        const raw = typeof localStorage !== "undefined"
+            ? localStorage.getItem("cached-schedule") ?? "null"
+            : "null";
         if (raw == "null") return null;
         const obj = JSON.parse(raw);
-        return obj[str];
+        return obj[str] ?? null;
     }
 
     static setWeekSchedule(lessons: Lesson[], startOfTheWeek: Date) {
