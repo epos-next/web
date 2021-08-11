@@ -28,7 +28,7 @@ export const controlWorkSlice = createSlice({
             state.isControlWorkCreatorOpen = action.payload;
         },
         setControlWorksLoading: (state, action: PayloadAction<boolean>) => {
-            state.isControlWorkCreatorOpen = action.payload;
+            state.loading = action.payload;
         },
     },
 })
