@@ -1,11 +1,13 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import lessonReducer from "@redux/reducers/lesson-reducer";
 import userReducer from "@redux/reducers/user-reducer";
+import marksReducer from "@redux/reducers/marks-reducer";
 
 export const store = configureStore({
     reducer: {
         userState: userReducer,
         lessonsState: lessonReducer,
+        marksState: marksReducer,
     }
 })
 
