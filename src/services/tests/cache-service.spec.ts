@@ -579,4 +579,14 @@ describe("Testing cache service", () => {
         expect(mockLocalStorage.setItem).toBeCalledWith("cached-control_works", JSON.stringify(controlWorkList))
         expect(mockLocalStorage.setItem).toBeCalledTimes(1)
     })
+
+    it("should addControlWork ", () => {
+        CacheService.getControlWorks = jest.fn().mockReturnValue(controlWorkList);
+        CacheService.setControlWorks = jest.fn()
+
+        CacheService.addControlWork({...controlWork, id: 1000 });
+
+        expect(CacheService.getControlWorks).toBeCalledTimes(1)
+        expect(CacheService.setControlWorks).toHaveBeenCalledWith([...controlWorkList, {...controlWork, id: 1000 }]);
+    });
 });

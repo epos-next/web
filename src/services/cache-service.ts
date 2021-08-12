@@ -201,8 +201,7 @@ export default class CacheService {
     static addControlWork(controlWork: ControlWork) {
         const all = this.getControlWorks();
         if (all !== null) {
-            all.push(controlWork);
-            this.setControlWorks(all);
+            this.setControlWorks([...all, controlWork]);
         }
     }
 
