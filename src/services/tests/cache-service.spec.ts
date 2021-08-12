@@ -1,6 +1,7 @@
 import CacheService from "@services/cache-service";
 import moment from "moment";
 import {
+    adsList,
     bdo,
     homework,
     homeworkList,
@@ -430,4 +431,21 @@ describe("Testing cache service", () => {
             expect(mockLocalStorage.setItem).not.toBeCalled()
         });
     });
+
+    it("should setAdvertisements", () => {
+        const mockLocalStorage = {
+            key: jest.fn(),
+            length: 0,
+            removeItem: jest.fn(),
+            setItem: jest.fn(),
+            clear: jest.fn(),
+            getItem: jest.fn()
+        };
+        global["localStorage"] = mockLocalStorage
+
+        CacheService.setAdvertisements(adsList);
+
+        expect(mockLocalStorage.setItem).toBeCalledWith("cached-advertisements", JSON.stringify(adsList))
+        expect(mockLocalStorage.setItem).toBeCalledTimes(1)
+    })
 });
