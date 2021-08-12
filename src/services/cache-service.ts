@@ -206,7 +206,9 @@ export default class CacheService {
     }
 
     static getMarks(): Marks | null {
-        return JSON.parse(localStorage.getItem("cached-marks") ?? "null");
+        const marks = JSON.parse(localStorage.getItem("cached-marks") ?? "null");
+        if (marks === null) return null;
+        return FormatHelper.convertMarksDateFields(marks);
     }
 
     static setMarks(marks: Marks) {

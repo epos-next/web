@@ -5,7 +5,7 @@ import {
     adsList,
     bdo, controlWork, controlWorkList,
     homework,
-    homeworkList,
+    homeworkList, marks,
     randomLessons,
     savedRandomLessonByISODates,
     schedule, user
@@ -589,4 +589,32 @@ describe("Testing cache service", () => {
         expect(CacheService.getControlWorks).toBeCalledTimes(1)
         expect(CacheService.setControlWorks).toHaveBeenCalledWith([...controlWorkList, {...controlWork, id: 1000 }]);
     });
+
+    describe("testing getMarks()", () => {
+        it("should get non null marks", () => {
+            global["localStorage"] = {
+                key: jest.fn(),
+                length: 0,
+                removeItem: jest.fn(),
+                setItem: jest.fn(),
+                clear: jest.fn(),
+                getItem: jest.fn().mockReturnValueOnce(JSON.stringify(marks))
+            }
+
+            expect(CacheService.getMarks()).toEqual(marks);
+        });
+
+        it("should get null marks", () => {
+            global["localStorage"] = {
+                key: jest.fn(),
+                length: 0,
+                removeItem: jest.fn(),
+                setItem: jest.fn(),
+                clear: jest.fn(),
+                getItem: jest.fn().mockReturnValueOnce(null)
+            }
+
+            expect(CacheService.getMarks()).toEqual(null);
+        });
+    })
 });
