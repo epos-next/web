@@ -1,6 +1,6 @@
 {
   "name": "epos-next",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "private": true,
   "description": "epos-next",
   "author": "Yaroslav Zotov",
@@ -20,7 +20,11 @@
     "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open",
     "test:e2e:ci": "start-server-and-test develop http://localhost:8000 cy:run",
     "changelog": "auto-changelog --template changelog-template.hbs -p -u --commit-limit false",
-    "changelog-debug": "auto-changelog --template changelog-template.hbs -p --template json --output changelog-data.json"
+    "changelog-debug": "auto-changelog --template changelog-template.hbs -p --template json --output changelog-data.json",
+    "semantic-release": "semantic-release",
+    "commit": "cz",
+    "prepare": "husky install",
+    "release": "standard-version"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",
@@ -49,6 +53,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@storybook/addon-actions": "^6.2.9",
     "@storybook/addon-docs": "^6.2.9",
     "@storybook/addon-essentials": "^6.2.9",
@@ -66,17 +72,22 @@
     "babel-jest": "^27.0.6",
     "babel-loader": "^8.2.2",
     "babel-preset-gatsby": "^1.11.0",
+    "commitizen": "^4.2.4",
     "cypress": "^8.2.0",
     "cypress-axe": "^0.12.2",
     "cypress-localstorage-commands": "^1.5.0",
     "cypress-plugin-snapshots": "^1.4.4",
+    "cz-conventional-changelog": "3.3.0",
     "eslint-config-airbnb": "^18.2.1",
     "gatsby-plugin-sass": "^4.6.0",
     "gatsby-plugin-typescript": "^3.6.0",
+    "husky": "^7.0.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.6",
     "react-test-renderer": "^17.0.2",
     "sass": "^1.34.1",
+    "semantic-release": "^17.4.4",
+    "standard-version": "^9.3.1",
     "start-server-and-test": "^1.13.1",
     "ts-jest": "^27.0.4"
   },
@@ -99,6 +110,18 @@
   "globals": {
     "ts-jest": {
       "diagnostics": false
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/epos-next/web.git"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
   }
 }
