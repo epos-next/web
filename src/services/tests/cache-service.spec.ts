@@ -562,4 +562,21 @@ describe("Testing cache service", () => {
             expect(CacheService.getControlWorks()).toEqual(null);
         });
     })
+
+    it("should setControlWorks", () => {
+        const mockLocalStorage = {
+            key: jest.fn(),
+            length: 0,
+            removeItem: jest.fn(),
+            setItem: jest.fn(),
+            clear: jest.fn(),
+            getItem: jest.fn()
+        };
+        global["localStorage"] = mockLocalStorage
+
+        CacheService.setControlWorks(controlWorkList);
+
+        expect(mockLocalStorage.setItem).toBeCalledWith("cached-control_works", JSON.stringify(controlWorkList))
+        expect(mockLocalStorage.setItem).toBeCalledTimes(1)
+    })
 });
