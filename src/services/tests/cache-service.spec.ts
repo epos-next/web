@@ -18,13 +18,16 @@ import {
 describe("Testing cache service", () => {
     afterEach(() => {
         // @ts-ignore
-        global["localStorage"] = undefined;
+        delete global["localStorage"];
         jest.clearAllMocks();
     })
 
     describe("testing get showWelcomeTile", () => {
-        // @ts-ignore
-        afterAll(() => global["localStorage"] = undefined)
+        afterAll(() => {
+            // @ts-ignore
+            delete global["localStorage"]
+            jest.clearAllMocks();
+        })
 
         it("should get correct result if it's in cache #1", () => {
             global["localStorage"] = {
@@ -33,7 +36,7 @@ describe("Testing cache service", () => {
                 removeItem: jest.fn(),
                 setItem: jest.fn(),
                 clear: jest.fn(),
-                getItem: jest.fn().mockReturnValue("true")
+                getItem: jest.fn().mockReturnValueOnce("true")
             };
 
             expect(CacheService.showWelcomeTile).toBe(true);
@@ -46,14 +49,14 @@ describe("Testing cache service", () => {
                 removeItem: jest.fn(),
                 setItem: jest.fn(),
                 clear: jest.fn(),
-                getItem: jest.fn().mockReturnValue("false")
+                getItem: jest.fn().mockReturnValueOnce("false")
             };
 
             expect(CacheService.showWelcomeTile).toBe(false);
         })
 
-        it("should return false if no localstorage is null", () => {
-            expect(CacheService.showWelcomeTile).toBe(false);
+        it("should return true if no localstorage is null", () => {
+            expect(CacheService.showWelcomeTile).toBe(true);
         });
 
         it("should return false if not cached", () => {
@@ -63,7 +66,7 @@ describe("Testing cache service", () => {
                 removeItem: jest.fn(),
                 setItem: jest.fn(),
                 clear: jest.fn(),
-                getItem: jest.fn().mockReturnValue(null)
+                getItem: jest.fn().mockReturnValueOnce(null)
             };
 
             expect(CacheService.showWelcomeTile).toBe(true);
@@ -71,9 +74,6 @@ describe("Testing cache service", () => {
     });
 
     it("should save marker that no need to show welcome tile", () => {
-        // @ts-ignore
-        afterAll(() => global["localStorage"] = undefined)
-
         const localStorageMock = {
             key: jest.fn(),
             length: 0,
@@ -89,23 +89,28 @@ describe("Testing cache service", () => {
     });
 
     describe("testing set bigDataObject", () => {
-        // @ts-ignore
-        afterAll(() => global["localStorage"] = undefined)
+        afterAll(() => {
+            // @ts-ignore
+            delete global["localStorage"]
+            jest.clearAllMocks();
+            // @ts-ignore
+
+        })
 
         it("should cache bdo", () => {
-            CacheService.setUser = jest.fn();
-            CacheService.setWeekSchedule = jest.fn();
-            CacheService.setHomework = jest.fn();
-            CacheService.setControlWorks = jest.fn();
-            CacheService.setAdvertisements = jest.fn();
-            CacheService.setMarks = jest.fn();
+
+            const setUser = jest.spyOn(CacheService, "setUser").mockImplementation();
+            const setWeekSchedule = jest.spyOn(CacheService, "setWeekSchedule").mockImplementation();
+            const setHomework = jest.spyOn(CacheService, "setHomework").mockImplementation();
+            const setControlWorks = jest.spyOn(CacheService, "setControlWorks").mockImplementation();
+            const setAdvertisements = jest.spyOn(CacheService, "setAdvertisements").mockImplementation();
+            const setMarks = jest.spyOn(CacheService, "setMarks").mockImplementation();
 
             CacheService.bigDataObject = bdo;
 
-            const start = moment().startOf("isoWeek").toDate()
             expect(CacheService.setUser).toBeCalledWith(bdo.user);
             expect(CacheService.setUser).toBeCalledTimes(1);
-            expect(CacheService.setWeekSchedule).toBeCalledWith(bdo.lessons, start);
+            expect(CacheService.setWeekSchedule).toBeCalledWith(bdo.lessons);
             expect(CacheService.setWeekSchedule).toBeCalledTimes(1);
             expect(CacheService.setHomework).toBeCalledWith(bdo.homework);
             expect(CacheService.setHomework).toBeCalledTimes(1);
@@ -115,15 +120,22 @@ describe("Testing cache service", () => {
             expect(CacheService.setAdvertisements).toBeCalledTimes(1);
             expect(CacheService.setMarks).toBeCalledWith(bdo.marks);
             expect(CacheService.setMarks).toBeCalledTimes(1);
+
+            setUser.mockRestore();
+            setWeekSchedule.mockRestore();
+            setHomework.mockRestore();
+            setControlWorks.mockRestore();
+            setAdvertisements.mockRestore();
+            setMarks.mockRestore();
         });
 
         it("should ignore null argument", () => {
-            CacheService.setUser = jest.fn();
-            CacheService.setWeekSchedule = jest.fn();
-            CacheService.setHomework = jest.fn();
-            CacheService.setControlWorks = jest.fn();
-            CacheService.setAdvertisements = jest.fn();
-            CacheService.setMarks = jest.fn();
+            const setUser = jest.spyOn(CacheService, "setUser").mockImplementation();
+            const setWeekSchedule = jest.spyOn(CacheService, "setWeekSchedule").mockImplementation();
+            const setHomework = jest.spyOn(CacheService, "setHomework").mockImplementation();
+            const setControlWorks = jest.spyOn(CacheService, "setControlWorks").mockImplementation();
+            const setAdvertisements = jest.spyOn(CacheService, "setAdvertisements").mockImplementation();
+            const setMarks = jest.spyOn(CacheService, "setMarks").mockImplementation();
 
             CacheService.bigDataObject = null;
 
@@ -133,35 +145,56 @@ describe("Testing cache service", () => {
             expect(CacheService.setControlWorks).not.toBeCalled();
             expect(CacheService.setAdvertisements).not.toBeCalled();
             expect(CacheService.setMarks).not.toBeCalled();
+
+            setUser.mockRestore();
+            setWeekSchedule.mockRestore();
+            setHomework.mockRestore();
+            setControlWorks.mockRestore();
+            setAdvertisements.mockRestore();
+            setMarks.mockRestore();
         })
     })
 
     describe("testing getScheduleAt()", () => {
-        // @ts-ignore
-        afterAll(() => global["localStorage"] = undefined)
-
-        describe("should get correct schedule", () => {
-            global["localStorage"] = {
-                key: jest.fn(),
-                length: 0,
-                removeItem: jest.fn(),
-                setItem: jest.fn(),
-                clear: jest.fn(),
-                getItem: jest.fn().mockReturnValue(JSON.stringify(schedule))
-            };
-
+        afterAll(() => {
             // @ts-ignore
-            afterAll(() => global["localStorage"] = undefined)
-
+            delete global["localStorage"]
+            jest.clearAllMocks();
+        })
+        describe("should get correct schedule", () => {
             it("should get correct schedule #1", () => {
+                global["localStorage"] = {
+                    key: jest.fn(),
+                    length: 0,
+                    removeItem: jest.fn(),
+                    setItem: jest.fn(),
+                    clear: jest.fn(),
+                    getItem: jest.fn().mockReturnValueOnce(JSON.stringify(schedule))
+                };
                 expect(CacheService.getScheduleAt(new Date(2021, 11, 21))).toEqual(schedule["2021-12-20T19:00:00.000Z"])
             });
 
             it("should get correct schedule #2", () => {
+                global["localStorage"] = {
+                    key: jest.fn(),
+                    length: 0,
+                    removeItem: jest.fn(),
+                    setItem: jest.fn(),
+                    clear: jest.fn(),
+                    getItem: jest.fn().mockReturnValueOnce(JSON.stringify(schedule))
+                };
                 expect(CacheService.getScheduleAt(new Date(2021, 11, 22))).toEqual(schedule["2021-12-21T19:00:00.000Z"])
             });
 
             it("should get correct schedule #3", () => {
+                global["localStorage"] = {
+                    key: jest.fn(),
+                    length: 0,
+                    removeItem: jest.fn(),
+                    setItem: jest.fn(),
+                    clear: jest.fn(),
+                    getItem: jest.fn().mockReturnValueOnce(JSON.stringify(schedule))
+                };
                 expect(CacheService.getScheduleAt(new Date(2021, 11, 23))).toEqual(schedule["2021-12-22T19:00:00.000Z"])
             });
 
@@ -176,6 +209,11 @@ describe("Testing cache service", () => {
     })
 
     describe("testing setWeekSchedule", () => {
+        afterAll(() => {
+            // @ts-ignore
+            delete global["localStorage"]
+            jest.clearAllMocks();
+        })
 
         it("should correct set empty week schedule", () => {
             global["localStorage"] = {
@@ -190,7 +228,7 @@ describe("Testing cache service", () => {
                     expect(obj).toEqual(savedRandomLessonByISODates)
                 }),
                 clear: jest.fn(),
-                getItem: jest.fn().mockReturnValue(null)
+                getItem: jest.fn().mockReturnValueOnce(null)
             };
 
             CacheService.setWeekSchedule(randomLessons);
@@ -288,7 +326,7 @@ describe("Testing cache service", () => {
             removeItem: jest.fn(),
             setItem: jest.fn(),
             clear: jest.fn(),
-            getItem: jest.fn().mockReturnValue(JSON.stringify(homeworkList))
+            getItem: jest.fn().mockReturnValueOnce(JSON.stringify(homeworkList))
         };
         global["localStorage"] = mockLocalStorage
 
@@ -300,7 +338,7 @@ describe("Testing cache service", () => {
 
     describe("testing setIsHomeworkDone()", () => {
         // @ts-ignore
-        afterEach(() => global["localStorage"] = undefined)
+        afterEach(() => delete global["localStorage"])
 
         it("should set correctly #1", () => {
             const mockLocalStorage = {
@@ -310,7 +348,7 @@ describe("Testing cache service", () => {
                 setItem: jest.fn(),
                 clear: jest.fn(),
                 getItem: jest.fn()
-                    .mockReturnValue(JSON.stringify([{ ...homework, id: 124 }, ...homeworkList]))
+                    .mockReturnValueOnce(JSON.stringify([{ ...homework, id: 124 }, ...homeworkList]))
             };
             global["localStorage"] = mockLocalStorage
 
@@ -329,7 +367,7 @@ describe("Testing cache service", () => {
                 setItem: jest.fn(),
                 clear: jest.fn(),
                 getItem: jest.fn()
-                    .mockReturnValue(JSON.stringify([{ ...homework, id: 124 }, ...homeworkList]))
+                    .mockReturnValueOnce(JSON.stringify([{ ...homework, id: 124 }, ...homeworkList]))
             };
             global["localStorage"] = mockLocalStorage
 
@@ -430,7 +468,7 @@ describe("Testing cache service", () => {
                 removeItem: jest.fn(),
                 setItem: jest.fn(),
                 clear: jest.fn(),
-                getItem: jest.fn().mockReturnValue(JSON.stringify(homeworkList))
+                getItem: jest.fn().mockReturnValueOnce(JSON.stringify(homeworkList))
             };
             global["localStorage"] = mockLocalStorage
 
@@ -458,12 +496,15 @@ describe("Testing cache service", () => {
     })
 
     it("should addAdvertisement ", () => {
-        CacheService.getAdvertisements = jest.fn().mockReturnValueOnce(adsList);
-        CacheService.setAdvertisements = jest.fn()
+        const getSpy = jest.spyOn(CacheService, "getAdvertisements").mockReturnValueOnce(adsList);
+        const setSpy = jest.spyOn(CacheService, "setAdvertisements").mockImplementation();
 
         CacheService.addAdvertisement(ad);
 
         expect(CacheService.setAdvertisements).toBeCalledWith([...adsList, ad]);
+        
+        getSpy.mockRestore();
+        setSpy.mockRestore();
     });
 
     describe("testing getAdvertisements()", () => {
@@ -585,13 +626,13 @@ describe("Testing cache service", () => {
     })
 
     it("should addControlWork ", () => {
-        CacheService.getControlWorks = jest.fn().mockReturnValue(controlWorkList);
+        CacheService.getControlWorks = jest.fn().mockReturnValueOnce(controlWorkList);
         CacheService.setControlWorks = jest.fn()
 
-        CacheService.addControlWork({...controlWork, id: 1000 });
+        CacheService.addControlWork({ ...controlWork, id: 1000 });
 
         expect(CacheService.getControlWorks).toBeCalledTimes(1)
-        expect(CacheService.setControlWorks).toHaveBeenCalledWith([...controlWorkList, {...controlWork, id: 1000 }]);
+        expect(CacheService.setControlWorks).toHaveBeenCalledWith([...controlWorkList, { ...controlWork, id: 1000 }]);
     });
 
     describe("testing getMarks()", () => {
@@ -688,5 +729,6 @@ describe("Testing cache service", () => {
 
             expect(CacheService.isEmpty()).toEqual(false)
         });
-    });
-});
+    })
+})
+
