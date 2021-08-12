@@ -1,4 +1,5 @@
 import DateHelper from "@helpers/date-helper";
+import FormatHelper from "@helpers/format-helper";
 import { BigDataObject } from "@services/api-service";
 import { bigDataObjectIsoStringToDate } from "@utils/index";
 import moment from "moment";
@@ -174,7 +175,9 @@ export default class CacheService {
     }
 
     static getAdvertisements(): Advertisement[] | null {
-        return JSON.parse(localStorage.getItem("cached-advertisements") ?? "null");
+        const ads: Advertisement[] | null = JSON.parse(localStorage.getItem("cached-advertisements") ?? "null");
+        if (ads === null) return null;
+        return FormatHelper.convertAdsDateFields(ads);
     }
 
     static getUser(): User | null {

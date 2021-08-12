@@ -461,4 +461,33 @@ describe("Testing cache service", () => {
 
         expect(CacheService.setAdvertisements).toBeCalledWith([...adsList, ad]);
     });
+
+    describe("testing getAdvertisements()", () => {
+        it("should get non null ads", () => {
+            const mockLocalStorage = {
+                key: jest.fn(),
+                length: 0,
+                removeItem: jest.fn(),
+                setItem: jest.fn(),
+                clear: jest.fn(),
+                getItem: jest.fn().mockReturnValueOnce(JSON.stringify(adsList))
+            };
+            global["localStorage"] = mockLocalStorage
+
+            expect(CacheService.getAdvertisements()).toEqual(adsList);
+        });
+
+        it("should get null ads", () => {
+            global["localStorage"] = {
+                key: jest.fn(),
+                length: 0,
+                removeItem: jest.fn(),
+                setItem: jest.fn(),
+                clear: jest.fn(),
+                getItem: jest.fn().mockReturnValueOnce(null)
+            }
+
+            expect(CacheService.getAdvertisements()).toEqual(null);
+        });
+    })
 });
