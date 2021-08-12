@@ -228,8 +228,3 @@ export default class CacheService {
         return localStorage.getItem("cached-schedule") === null
     }
 }
-
-type CachedSchedule = {
-    [key: string]: Lesson[]
-}
-
