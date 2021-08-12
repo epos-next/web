@@ -634,4 +634,27 @@ describe("Testing cache service", () => {
         expect(mockLocalStorage.setItem).toBeCalledWith("cached-marks", JSON.stringify(marks))
         expect(mockLocalStorage.setItem).toBeCalledTimes(1)
     })
+
+    it("should clear only necessary fields", () => {
+        const mockLocalStorage = {
+            key: jest.fn(),
+            length: 0,
+            removeItem: jest.fn(),
+            setItem: jest.fn(),
+            clear: jest.fn(),
+            getItem: jest.fn()
+        };
+        global["localStorage"] = mockLocalStorage
+
+        CacheService.clearAll()
+
+        expect(mockLocalStorage.removeItem.mock.calls.sort()).toEqual([
+            ["cached-schedule"],
+            ["cached-homework"],
+            ["cached-advertisements"],
+            ["cached-user"],
+            ["cached-control_works"],
+            ["cached-marks"],
+        ].sort())
+    });
 });
