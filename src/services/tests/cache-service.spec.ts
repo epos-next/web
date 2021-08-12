@@ -3,12 +3,16 @@ import moment from "moment";
 import {
     ad,
     adsList,
-    bdo, controlWork, controlWorkList,
+    bdo,
+    controlWork,
+    controlWorkList,
     homework,
-    homeworkList, marks,
+    homeworkList,
+    marks,
     randomLessons,
     savedRandomLessonByISODates,
-    schedule, user
+    schedule,
+    user
 } from "../../../test/fixtures";
 
 describe("Testing cache service", () => {
@@ -656,5 +660,33 @@ describe("Testing cache service", () => {
             ["cached-control_works"],
             ["cached-marks"],
         ].sort())
+    });
+
+    describe("testing isEmpty", () => {
+        it("should return true", () => {
+            global["localStorage"] = {
+                key: jest.fn(),
+                length: 0,
+                removeItem: jest.fn(),
+                setItem: jest.fn(),
+                clear: jest.fn(),
+                getItem: jest.fn().mockReturnValueOnce(null)
+            }
+
+            expect(CacheService.isEmpty()).toEqual(true)
+        });
+
+        it("should return false", () => {
+            global["localStorage"] = {
+                key: jest.fn(),
+                length: 0,
+                removeItem: jest.fn(),
+                setItem: jest.fn(),
+                clear: jest.fn(),
+                getItem: jest.fn().mockReturnValueOnce(schedule)
+            }
+
+            expect(CacheService.isEmpty()).toEqual(false)
+        });
     });
 });
