@@ -189,7 +189,9 @@ export default class CacheService {
     }
 
     static getControlWorks(): ControlWork[] | null {
-        return JSON.parse(localStorage.getItem("cached-control_works") ?? "null");
+        const controlWorks = JSON.parse(localStorage.getItem("cached-control_works") ?? "null");
+        if (controlWorks === null) return null;
+        return FormatHelper.convertControlWorksDateFields(controlWorks);
     }
 
     static setControlWorks(controlWorks: ControlWork[]) {

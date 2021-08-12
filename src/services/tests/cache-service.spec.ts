@@ -3,7 +3,7 @@ import moment from "moment";
 import {
     ad,
     adsList,
-    bdo,
+    bdo, controlWork, controlWorkList,
     homework,
     homeworkList,
     randomLessons,
@@ -533,5 +533,33 @@ describe("Testing cache service", () => {
 
         expect(mockLocalStorage.setItem).toBeCalledWith("cached-user", JSON.stringify(user))
         expect(mockLocalStorage.setItem).toBeCalledTimes(1)
+    })
+
+    describe("testing getControlWorks()", () => {
+        it("should get non null control works", () => {
+            global["localStorage"] = {
+                key: jest.fn(),
+                length: 0,
+                removeItem: jest.fn(),
+                setItem: jest.fn(),
+                clear: jest.fn(),
+                getItem: jest.fn().mockReturnValueOnce(JSON.stringify(controlWorkList))
+            }
+
+            expect(CacheService.getControlWorks()).toEqual(controlWorkList);
+        });
+
+        it("should get null control works", () => {
+            global["localStorage"] = {
+                key: jest.fn(),
+                length: 0,
+                removeItem: jest.fn(),
+                setItem: jest.fn(),
+                clear: jest.fn(),
+                getItem: jest.fn().mockReturnValueOnce(null)
+            }
+
+            expect(CacheService.getControlWorks()).toEqual(null);
+        });
     })
 });

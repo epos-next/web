@@ -1,5 +1,6 @@
 import DateHelper from "@helpers/date-helper";
 import { Advertisement } from "../models/advertisement";
+import { ControlWork } from "../models/control-work";
 
 export default class FormatHelper {
 
@@ -46,5 +47,9 @@ export default class FormatHelper {
 
     static convertAdsDateFields(ads: Advertisement[]): Advertisement[] {
         return ads.map(e => ({...e, targetDate: new Date(e.targetDate)}))
+    }
+
+    static convertControlWorksDateFields(controlWorks: ControlWork[]): ControlWork[] {
+        return controlWorks.map(e => ({...e, date: new Date(e.date)}))
     }
 }
