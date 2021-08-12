@@ -87,6 +87,22 @@ export default function useIndexPage() {
     }
 }
 
+/**
+ * Calculate next lesson (it's lesson or lesson break) and continue running async until lessons run out
+ * Independently dispatches state updates (includes every second timer update)
+ * <pre>
+ * The idea is
+ * 1. Calculate which lesson is now
+ * 2. If this lesson not in nearest 2 hours (or now) => dispatch noLessonAction
+ * 3. Understand now is lesson or lesson break (event)
+ * 4. Calculate time to end this event
+ * 5. Every second dispatch new lesson action with updated time to event
+ * 6. While time out => run recursively to calculate next event
+ * </pre>
+ * @param lessons - data which will used to understand time table
+ * @param dispatch - redux dispatching function to emit state update
+ * @return nothing
+ */
 const calculateNextLesson = async (lessons: Lesson[], dispatch: Dispatch): Promise<any> => {
     // need to not create this object every time
     const noLessonAction: SetNextLessonAction = {
