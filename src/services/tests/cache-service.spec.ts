@@ -617,4 +617,21 @@ describe("Testing cache service", () => {
             expect(CacheService.getMarks()).toEqual(null);
         });
     })
+
+    it("should setMarks", () => {
+        const mockLocalStorage = {
+            key: jest.fn(),
+            length: 0,
+            removeItem: jest.fn(),
+            setItem: jest.fn(),
+            clear: jest.fn(),
+            getItem: jest.fn()
+        };
+        global["localStorage"] = mockLocalStorage
+
+        CacheService.setMarks(marks);
+
+        expect(mockLocalStorage.setItem).toBeCalledWith("cached-marks", JSON.stringify(marks))
+        expect(mockLocalStorage.setItem).toBeCalledTimes(1)
+    })
 });
