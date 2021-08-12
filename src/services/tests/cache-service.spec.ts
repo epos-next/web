@@ -517,4 +517,21 @@ describe("Testing cache service", () => {
             expect(CacheService.getUser()).toEqual(null);
         });
     })
+
+    it("should setUser", () => {
+        const mockLocalStorage = {
+            key: jest.fn(),
+            length: 0,
+            removeItem: jest.fn(),
+            setItem: jest.fn(),
+            clear: jest.fn(),
+            getItem: jest.fn()
+        };
+        global["localStorage"] = mockLocalStorage
+
+        CacheService.setUser(user);
+
+        expect(mockLocalStorage.setItem).toBeCalledWith("cached-user", JSON.stringify(user))
+        expect(mockLocalStorage.setItem).toBeCalledTimes(1)
+    })
 });
