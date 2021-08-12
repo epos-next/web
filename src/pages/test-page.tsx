@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import ModalWindowBase from "@components/modal-window-base";
 
-export default function Test() {
+export default function TestPage() {
     const [open, setOpen] = useState(false);
 
     return <Page>

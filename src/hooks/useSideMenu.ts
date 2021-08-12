@@ -47,7 +47,7 @@ export default function useSideMenu() {
                 dispatch(setLessons(extractTodayLessons(date, lessons)));
 
                 // Caching lessons
-                CacheService.setWeekSchedule(lessons, from);
+                CacheService.setWeekSchedule(lessons);
 
                 // show normal state view
                 dispatch(setLessonsLoading(false));

@@ -20,7 +20,9 @@ export const getData = async (
             .catch(onError)
         return onSuccess(cached);
     }
-    const data = await ApiService.getData().catch(onError);
-    CacheService.bigDataObject = data;
-    return onSuccess(data);
+    return await ApiService.getData()
+        .then(data => {
+            CacheService.bigDataObject = data;
+            return onSuccess(data);
+        }).catch(onError);
 }

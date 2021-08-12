@@ -18,10 +18,12 @@ module.exports = {
     globals: {
         __PATH_PREFIX__: ``,
     },
+    testEnvironment: 'node',
     testURL: `http://localhost`,
     setupFiles: [`<rootDir>/loadershim.js`],
     moduleDirectories: ['node_modules', 'src'],
     roots: [
         '<rootDir>/src'
     ],
+    resetMocks: true
 }

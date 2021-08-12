@@ -29,7 +29,7 @@ export default class ApiService {
         }
 
         // Forbidden
-        if (response.status === 401) throw "forbidden";
+        if (response.status === 401 || response.status === 403) throw "forbidden";
 
         // Not found
         if (response.status === 404) throw "not-found";
@@ -56,7 +56,7 @@ export default class ApiService {
         if (response.status === 400) throw "bad-request";
 
         // Forbidden
-        if (response.status === 403) throw "forbidden";
+        if (response.status === 403 || response.status === 401) throw "forbidden";
 
         // Not found
         if (response.status === 404) throw "not-found";
@@ -75,7 +75,11 @@ export default class ApiService {
     static async createControlWork(controlWork: ControlWork): Promise<number> {
         const response = await client.post(
             ApiRoutes.createControlWork,
-            controlWork
+            {
+                lesson: controlWork.lesson,
+                date: controlWork.date,
+                name: controlWork.name,
+            }
         );
 
         // Ok
@@ -103,7 +107,10 @@ export default class ApiService {
     static async createAdvertisement(ad: Advertisement): Promise<number> {
         const response = await client.post(
             ApiRoutes.createAd,
-            ad
+            {
+                content: ad.content,
+                targetDate: ad.targetDate
+            }
         );
 
         // Ok
@@ -115,7 +122,7 @@ export default class ApiService {
         if (response.status === 400) throw "bad-request";
 
         // Forbidden
-        if (response.status === 403) throw "forbidden";
+        if (response.status === 403 || response.status === 401) throw "forbidden";
 
         // Server error
         throw "server-error";

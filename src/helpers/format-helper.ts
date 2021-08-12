@@ -1,4 +1,7 @@
 import DateHelper from "@helpers/date-helper";
+import { Advertisement } from "../models/advertisement";
+import { ControlWork } from "../models/control-work";
+import { Marks } from "../models/marks";
 
 export default class FormatHelper {
 
@@ -41,5 +44,28 @@ export default class FormatHelper {
         if (h.length === 1) h = "0" + h;
         if (m.length === 1) m = "0" + m;
         return `${h}:${m}`;
+    }
+
+    static convertAdsDateFields(ads: Advertisement[]): Advertisement[] {
+        return ads.map(e => ({...e, targetDate: new Date(e.targetDate)}))
+    }
+
+    static convertControlWorksDateFields(controlWorks: ControlWork[]): ControlWork[] {
+        return controlWorks.map(e => ({...e, date: new Date(e.date)}))
+    }
+
+    static convertMarksDateFields(marks: Marks): Marks {
+        for (let key of Object.keys(marks)) {
+            marks[key].periods = marks[key].periods.map(periods => {
+                return {
+                    ...periods,
+                    all: periods.all.map(e => ({
+                        ...e,
+                        date: new Date(e.date)
+                    }))
+                }
+            })
+        }
+        return marks
     }
 }
