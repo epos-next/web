@@ -152,6 +152,9 @@ export default class CacheService {
         // find this homework
         const hwIndex = obj.findIndex(x => x.id === id);
 
+        // end function if no homework with this id found
+        if (hwIndex === -1) return;
+
         // set the done value
         obj[hwIndex].done = done;
 

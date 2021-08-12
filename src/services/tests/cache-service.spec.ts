@@ -1,8 +1,17 @@
 import CacheService from "@services/cache-service";
 import moment from "moment";
-import { bdo, homeworkList, randomLessons, savedRandomLessonByISODates, schedule } from "../../../test/fixtures";
+import {
+    bdo,
+    homework,
+    homeworkList,
+    randomLessons,
+    savedRandomLessonByISODates,
+    schedule
+} from "../../../test/fixtures";
 
 describe("Testing cache service", () => {
+    // @ts-ignore
+    afterEach(() => global["localStorage"] = undefined)
 
     describe("testing get showWelcomeTile", () => {
         // @ts-ignore
@@ -280,5 +289,145 @@ describe("Testing cache service", () => {
         expect(mockLocalStorage.getItem).toBeCalledWith("cached-homework");
     });
 
+    describe("testing setIsHomeworkDone()", () => {
+        // @ts-ignore
+        afterEach(() => global["localStorage"] = undefined)
 
+        it("should set correctly #1", () => {
+            const mockLocalStorage = {
+                key: jest.fn(),
+                length: 0,
+                removeItem: jest.fn(),
+                setItem: jest.fn(),
+                clear: jest.fn(),
+                getItem: jest.fn()
+                    .mockReturnValue(JSON.stringify([{ ...homework, id: 124 }, ...homeworkList]))
+            };
+            global["localStorage"] = mockLocalStorage
+
+            CacheService.setIsHomeworkDone(124, true);
+
+            expect(mockLocalStorage.setItem).toBeCalledWith("cached-homework", JSON.stringify(
+                [{ ...homework, id: 124, done: true }, ...homeworkList]
+            ))
+        });
+
+        it("should set correctly #2", () => {
+            const mockLocalStorage = {
+                key: jest.fn(),
+                length: 0,
+                removeItem: jest.fn(),
+                setItem: jest.fn(),
+                clear: jest.fn(),
+                getItem: jest.fn()
+                    .mockReturnValue(JSON.stringify([{ ...homework, id: 124 }, ...homeworkList]))
+            };
+            global["localStorage"] = mockLocalStorage
+
+            CacheService.setIsHomeworkDone(124, false);
+
+            expect(mockLocalStorage.setItem).toBeCalledWith("cached-homework", JSON.stringify(
+                [{ ...homework, id: 124, done: false }, ...homeworkList]
+            ))
+        });
+
+        it("should set correctly multiple entities #2", () => {
+            const mockLocalStorage = {
+                key: jest.fn(),
+                length: 0,
+                removeItem: jest.fn(),
+                setItem: jest.fn(),
+                clear: jest.fn(),
+                getItem: jest.fn()
+                    .mockReturnValueOnce(JSON.stringify([
+                        { ...homework, id: 1, done: false },
+                        { ...homework, id: 2, done: true },
+                        { ...homework, id: 3, done: true },
+                        { ...homework, id: 4, done: false },
+                        { ...homework, id: 5, done: false },
+                    ]))
+                    .mockReturnValueOnce(JSON.stringify([
+                        { ...homework, id: 1, done: true },
+                        { ...homework, id: 2, done: true },
+                        { ...homework, id: 3, done: true },
+                        { ...homework, id: 4, done: false },
+                        { ...homework, id: 5, done: false },
+                    ]))
+                    .mockReturnValueOnce(JSON.stringify([
+                        { ...homework, id: 1, done: true },
+                        { ...homework, id: 2, done: false },
+                        { ...homework, id: 3, done: true },
+                        { ...homework, id: 4, done: false },
+                        { ...homework, id: 5, done: false },
+                    ]))
+                    .mockReturnValueOnce(JSON.stringify([
+                        { ...homework, id: 1, done: true },
+                        { ...homework, id: 2, done: false },
+                        { ...homework, id: 3, done: true },
+                        { ...homework, id: 4, done: false },
+                        { ...homework, id: 5, done: false },
+                    ]))
+                    .mockReturnValueOnce(JSON.stringify([
+                        { ...homework, id: 1, done: true },
+                        { ...homework, id: 2, done: false },
+                        { ...homework, id: 3, done: true },
+                        { ...homework, id: 4, done: false },
+                        { ...homework, id: 5, done: false },
+                    ]))
+            };
+            global["localStorage"] = mockLocalStorage
+
+            CacheService.setIsHomeworkDone(1, true);
+            CacheService.setIsHomeworkDone(2, false);
+            CacheService.setIsHomeworkDone(3, true);
+            CacheService.setIsHomeworkDone(4, false);
+
+            expect(mockLocalStorage.setItem.mock.calls).toEqual([
+                ["cached-homework", JSON.stringify([
+                    { ...homework, id: 1, done: true },
+                    { ...homework, id: 2, done: true },
+                    { ...homework, id: 3, done: true },
+                    { ...homework, id: 4, done: false },
+                    { ...homework, id: 5, done: false },
+                ])],
+                ["cached-homework", JSON.stringify([
+                    { ...homework, id: 1, done: true },
+                    { ...homework, id: 2, done: false },
+                    { ...homework, id: 3, done: true },
+                    { ...homework, id: 4, done: false },
+                    { ...homework, id: 5, done: false },
+                ])],
+                ["cached-homework", JSON.stringify([
+                    { ...homework, id: 1, done: true },
+                    { ...homework, id: 2, done: false },
+                    { ...homework, id: 3, done: true },
+                    { ...homework, id: 4, done: false },
+                    { ...homework, id: 5, done: false },
+                ])],
+                ["cached-homework", JSON.stringify([
+                    { ...homework, id: 1, done: true },
+                    { ...homework, id: 2, done: false },
+                    { ...homework, id: 3, done: true },
+                    { ...homework, id: 4, done: false },
+                    { ...homework, id: 5, done: false },
+                ])],
+            ])
+        });
+
+        it("should do nothing if id is invalid", () => {
+            const mockLocalStorage = {
+                key: jest.fn(),
+                length: 0,
+                removeItem: jest.fn(),
+                setItem: jest.fn(),
+                clear: jest.fn(),
+                getItem: jest.fn().mockReturnValue(JSON.stringify(homeworkList))
+            };
+            global["localStorage"] = mockLocalStorage
+
+            CacheService.setIsHomeworkDone(10000, true);
+
+            expect(mockLocalStorage.setItem).not.toBeCalled()
+        });
+    });
 });
