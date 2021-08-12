@@ -1,6 +1,6 @@
 import CacheService from "@services/cache-service";
 import moment from "moment";
-import { bdo, randomLessons, savedRandomLessonByISODates, schedule } from "../../../test/fixtures";
+import { bdo, homeworkList, randomLessons, savedRandomLessonByISODates, schedule } from "../../../test/fixtures";
 
 describe("Testing cache service", () => {
 
@@ -245,4 +245,21 @@ describe("Testing cache service", () => {
             ]);
         });
     })
+
+    it("should setHomework", () => {
+        const mockLocalStorage = {
+            key: jest.fn(),
+            length: 0,
+            removeItem: jest.fn(),
+            setItem: jest.fn(),
+            clear: jest.fn(),
+            getItem: jest.fn()
+        };
+        global["localStorage"] = mockLocalStorage
+
+        CacheService.setHomework(homeworkList);
+
+        expect(mockLocalStorage.setItem).toBeCalledTimes(1);
+        expect(mockLocalStorage.setItem).toBeCalledWith("cached-homework", JSON.stringify(homeworkList));
+    });
 });
