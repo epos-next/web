@@ -262,4 +262,23 @@ describe("Testing cache service", () => {
         expect(mockLocalStorage.setItem).toBeCalledTimes(1);
         expect(mockLocalStorage.setItem).toBeCalledWith("cached-homework", JSON.stringify(homeworkList));
     });
+
+    it("should getHomework", () => {
+        const mockLocalStorage = {
+            key: jest.fn(),
+            length: 0,
+            removeItem: jest.fn(),
+            setItem: jest.fn(),
+            clear: jest.fn(),
+            getItem: jest.fn().mockReturnValue(JSON.stringify(homeworkList))
+        };
+        global["localStorage"] = mockLocalStorage
+
+        expect(CacheService.getHomework()).toEqual(homeworkList);
+
+        expect(mockLocalStorage.getItem).toBeCalledTimes(1);
+        expect(mockLocalStorage.getItem).toBeCalledWith("cached-homework");
+    });
+
+
 });
