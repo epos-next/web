@@ -8,7 +8,7 @@ import {
     homeworkList,
     randomLessons,
     savedRandomLessonByISODates,
-    schedule
+    schedule, user
 } from "../../../test/fixtures";
 
 describe("Testing cache service", () => {
@@ -464,15 +464,14 @@ describe("Testing cache service", () => {
 
     describe("testing getAdvertisements()", () => {
         it("should get non null ads", () => {
-            const mockLocalStorage = {
+            global["localStorage"] = {
                 key: jest.fn(),
                 length: 0,
                 removeItem: jest.fn(),
                 setItem: jest.fn(),
                 clear: jest.fn(),
                 getItem: jest.fn().mockReturnValueOnce(JSON.stringify(adsList))
-            };
-            global["localStorage"] = mockLocalStorage
+            }
 
             expect(CacheService.getAdvertisements()).toEqual(adsList);
         });
@@ -488,6 +487,34 @@ describe("Testing cache service", () => {
             }
 
             expect(CacheService.getAdvertisements()).toEqual(null);
+        });
+    })
+
+    describe("testing getUser()", () => {
+        it("should get non null user", () => {
+            global["localStorage"] = {
+                key: jest.fn(),
+                length: 0,
+                removeItem: jest.fn(),
+                setItem: jest.fn(),
+                clear: jest.fn(),
+                getItem: jest.fn().mockReturnValueOnce(JSON.stringify(user))
+            }
+
+            expect(CacheService.getUser()).toEqual(user);
+        });
+
+        it("should get null user", () => {
+            global["localStorage"] = {
+                key: jest.fn(),
+                length: 0,
+                removeItem: jest.fn(),
+                setItem: jest.fn(),
+                clear: jest.fn(),
+                getItem: jest.fn().mockReturnValueOnce(null)
+            }
+
+            expect(CacheService.getUser()).toEqual(null);
         });
     })
 });
