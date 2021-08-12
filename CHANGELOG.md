@@ -2,24 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## 0.0.0 (2021-08-12)
-
-
-### Features
-
-* some new feature ([ed28470](https://github.com/epos-next/web/commit/ed28470841830ca247c6f34d0cc2840794c8650e))
-
-
-### Bug Fixes
-
-* **CacheServiceTests:** replace jest.fb with jest.spyOn ([0fbab91](https://github.com/epos-next/web/commit/0fbab919a757213327dc9033172f9a219d26c7c3))
-* **login:** save email and password as state ([506ba3b](https://github.com/epos-next/web/commit/506ba3bc7241daa3aebf3385bc28e2077929cc46))
-
-## [1.0.0](https://github.com/epos-next/web/compare/0.0.3...1.0.0)
-
-### Commits
-
-- Style: made some changes [`76d0297`](https://github.com/epos-next/web/commit/76d0297dc3b41e371d3cb7eb2529d540d47c8993)
+### [0.0.4](https://github.com/epos-next/web/compare/v0.0.0...v0.0.4) (2021-08-12)
 
 ## [0.0.3](https://github.com/epos-next/web/compare/0.0.2...0.0.3) - 2021-08-12
 
