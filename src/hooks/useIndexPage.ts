@@ -103,7 +103,7 @@ export default function useIndexPage() {
  * @param dispatch - redux dispatching function to emit state update
  * @return nothing
  */
-const calculateNextLesson = async (lessons: Lesson[], dispatch: Dispatch): Promise<any> => {
+export const calculateNextLesson = async (lessons: Lesson[], dispatch: Dispatch): Promise<any> => {
     // need to not create this object every time
     const noLessonAction: SetNextLessonAction = {
         nextLesson: null,
