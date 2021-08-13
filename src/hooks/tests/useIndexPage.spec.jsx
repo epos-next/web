@@ -13,13 +13,13 @@ import {
     LocationProvider,
 } from '@reach/router';
 import {decodeQueryParams, QueryParamProvider, StringParam,} from "use-query-params";
+import {user} from "../../../test/fixtures";
 
 describe("testing useIndexPage()", () => {
     const mockStore = configureMockStore([]);
 
-    const TestComponent = ({initialRoute} = {initialRoute: ""}) => {
-        const history = createHistory(createMemorySource(initialRoute))
-        const store = mockStore({userState: {}})
+    const TestComponent = ({initialRoute, store} = {}) => {
+        const history = createHistory(createMemorySource(initialRoute ?? ""))
 
         const Inside = () => {
             const {values, handlers} = useIndexPage();
@@ -33,7 +33,7 @@ describe("testing useIndexPage()", () => {
 
         return {
             ...render(<LocationProvider history={ history }>
-                <Provider store={ store }>
+                <Provider store={ store ?? mockStore({userState: {}}) }>
                     <Router>
                         {/* @ts-ignore */ }
                         <QueryParamProvider default { ...{default: true} } reachHistory={ history }>
@@ -73,4 +73,18 @@ describe("testing useIndexPage()", () => {
             ).toEqual({tab: "home"})
         });
     })
+
+    describe("testing user selector", () => {
+        it("should select user", () => {
+            const store = mockStore({userState: {user}});
+            const {queryByTestId} = TestComponent({store});
+            expect(queryByTestId("user")).toHaveTextContent(JSON.stringify(user))
+        });
+
+        it("should select empty user", () => {
+            const store = mockStore({userState: {}});
+            const {queryByTestId} = TestComponent({store});
+            expect(queryByTestId("user")).toHaveTextContent("")
+        });
+    });
 });
