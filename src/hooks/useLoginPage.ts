@@ -1,9 +1,12 @@
+import ApiService from "@services/api-service";
+import {
+    isInvalidCredentialsAuthenticateApiResponseError, isServerErrorAuthenticateApiResponseError,
+    isSuccessAuthenticateApiResponse
+} from "@utils/metadata/type-guards";
 import React, { useState } from "react";
 import { navigate } from "gatsby"
 import AuthHelper from "@helpers/auth-helper";
 import UiHelper from "@helpers/ui-helper";
-import client from "@utils/api/client";
-import ApiRoutes from "@utils/api/routes";
 
 export default function useLoginPage() {
     // state
@@ -24,21 +27,18 @@ export default function useLoginPage() {
                 if (!email || !password) return;
                 setIsLoading(true);
 
-                const response = await client.post(ApiRoutes.authenticate, { email, password });
+                const response = await ApiService.authenticate(email, password);
 
-                // Ok
-                if (response.status === 200) {
-                    AuthHelper.tokens = response.data;
+                if (isSuccessAuthenticateApiResponse(response)) {
+                    AuthHelper.tokens = response;
                     await navigate("/");
                 }
 
-                // Invalid credentials
-                if (response.status === 400) UiHelper.showErrorToast(
-                    "Неверный Email или пароль. Проверьте корректность введнённых данных."
+                if (isInvalidCredentialsAuthenticateApiResponseError(response)) UiHelper.showErrorToast(
+                    "Неверный Email или пароль. Проверьте корректность введённых данных."
                 );
 
-                // Server error
-                if (!response || !response.status || response.status === 500) UiHelper.showErrorToast(
+                if (isServerErrorAuthenticateApiResponseError(response)) UiHelper.showErrorToast(
                     "Похоже что наши сервисы сейчас недоступны. Повторите попытку чуть позже"
                 );
 
