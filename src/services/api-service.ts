@@ -1,6 +1,9 @@
+import AuthHelper, { TokensBody } from "@helpers/auth-helper";
+import UiHelper from "@helpers/ui-helper";
 import client from "@utils/api/client";
 import ApiRoutes from "@utils/api/routes";
 import { bigDataObjectIsoStringToDate } from "@utils/index";
+import { AuthenticateApiResponse } from "@utils/metadata/metadata";
 import { Advertisement } from "../models/advertisement";
 import { ControlWork } from "../models/control-work";
 import { Homework } from "../models/homework";
@@ -9,6 +12,21 @@ import { Marks } from "../models/marks";
 import { User } from "../models/user";
 
 export default class ApiService {
+
+    static async authenticate(email: string, password: string): Promise<AuthenticateApiResponse> {
+        const response = await client.post(ApiRoutes.authenticate, { email, password });
+
+        // Ok
+        if (response.status === 200) {
+            return response.data as TokensBody;
+        }
+
+        // Invalid credentials
+        if (response.status === 400) return "invalid-credentials"
+
+        // Server error
+        return "server-error";
+    }
 
     /**
      * @throws forbidden
