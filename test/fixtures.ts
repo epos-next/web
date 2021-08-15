@@ -142,10 +142,21 @@ export let randomLessons: any = []
 
 for (let date of lessonsDates) {
     const r = Math.floor(Math.random() * 100) + 1
-    savedRandomLessonByISODates[date.toISOString()] = lodash.times(r, (i) => ({ ...lesson, date: date.toISOString(), id: i }));
+    savedRandomLessonByISODates[date.toISOString()] = lodash.times(r, (i) => ({
+        ...lesson,
+        date: date.toISOString(),
+        id: i
+    }));
     randomLessons.push(...savedRandomLessonByISODates[date.toISOString()])
 }
 
 randomLessons = lodash.shuffle(randomLessons)
 
+export const tokensBody = {
+    tokens: {
+        access: '123.123.123',
+        refresh: '456.456.456',
+    },
+    id: "1",
+}
 
