@@ -4,9 +4,9 @@ import {
     isSuccessAuthenticateApiResponse
 } from "@utils/metadata/type-guards";
 import React, { useState } from "react";
-import { navigate } from "gatsby"
 import AuthHelper from "@helpers/auth-helper";
 import UiHelper from "@helpers/ui-helper";
+import AppRouter from "./app-router";
 
 export default function useLoginPage() {
     // state
@@ -31,7 +31,7 @@ export default function useLoginPage() {
 
                 if (isSuccessAuthenticateApiResponse(response)) {
                     AuthHelper.tokens = response;
-                    await navigate("/");
+                    await AppRouter.goHome();
                 }
 
                 if (isInvalidCredentialsAuthenticateApiResponseError(response)) UiHelper.showErrorToast(
