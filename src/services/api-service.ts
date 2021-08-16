@@ -121,7 +121,7 @@ export default class ApiService {
      * @param ad what you want to create
      * @return id of created ad
      * @throws {@link ForbiddenApiError}
-     * @throws {@link NotFoundApiError}
+     * @throws {@link BadRequestApiError}
      * @throws {@link ServerErrorApiError}
      */
     static async createAdvertisement(ad: Advertisement): Promise<number> {

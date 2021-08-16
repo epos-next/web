@@ -1,5 +1,7 @@
 import { TokensBody } from "@helpers/auth-helper";
 import {
+    BadRequestApiError,
+    ForbiddenApiError,
     InvalidCredentialsApiError,
     ServerErrorApiError
 } from "@utils/metadata/metadata";
@@ -12,6 +14,16 @@ export function isInvalidCredentialsApiError(error: any): error is InvalidCreden
 /** Type guard for {@link ServerErrorApiError } */
 export function isServerErrorApiError(error: any): error is ServerErrorApiError {
     return error === "server-error"
+}
+
+/** Type guard for {@link ForbiddenApiError } */
+export function isForbiddenApiError(error: any): error is ForbiddenApiError {
+    return error === "forbidden"
+}
+
+/** Type guard for {@link BadRequestApiError } */
+export function isBadRequestApiError(error: any): error is BadRequestApiError {
+    return error === "bad-request"
 }
 
 /** Type guard for {@link TokensBody } */

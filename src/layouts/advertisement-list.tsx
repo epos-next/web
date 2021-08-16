@@ -1,12 +1,15 @@
 import AdvertisementComponent from "@components/advertisement";
+import UiHelper from "@helpers/ui-helper";
 import { AddIcon, GridComponentContainer, TitleHeader } from "@layouts/main-content";
 import CreateAdModalWindow, { CreateAdData } from "@layouts/modal-windows/create-ad-modal-window";
 import { useAppDispatch, useAppSelector } from "@redux/hooks";
 import { selectAds, selectIsAdCreatorOpen } from "@redux/reducers/advertisement-reducer";
 import ApiService from "@services/api-service";
 import CacheService from "@services/cache-service";
+import { isBadRequestApiError, isForbiddenApiError, isServerErrorApiError } from "@utils/metadata/type-guards";
 import React from "react";
 import ContentLoader from "react-content-loader";
+import { ToastContainer } from "react-toastify";
 import useIsLoading from "../hooks/useIsLoading";
 import { Advertisement } from "../models/advertisement";
 import { setIsAdCreatorOpen, addAdvertisement } from "@redux/reducers/advertisement-reducer"
@@ -38,6 +41,7 @@ const AdvertisementList: React.FC = () => {
             isOpen={ values.isAdCreatorOpen }
             onClose={ handlers.closeAdCreator }
         />
+        <ToastContainer/>
     </React.Fragment>
 }
 
@@ -76,7 +80,22 @@ const useAdvertisementList = () => {
                         /// just created advertisements storing without id until user
                         /// refreshed the page
                     })
-                    .catch(console.error) // todo
+                    .catch((error) => {
+                        // handle forbidden
+                        if (isForbiddenApiError(error)) UiHelper.showErrorToast(
+                            "Произошла ошибка при создании объявление. Отказано в доступе"
+                        )
+
+                        // handle not found
+                        if (isBadRequestApiError(error)) UiHelper.showErrorToast(
+                            "Произошла ошибка при создании объявление. Неверно переданы данные"
+                        )
+
+                        // handle server error
+                        if (isServerErrorApiError(error)) UiHelper.showErrorToast(
+                            "Произошла непредвиденная ошибка. Повторите попытку чуть позже"
+                        )
+                    })
             }
         }
     }
