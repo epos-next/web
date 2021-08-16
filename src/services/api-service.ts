@@ -89,7 +89,7 @@ export default class ApiService {
      * @param controlWork what you want to create
      * @return id of created control work
      * @throws {@link ForbiddenApiError}
-     * @throws {@link NotFoundApiError}
+     * @throws {@link BadRequestApiError}
      * @throws {@link ServerErrorApiError}
      */
     static async createControlWork(controlWork: ControlWork): Promise<number> {

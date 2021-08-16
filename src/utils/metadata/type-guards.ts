@@ -2,7 +2,7 @@ import { TokensBody } from "@helpers/auth-helper";
 import {
     BadRequestApiError,
     ForbiddenApiError,
-    InvalidCredentialsApiError,
+    InvalidCredentialsApiError, NotFoundApiError,
     ServerErrorApiError
 } from "@utils/metadata/metadata";
 
@@ -19,6 +19,11 @@ export function isServerErrorApiError(error: any): error is ServerErrorApiError 
 /** Type guard for {@link ForbiddenApiError } */
 export function isForbiddenApiError(error: any): error is ForbiddenApiError {
     return error === "forbidden"
+}
+
+/** Type guard for {@link NotFoundApiError } */
+export function isNotFoundApiError(error: any): error is NotFoundApiError {
+    return error === "not-found"
 }
 
 /** Type guard for {@link BadRequestApiError } */

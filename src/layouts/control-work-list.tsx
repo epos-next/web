@@ -13,6 +13,11 @@ import {
 import { selectMarksLessons } from "@redux/reducers/marks-reducer";
 import ApiService from "@services/api-service";
 import CacheService from "@services/cache-service";
+import {
+    isBadRequestApiError,
+    isForbiddenApiError,
+    isServerErrorApiError
+} from "@utils/metadata/type-guards";
 import lodash from "lodash";
 import React from "react";
 import useIsLoading from "../hooks/useIsLoading";
@@ -89,7 +94,22 @@ const useControlWorkList = () => {
                         /// just created control works storing without id until user
                         /// refreshed the page
                     })
-                    .catch(console.error) // todo
+                    .catch((error) => {
+                        // handle forbidden
+                        if (isForbiddenApiError(error)) UiHelper.showErrorToast(
+                            "Произошла ошибка при создании котрольной работы. Отказано в доступе"
+                        )
+
+                        // handle bad request
+                        if (isBadRequestApiError(error)) UiHelper.showErrorToast(
+                            "Произошла ошибка при создании контрольной работы. Неверно переданы данные"
+                        )
+
+                        // handle server error
+                        if (isServerErrorApiError(error)) UiHelper.showErrorToast(
+                            "Произошла непредвиденная ошибка. Повторите попытку позже"
+                        )
+                    })
             },
         },
     }
