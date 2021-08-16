@@ -1,23 +1,17 @@
 import { TokensBody } from "@helpers/auth-helper";
 import {
-    AuthenticateApiResponse,
-    InvalidCredentialsAuthenticateApiResponseError,
-    ServerErrorAuthenticateApiResponseError
+    InvalidCredentialsApiError,
+    ServerErrorApiError
 } from "@utils/metadata/metadata";
 
-/** Type guard for {@link AuthenticateApiResponse } */
-export function isSuccessAuthenticateApiResponse(response: AuthenticateApiResponse): response is TokensBody {
-    return isTokensBody(response);
+/** Type guard for {@link InvalidCredentialsApiError } */
+export function isInvalidCredentialsApiResponseError(error: string): error is InvalidCredentialsApiError {
+    return error === "invalid-credentials"
 }
 
-/** Type guard for {@link InvalidCredentialsAuthenticateApiResponseError } */
-export function isInvalidCredentialsAuthenticateApiResponseError(response: AuthenticateApiResponse): response is InvalidCredentialsAuthenticateApiResponseError {
-    return response === "invalid-credentials"
-}
-
-/** Type guard for {@link ServerErrorAuthenticateApiResponseError } */
-export function isServerErrorAuthenticateApiResponseError(response: AuthenticateApiResponse): response is ServerErrorAuthenticateApiResponseError {
-    return response === "server-error"
+/** Type guard for {@link ServerErrorApiError } */
+export function isServerErrorApiResponseError(error: string): error is ServerErrorApiError {
+    return error === "server-error"
 }
 
 /** Type guard for {@link TokensBody } */

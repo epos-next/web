@@ -1,30 +1,32 @@
-import { TokensBody } from "@helpers/auth-helper";
 
-/**
- * Used as return type of {@link ApiService.authenticate[](ApiService#authenticate) }
- */
-export type AuthenticateApiResponse = TokensBody | AuthenticateApiResponseError;
-
-
-/**
- * Error type of {@link AuthenticateApiResponse}
- */
-export type AuthenticateApiResponseError =
-    InvalidCredentialsAuthenticateApiResponseError
-    | ServerErrorAuthenticateApiResponseError;
-
-/**
- * {@link AuthenticateApiResponse}: user send invalid email or/and password
- */
-export type InvalidCredentialsAuthenticateApiResponseError = "invalid-credentials";
-
-/**
- * {@link AuthenticateApiResponse}: can't connect to server
- */
-export type ServerErrorAuthenticateApiResponseError = ServerErrorApiResponseError;
 
 /**
  * Can't connect to server
  * Used as base type to *server-error based* types.
+ * @see type-guard {@link isServerErrorApiResponseError}
  */
-export type ServerErrorApiResponseError = "server-error";
+export type ServerErrorApiError = "server-error";
+
+/**
+ * User send invalid email or/and password
+ * @see type-guard {@link isInvalidCredentialsApiResponseError}
+ */
+export type InvalidCredentialsApiError = "invalid-credentials";
+
+/**
+ * Can't find record
+ */
+export type NotFoundApiError = "not-found";
+
+/**
+ * User have no access to this or he don't authorized at all
+ */
+export type ForbiddenApiError = "forbidden";
+
+/**
+ * Invalid data were provide to the request
+ */
+export type BadRequestApiError = "bad-request"
+
+
+

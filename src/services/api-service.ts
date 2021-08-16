@@ -1,7 +1,7 @@
+import { TokensBody } from "@helpers/auth-helper";
 import client from "@utils/api/client";
 import ApiRoutes from "@utils/api/routes";
 import { bigDataObjectIsoStringToDate } from "@utils/index";
-import { AuthenticateApiResponse } from "@utils/metadata/metadata";
 import { Advertisement } from "../models/advertisement";
 import { ControlWork } from "../models/control-work";
 import { Homework } from "../models/homework";
@@ -11,7 +11,11 @@ import { User } from "../models/user";
 
 export default class ApiService {
 
-    static async authenticate(email: string, password: string): Promise<AuthenticateApiResponse> {
+    /**
+     * @throws {@link InvalidCredentialsApiError}
+     * @throws {@link ServerErrorApiError}
+     */
+    static async authenticate(email: string, password: string): Promise<TokensBody> {
         const response = await client.post(ApiRoutes.authenticate, { email, password });
 
         // Ok
@@ -23,16 +27,16 @@ export default class ApiService {
         }
 
         // Invalid credentials
-        if (response.status === 400) return "invalid-credentials"
+        if (response.status === 400) throw "invalid-credentials"
 
         // Server error
-        return "server-error";
+        throw "server-error";
     }
 
     /**
-     * @throws forbidden
-     * @throws not-found
-     * @throws server-error
+     * @throws {@link ForbiddenApiError}
+     * @throws {@link NotFoundApiError}
+     * @throws {@link ServerErrorApiError}
      */
     static async getData(): Promise<BigDataObject> {
         const response = await client.get(ApiRoutes.fetchData);
@@ -58,10 +62,10 @@ export default class ApiService {
     }
 
     /**
-     * @throws bad-request
-     * @throws forbidden
-     * @throws not-found
-     * @throws server-error
+     * @throws {@link BadRequestApiError}
+     * @throws {@link ForbiddenApiError}
+     * @throws {@link NotFoundApiError}
+     * @throws {@link ServerErrorApiError}
      */
     static async getLessons(from: Date, to: Date): Promise<Lesson[]> {
         const response = await client.get(ApiRoutes.fetchLessons(from, to));
@@ -87,9 +91,9 @@ export default class ApiService {
     /**
      * @param controlWork what you want to create
      * @return id of created control work
-     * @throws bad-request
-     * @throws forbidden
-     * @throws server-error
+     * @throws {@link ForbiddenApiError}
+     * @throws {@link NotFoundApiError}
+     * @throws {@link ServerErrorApiError}
      */
     static async createControlWork(controlWork: ControlWork): Promise<number> {
         const response = await client.post(
@@ -119,9 +123,9 @@ export default class ApiService {
     /**
      * @param ad what you want to create
      * @return id of created ad
-     * @throws bad-request
-     * @throws forbidden
-     * @throws server-error
+     * @throws {@link ForbiddenApiError}
+     * @throws {@link NotFoundApiError}
+     * @throws {@link ServerErrorApiError}
      */
     static async createAdvertisement(ad: Advertisement): Promise<number> {
         const response = await client.post(
