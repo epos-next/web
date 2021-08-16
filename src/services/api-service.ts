@@ -1,5 +1,3 @@
-import AuthHelper, { TokensBody } from "@helpers/auth-helper";
-import UiHelper from "@helpers/ui-helper";
 import client from "@utils/api/client";
 import ApiRoutes from "@utils/api/routes";
 import { bigDataObjectIsoStringToDate } from "@utils/index";
@@ -18,7 +16,10 @@ export default class ApiService {
 
         // Ok
         if (response.status === 200) {
-            return response.data as TokensBody;
+            return {
+                tokens: response.data.tokens,
+                id: response.data.id,
+            }
         }
 
         // Invalid credentials
