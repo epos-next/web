@@ -5,12 +5,12 @@ import {
 } from "@utils/metadata/metadata";
 
 /** Type guard for {@link InvalidCredentialsApiError } */
-export function isInvalidCredentialsApiResponseError(error: string): error is InvalidCredentialsApiError {
+export function isInvalidCredentialsApiError(error: any): error is InvalidCredentialsApiError {
     return error === "invalid-credentials"
 }
 
 /** Type guard for {@link ServerErrorApiError } */
-export function isServerErrorApiResponseError(error: string): error is ServerErrorApiError {
+export function isServerErrorApiError(error: any): error is ServerErrorApiError {
     return error === "server-error"
 }
 

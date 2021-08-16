@@ -2,6 +2,7 @@ import { TokensBody } from "@helpers/auth-helper";
 import client from "@utils/api/client";
 import ApiRoutes from "@utils/api/routes";
 import { bigDataObjectIsoStringToDate } from "@utils/index";
+import { AuthenticateApiError } from "@utils/metadata/metadata";
 import { Advertisement } from "../models/advertisement";
 import { ControlWork } from "../models/control-work";
 import { Homework } from "../models/homework";
@@ -11,11 +12,7 @@ import { User } from "../models/user";
 
 export default class ApiService {
 
-    /**
-     * @throws {@link InvalidCredentialsApiError}
-     * @throws {@link ServerErrorApiError}
-     */
-    static async authenticate(email: string, password: string): Promise<TokensBody> {
+    static async authenticate(email: string, password: string): Promise<TokensBody | AuthenticateApiError> {
         const response = await client.post(ApiRoutes.authenticate, { email, password });
 
         // Ok
@@ -27,10 +24,10 @@ export default class ApiService {
         }
 
         // Invalid credentials
-        if (response.status === 400) throw "invalid-credentials"
+        if (response.status === 400) return "invalid-credentials"
 
         // Server error
-        throw "server-error";
+        return "server-error";
     }
 
     /**

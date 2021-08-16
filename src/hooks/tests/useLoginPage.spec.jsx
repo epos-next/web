@@ -17,7 +17,7 @@ it("should handle email and password", async () => {
     jest.spyOn(ApiService, "authenticate").mockResolvedValueOnce(tokensBody)
     jest.spyOn(AuthHelper, "tokens", "set")
     const routerHomePrev = AppRouter.goHome;
-    const routerMock = AppRouter.goHome = jest.fn()
+    AppRouter.goHome = jest.fn()
     jest.spyOn(UiHelper, "showErrorToast")
 
     const email = "test@zotov.dev"
@@ -67,7 +67,7 @@ describe("testing onSubmit()", () => {
 
     it("should handle invalid credentials", async () => {
         const {result} = renderHook(() => useLoginPage());
-        jest.spyOn(ApiService, "authenticate").mockReturnValue("invalid-credentials")
+        jest.spyOn(ApiService, "authenticate").mockResolvedValueOnce("invalid-credentials")
         jest.spyOn(UiHelper, "showErrorToast").mockImplementation()
 
         const email = "test@zotov.dev"
@@ -90,7 +90,7 @@ describe("testing onSubmit()", () => {
 
     it("should handle server error", async () => {
         const {result} = renderHook(() => useLoginPage());
-        jest.spyOn(ApiService, "authenticate").mockReturnValue("server-error")
+        jest.spyOn(ApiService, "authenticate").mockResolvedValueOnce("server-error")
         jest.spyOn(UiHelper, "showErrorToast").mockImplementation()
 
         const email = "test@zotov.dev"

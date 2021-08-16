@@ -286,7 +286,7 @@ describe("testing authenticate()", () => {
         const data = { success: false, error: "not-validated-error" }
         mock.onPost(ApiRoutes.authenticate).replyOnce(400, data);
 
-        expect(await ApiService.authenticate(email, password)).toEqual("invalid-credentials")
+        expect((await ApiService.authenticate(email, password))).toEqual("invalid-credentials")
     })
 
     it("should handle unexpected status", async () => {

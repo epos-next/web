@@ -1,15 +1,16 @@
 
+export type AuthenticateApiError = ServerErrorApiError | InvalidCredentialsApiError;
 
 /**
  * Can't connect to server
  * Used as base type to *server-error based* types.
- * @see type-guard {@link isServerErrorApiResponseError}
+ * @see type-guard {@link isServerErrorApiError}
  */
 export type ServerErrorApiError = "server-error";
 
 /**
  * User send invalid email or/and password
- * @see type-guard {@link isInvalidCredentialsApiResponseError}
+ * @see type-guard {@link isInvalidCredentialsApiError}
  */
 export type InvalidCredentialsApiError = "invalid-credentials";
 
