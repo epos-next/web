@@ -1,0 +1,1291 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing rendering should renders correctly with default props 1`] = `
+<DocumentFragment>
+  .c7 {
+  height: 25px;
+  position: relative;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  z-index: 10002;
+  -webkit-flex: 0 0 34px;
+  -ms-flex: 0 0 34px;
+  flex: 0 0 34px;
+}
+
+.c7 span {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: var(--light-primary);
+  border-radius: 3px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+.c7 span:nth-child(1) {
+  top: 0px;
+}
+
+.c7 span:nth-child(2),
+.c7 span:nth-child(3) {
+  top: 10px;
+}
+
+.c7 span:nth-child(4) {
+  top: 20px;
+}
+
+.c7.open span:nth-child(1) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
+
+.c7.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.c7.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.c7.open span:nth-child(4) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
+
+.c10 {
+  font-size: 18px;
+  font-weight: normal;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.c9 {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  z-index: 100;
+  -webkit-transition: 500ms -webkit-transform ease;
+  -webkit-transition: 500ms transform ease;
+  transition: 500ms transform ease;
+  pointer-events: all;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c9[data-open=false] {
+  -webkit-transform: translateX(100vw);
+  -ms-transform: translateX(100vw);
+  transform: translateX(100vw);
+}
+
+.c8 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 10001;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c6 img {
+  margin-left: 15px;
+}
+
+.c6 span {
+  font-size: 18px;
+  line-height: 21px;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.c5 {
+  font-size: 18px;
+  line-height: 21px;
+  position: relative;
+  margin: 20px 40px 20px 40px;
+  cursor: pointer;
+  color: var(--light-primary);
+  -webkit-transition: 200ms color;
+  transition: 200ms color;
+}
+
+.c5[data-selected=true] {
+  cursor: initial;
+  color: var(--contrast);
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+}
+
+.c4:after {
+  content: "";
+  position: absolute;
+  width: 106px;
+  height: 5px;
+  left: 0;
+  right: 0;
+  top: -2px;
+  margin: 0 auto;
+  border-radius: 5px;
+  background-color: var(--contrast);
+  box-shadow: 0 3px 30px rgba(109,115,253,1);
+  -webkit-transition: 200ms -webkit-transform ease-in-out;
+  -webkit-transition: 200ms transform ease-in-out;
+  transition: 200ms transform ease-in-out;
+  -webkit-transform: translateX(-72px);
+  -ms-transform: translateX(-72px);
+  transform: translateX(-72px);
+}
+
+.c2 {
+  margin-right: 20px;
+}
+
+.c3 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  color: var(--contrast);
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c0 {
+  width: 100%;
+  border-bottom: var(--disable);
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  border-bottom: 2px solid var(--disable);
+  padding: 0 max(calc((100% - 1200px) / 2),20px);
+}
+
+.c0 .burger-outside-container.open {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  height: 34px;
+  width: 34px;
+  z-index: 100000000;
+}
+
+@media screen and (min-width:769px) {
+  .c7 {
+    display: none;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .c6 {
+    display: none;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .c4 {
+    display: none;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .c1 {
+    margin: 10.5px 0;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .c0 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+<header
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <img
+        class="c2"
+        height="40"
+        src="/logo-40x40.webp"
+        width="40"
+      />
+      <h1
+        class="c3"
+      >
+        Эпос Next
+      </h1>
+    </div>
+    <div
+      class="c4"
+    >
+      <a
+        class="c5"
+        data-selected="true"
+      >
+        Главная
+      </a>
+      <a
+        class="c5"
+        data-selected="false"
+      >
+        Оценки
+      </a>
+    </div>
+    <div
+      class="c6"
+    >
+      <svg
+        aria-labelledby="user-name-loading-aria"
+        height="30"
+        role="img"
+        width="200"
+      >
+        <title
+          id="user-name-loading-aria"
+        >
+          Loading...
+        </title>
+        <rect
+          clip-path="url(#user-name-loading-diff)"
+          height="100%"
+          role="presentation"
+          style="fill: url(#user-name-loading-animated-diff);"
+          width="100%"
+          x="0"
+          y="0"
+        />
+        <defs>
+          <clippath
+            id="user-name-loading-diff"
+          >
+            <rect
+              height="30"
+              rx="5"
+              ry="5"
+              width="200"
+              x="0"
+              y="0"
+            />
+          </clippath>
+          <lineargradient
+            id="user-name-loading-animated-diff"
+          >
+            <stop
+              offset="0%"
+              stop-color="#f5f6f7"
+              stop-opacity="1"
+            >
+              <animate
+                attributeName="offset"
+                dur="1.2s"
+                keyTimes="0; 0.25; 1"
+                repeatCount="indefinite"
+                values="-2; -2; 1"
+              />
+            </stop>
+            <stop
+              offset="50%"
+              stop-color="#eee"
+              stop-opacity="1"
+            >
+              <animate
+                attributeName="offset"
+                dur="1.2s"
+                keyTimes="0; 0.25; 1"
+                repeatCount="indefinite"
+                values="-1; -1; 2"
+              />
+            </stop>
+            <stop
+              offset="100%"
+              stop-color="#f5f6f7"
+              stop-opacity="1"
+            >
+              <animate
+                attributeName="offset"
+                dur="1.2s"
+                keyTimes="0; 0.25; 1"
+                repeatCount="indefinite"
+                values="0; 0; 3"
+              />
+            </stop>
+          </lineargradient>
+        </defs>
+      </svg>
+    </div>
+    <div
+      class="burger-outside-container "
+      style="flex: 0 0 34px;"
+    >
+      <div
+        class="c7  burger"
+        data-testid="burger-menu"
+      >
+        <span />
+        <span />
+        <span />
+        <span />
+      </div>
+    </div>
+    <div
+      class="c8"
+    >
+      <div
+        class="c9"
+        data-open="false"
+      >
+        <h4
+          class="c10"
+        >
+          Профиль
+        </h4>
+        <h4
+          class="c10"
+        >
+          Главная
+        </h4>
+        <h4
+          class="c10"
+        >
+          Оценки
+        </h4>
+        <h4
+          class="c10"
+        >
+          Выйти
+        </h4>
+      </div>
+    </div>
+  </header>
+</DocumentFragment>
+`;
+
+exports[`testing rendering should renders correctly with marks tab 1`] = `
+<DocumentFragment>
+  .c7 {
+  height: 25px;
+  position: relative;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  z-index: 10002;
+  -webkit-flex: 0 0 34px;
+  -ms-flex: 0 0 34px;
+  flex: 0 0 34px;
+}
+
+.c7 span {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: var(--light-primary);
+  border-radius: 3px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+.c7 span:nth-child(1) {
+  top: 0px;
+}
+
+.c7 span:nth-child(2),
+.c7 span:nth-child(3) {
+  top: 10px;
+}
+
+.c7 span:nth-child(4) {
+  top: 20px;
+}
+
+.c7.open span:nth-child(1) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
+
+.c7.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.c7.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.c7.open span:nth-child(4) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
+
+.c10 {
+  font-size: 18px;
+  font-weight: normal;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.c9 {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  z-index: 100;
+  -webkit-transition: 500ms -webkit-transform ease;
+  -webkit-transition: 500ms transform ease;
+  transition: 500ms transform ease;
+  pointer-events: all;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c9[data-open=false] {
+  -webkit-transform: translateX(100vw);
+  -ms-transform: translateX(100vw);
+  transform: translateX(100vw);
+}
+
+.c8 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 10001;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c6 img {
+  margin-left: 15px;
+}
+
+.c6 span {
+  font-size: 18px;
+  line-height: 21px;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.c5 {
+  font-size: 18px;
+  line-height: 21px;
+  position: relative;
+  margin: 20px 40px 20px 40px;
+  cursor: pointer;
+  color: var(--light-primary);
+  -webkit-transition: 200ms color;
+  transition: 200ms color;
+}
+
+.c5[data-selected=true] {
+  cursor: initial;
+  color: var(--contrast);
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+}
+
+.c4:after {
+  content: "";
+  position: absolute;
+  width: 106px;
+  height: 5px;
+  left: 0;
+  right: 0;
+  top: -2px;
+  margin: 0 auto;
+  border-radius: 5px;
+  background-color: var(--contrast);
+  box-shadow: 0 3px 30px rgba(109,115,253,1);
+  -webkit-transition: 200ms -webkit-transform ease-in-out;
+  -webkit-transition: 200ms transform ease-in-out;
+  transition: 200ms transform ease-in-out;
+  -webkit-transform: translateX(72px);
+  -ms-transform: translateX(72px);
+  transform: translateX(72px);
+}
+
+.c2 {
+  margin-right: 20px;
+}
+
+.c3 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  color: var(--contrast);
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c0 {
+  width: 100%;
+  border-bottom: var(--disable);
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  border-bottom: 2px solid var(--disable);
+  padding: 0 max(calc((100% - 1200px) / 2),20px);
+}
+
+.c0 .burger-outside-container.open {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  height: 34px;
+  width: 34px;
+  z-index: 100000000;
+}
+
+@media screen and (min-width:769px) {
+  .c7 {
+    display: none;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .c6 {
+    display: none;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .c4 {
+    display: none;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .c1 {
+    margin: 10.5px 0;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .c0 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+<header
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <img
+        class="c2"
+        height="40"
+        src="/logo-40x40.webp"
+        width="40"
+      />
+      <h1
+        class="c3"
+      >
+        Эпос Next
+      </h1>
+    </div>
+    <div
+      class="c4"
+    >
+      <a
+        class="c5"
+        data-selected="false"
+      >
+        Главная
+      </a>
+      <a
+        class="c5"
+        data-selected="true"
+      >
+        Оценки
+      </a>
+    </div>
+    <div
+      class="c6"
+    >
+      <svg
+        aria-labelledby="user-name-loading-aria"
+        height="30"
+        role="img"
+        width="200"
+      >
+        <title
+          id="user-name-loading-aria"
+        >
+          Loading...
+        </title>
+        <rect
+          clip-path="url(#user-name-loading-diff)"
+          height="100%"
+          role="presentation"
+          style="fill: url(#user-name-loading-animated-diff);"
+          width="100%"
+          x="0"
+          y="0"
+        />
+        <defs>
+          <clippath
+            id="user-name-loading-diff"
+          >
+            <rect
+              height="30"
+              rx="5"
+              ry="5"
+              width="200"
+              x="0"
+              y="0"
+            />
+          </clippath>
+          <lineargradient
+            id="user-name-loading-animated-diff"
+          >
+            <stop
+              offset="0%"
+              stop-color="#f5f6f7"
+              stop-opacity="1"
+            >
+              <animate
+                attributeName="offset"
+                dur="1.2s"
+                keyTimes="0; 0.25; 1"
+                repeatCount="indefinite"
+                values="-2; -2; 1"
+              />
+            </stop>
+            <stop
+              offset="50%"
+              stop-color="#eee"
+              stop-opacity="1"
+            >
+              <animate
+                attributeName="offset"
+                dur="1.2s"
+                keyTimes="0; 0.25; 1"
+                repeatCount="indefinite"
+                values="-1; -1; 2"
+              />
+            </stop>
+            <stop
+              offset="100%"
+              stop-color="#f5f6f7"
+              stop-opacity="1"
+            >
+              <animate
+                attributeName="offset"
+                dur="1.2s"
+                keyTimes="0; 0.25; 1"
+                repeatCount="indefinite"
+                values="0; 0; 3"
+              />
+            </stop>
+          </lineargradient>
+        </defs>
+      </svg>
+    </div>
+    <div
+      class="burger-outside-container "
+      style="flex: 0 0 34px;"
+    >
+      <div
+        class="c7  burger"
+        data-testid="burger-menu"
+      >
+        <span />
+        <span />
+        <span />
+        <span />
+      </div>
+    </div>
+    <div
+      class="c8"
+    >
+      <div
+        class="c9"
+        data-open="false"
+      >
+        <h4
+          class="c10"
+        >
+          Профиль
+        </h4>
+        <h4
+          class="c10"
+        >
+          Главная
+        </h4>
+        <h4
+          class="c10"
+        >
+          Оценки
+        </h4>
+        <h4
+          class="c10"
+        >
+          Выйти
+        </h4>
+      </div>
+    </div>
+  </header>
+</DocumentFragment>
+`;
+
+exports[`testing rendering should renders correctly with user name 1`] = `
+<DocumentFragment>
+  .c7 {
+  height: 25px;
+  position: relative;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  z-index: 10002;
+  -webkit-flex: 0 0 34px;
+  -ms-flex: 0 0 34px;
+  flex: 0 0 34px;
+}
+
+.c7 span {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: var(--light-primary);
+  border-radius: 3px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+.c7 span:nth-child(1) {
+  top: 0px;
+}
+
+.c7 span:nth-child(2),
+.c7 span:nth-child(3) {
+  top: 10px;
+}
+
+.c7 span:nth-child(4) {
+  top: 20px;
+}
+
+.c7.open span:nth-child(1) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
+
+.c7.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.c7.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.c7.open span:nth-child(4) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
+
+.c10 {
+  font-size: 18px;
+  font-weight: normal;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.c9 {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  z-index: 100;
+  -webkit-transition: 500ms -webkit-transform ease;
+  -webkit-transition: 500ms transform ease;
+  transition: 500ms transform ease;
+  pointer-events: all;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c9[data-open=false] {
+  -webkit-transform: translateX(100vw);
+  -ms-transform: translateX(100vw);
+  transform: translateX(100vw);
+}
+
+.c8 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 10001;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c6 img {
+  margin-left: 15px;
+}
+
+.c6 span {
+  font-size: 18px;
+  line-height: 21px;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.c5 {
+  font-size: 18px;
+  line-height: 21px;
+  position: relative;
+  margin: 20px 40px 20px 40px;
+  cursor: pointer;
+  color: var(--light-primary);
+  -webkit-transition: 200ms color;
+  transition: 200ms color;
+}
+
+.c5[data-selected=true] {
+  cursor: initial;
+  color: var(--contrast);
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+}
+
+.c4:after {
+  content: "";
+  position: absolute;
+  width: 106px;
+  height: 5px;
+  left: 0;
+  right: 0;
+  top: -2px;
+  margin: 0 auto;
+  border-radius: 5px;
+  background-color: var(--contrast);
+  box-shadow: 0 3px 30px rgba(109,115,253,1);
+  -webkit-transition: 200ms -webkit-transform ease-in-out;
+  -webkit-transition: 200ms transform ease-in-out;
+  transition: 200ms transform ease-in-out;
+  -webkit-transform: translateX(-72px);
+  -ms-transform: translateX(-72px);
+  transform: translateX(-72px);
+}
+
+.c2 {
+  margin-right: 20px;
+}
+
+.c3 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  color: var(--contrast);
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c0 {
+  width: 100%;
+  border-bottom: var(--disable);
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  border-bottom: 2px solid var(--disable);
+  padding: 0 max(calc((100% - 1200px) / 2),20px);
+}
+
+.c0 .burger-outside-container.open {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  height: 34px;
+  width: 34px;
+  z-index: 100000000;
+}
+
+@media screen and (min-width:769px) {
+  .c7 {
+    display: none;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .c6 {
+    display: none;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .c4 {
+    display: none;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .c1 {
+    margin: 10.5px 0;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .c0 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+<header
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <img
+        class="c2"
+        height="40"
+        src="/logo-40x40.webp"
+        width="40"
+      />
+      <h1
+        class="c3"
+      >
+        Эпос Next
+      </h1>
+    </div>
+    <div
+      class="c4"
+    >
+      <a
+        class="c5"
+        data-selected="true"
+      >
+        Главная
+      </a>
+      <a
+        class="c5"
+        data-selected="false"
+      >
+        Оценки
+      </a>
+    </div>
+    <div
+      class="c6"
+    >
+      <span>
+        Ярослав Зотов
+      </span>
+    </div>
+    <div
+      class="burger-outside-container "
+      style="flex: 0 0 34px;"
+    >
+      <div
+        class="c7  burger"
+        data-testid="burger-menu"
+      >
+        <span />
+        <span />
+        <span />
+        <span />
+      </div>
+    </div>
+    <div
+      class="c8"
+    >
+      <div
+        class="c9"
+        data-open="false"
+      >
+        <h4
+          class="c10"
+        >
+          Профиль
+        </h4>
+        <h4
+          class="c10"
+        >
+          Главная
+        </h4>
+        <h4
+          class="c10"
+        >
+          Оценки
+        </h4>
+        <h4
+          class="c10"
+        >
+          Выйти
+        </h4>
+      </div>
+    </div>
+  </header>
+</DocumentFragment>
+`;

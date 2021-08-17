@@ -4,6 +4,7 @@ import { navigate } from "gatsby-link";
 import ContentLoader from "react-content-loader";
 import BurgerMenu from "@components/header/burger-menu";
 import Slide from "@components/header/slide";
+import AppRouter from "../../hooks/app-router";
 
 export type Props = {
     /** User name displayed on right side. Will show loading skeleton if null */
@@ -34,7 +35,7 @@ const Header: React.FC<Props> = (props) => {
         if (logoClickAmount === 4) navigate("/sandbox");
         logoClickAmount++;
     };
-    const handleUserClick = () => navigate("/profile")
+    const handleUserClick = () => AppRouter.goProfile()
 
     return <Container>
         {/* Logo and Name */ }
@@ -56,7 +57,7 @@ const Header: React.FC<Props> = (props) => {
                         <span onClick={ handleUserClick }>{ props.userName }</span>
                         {/*<img src="/icons/arrow-icon.png" alt="arrow icon"/>*/ }
                     </React.Fragment>
-                    : <ContentLoader width="200" height="30">
+                    : <ContentLoader width="200" height="30" uniqueKey="user-name-loading">
                         <rect x="0" y="0" rx="5" ry="5" width="200" height="30"/>
                     </ContentLoader>
             }
