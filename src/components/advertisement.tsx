@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export type Props = {}
-
-const Advertisement: React.FC<Props> = (props) => {
+const Advertisement: React.FC = (props) => {
     return <Container className="advertisement-component">
         <Dot/>
         <ContentText>{ props.children }</ContentText>
