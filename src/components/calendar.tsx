@@ -11,11 +11,13 @@ export type Props = {
 const CalendarComponent: React.FC<Props> = (props) => {
     const { values, handlers } = useCalendar(props.onDayChanged);
 
+    console.log(JSON.stringify(values.days, null, 2))
+
     return <Container>
         {/* Header */ }
         <Header>
             <Title>Календарь</Title>
-            <Month dir="rtl" onChange={ handlers.onMonthChanged } value={ values.selectedMonth }>
+            <Month dir="rtl" data-testid="month" onChange={ handlers.onMonthChanged } value={ values.selectedMonth }>
                 {
                     months.map((e, i) => <option
                         key={ `calendar-month_option-${ e }` }
@@ -40,6 +42,7 @@ const CalendarComponent: React.FC<Props> = (props) => {
                 values.days.map((date) => {
                     if (date.date.getDate() === values.selectedDate && date.date.getMonth() === values.selectedMonth) {
                         return <SelectedGridElement
+                            data-testid={ `date-${ date.date.toISOString() }` }
                             key={ `calendar-date-${ date.date }` }>
                             { date.date.getDate() }
                         </SelectedGridElement>
@@ -47,6 +50,7 @@ const CalendarComponent: React.FC<Props> = (props) => {
 
                     if (date.disable || date.weekday === weekdays[6]) {
                         return <DisabledGridElement
+                            data-testid={ `date-${ date.date.toISOString() }` }
                             onClick={ handlers.onDateChanged(date.date) }
                             key={ `calendar-date-${ date.date }` }>
                             { date.date.getDate() }
@@ -54,6 +58,7 @@ const CalendarComponent: React.FC<Props> = (props) => {
                     }
 
                     return <PrimaryGridElement
+                        data-testid={ `date-${ date.date.toISOString() }` }
                         onClick={ handlers.onDateChanged(date.date) }
                         key={ `calendar-date-${ date.date }` }>
                         { date.date.getDate() }
@@ -95,7 +100,7 @@ export const useCalendar = (onDayChanged?: Props["onDayChanged"]) => {
     }
 }
 
-const getDates = (year: number, month: number): Array<DateObj> => {
+export const getDates = (year: number, month: number): Array<DateObj> => {
     const dates: DateObj[] = [];
     const firstDay = new Date(year, month, 1);
 
@@ -107,7 +112,7 @@ const getDates = (year: number, month: number): Array<DateObj> => {
         const obj: DateObj = {
             date: date,
             disable: true,
-            weekday: weekdays[date.getDay()],
+            weekday: weekdays[date.getDay() % 7 === 0 ? 6 : date.getDate() % 7 - 1],
         }
         dates.push(obj)
     }
@@ -119,7 +124,7 @@ const getDates = (year: number, month: number): Array<DateObj> => {
         const obj: DateObj = {
             date: date,
             disable: false,
-            weekday: weekdays[date.getDay() === 0 ? 6 : date.getDate() % 7 - 1],
+            weekday: weekdays[date.getDay() % 7 === 0 ? 6 : date.getDay() % 7 - 1],
         }
         dates.push(obj);
     }
@@ -133,7 +138,7 @@ const getDates = (year: number, month: number): Array<DateObj> => {
             const obj: DateObj = {
                 date: date,
                 disable: true,
-                weekday: weekdays[date.getDay()],
+                weekday: weekdays[date.getDay() % 7 === 0 ? 6 : date.getDay() % 7 - 1],
             }
             dates.push(obj);
         }
@@ -163,7 +168,7 @@ const SelectedGridElement = styled.div`
   ${ GridElementStyles };
   position: relative;
   color: white;
-  
+
   &:after {
     content: "";
     position: absolute;
@@ -232,7 +237,7 @@ const Header = styled.div`
 
 const Container = styled.div`
   width: 282px;
-  
+
   @media screen and (max-width: 960px) {
     width: calc(100%);
   }

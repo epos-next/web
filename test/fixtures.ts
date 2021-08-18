@@ -1,6 +1,5 @@
 import { BigDataObject } from "@services/api-service";
 import lodash from "lodash";
-import { repeat } from "rxjs/operators";
 import { Advertisement } from "../src/models/advertisement";
 import { ControlWork } from "../src/models/control-work";
 import { Homework } from "../src/models/homework";
@@ -160,3 +159,677 @@ export const tokensBody = {
     id: "1",
 }
 
+export const getDatesAnswers = [
+    [
+        {
+            "date": new Date("2021-11-28T19:00:00.000Z"),
+            "disable": true,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-11-29T19:00:00.000Z"),
+            "disable": true,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-11-30T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Ср"
+        },
+        {
+            "date": new Date("2021-12-01T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Чт"
+        },
+        {
+            "date": new Date("2021-12-02T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-12-03T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-12-04T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вс"
+        },
+        {
+            "date": new Date("2021-12-05T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-12-06T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-12-07T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Ср"
+        },
+        {
+            "date": new Date("2021-12-08T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Чт"
+        },
+        {
+            "date": new Date("2021-12-09T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-12-10T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-12-11T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вс"
+        },
+        {
+            "date": new Date("2021-12-12T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-12-13T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-12-14T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Ср"
+        },
+        {
+            "date": new Date("2021-12-15T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Чт"
+        },
+        {
+            "date": new Date("2021-12-16T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-12-17T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-12-18T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вс"
+        },
+        {
+            "date": new Date("2021-12-19T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-12-20T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-12-21T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Ср"
+        },
+        {
+            "date": new Date("2021-12-22T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Чт"
+        },
+        {
+            "date": new Date("2021-12-23T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-12-24T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-12-25T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вс"
+        },
+        {
+            "date": new Date("2021-12-26T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-12-27T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-12-28T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Ср"
+        },
+        {
+            "date": new Date("2021-12-29T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Чт"
+        },
+        {
+            "date": new Date("2021-12-30T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-12-31T19:00:00.000Z"),
+            "disable": true,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2022-01-01T19:00:00.000Z"),
+            "disable": true,
+            "weekday": "Вс"
+        }
+    ],
+    [
+        {
+            "date": new Date("2021-01-31T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-02-01T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-02-02T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Ср"
+        },
+        {
+            "date": new Date("2021-02-03T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Чт"
+        },
+        {
+            "date": new Date("2021-02-04T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-02-05T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-02-06T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вс"
+        },
+        {
+            "date": new Date("2021-02-07T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-02-08T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-02-09T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Ср"
+        },
+        {
+            "date": new Date("2021-02-10T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Чт"
+        },
+        {
+            "date": new Date("2021-02-11T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-02-12T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-02-13T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вс"
+        },
+        {
+            "date": new Date("2021-02-14T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-02-15T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-02-16T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Ср"
+        },
+        {
+            "date": new Date("2021-02-17T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Чт"
+        },
+        {
+            "date": new Date("2021-02-18T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-02-19T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-02-20T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вс"
+        },
+        {
+            "date": new Date("2021-02-21T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-02-22T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-02-23T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Ср"
+        },
+        {
+            "date": new Date("2021-02-24T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Чт"
+        },
+        {
+            "date": new Date("2021-02-25T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-02-26T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-02-27T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вс"
+        }
+    ],
+    [
+        {
+            "date": new Date("2021-04-25T19:00:00.000Z"),
+            "disable": true,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-04-26T19:00:00.000Z"),
+            "disable": true,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-04-27T19:00:00.000Z"),
+            "disable": true
+        },
+        {
+            "date": new Date("2021-04-28T19:00:00.000Z"),
+            "disable": true,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-04-29T19:00:00.000Z"),
+            "disable": true,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-04-30T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-05-01T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вс"
+        },
+        {
+            "date": new Date("2021-05-02T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-05-03T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-05-04T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Ср"
+        },
+        {
+            "date": new Date("2021-05-05T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Чт"
+        },
+        {
+            "date": new Date("2021-05-06T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-05-07T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-05-08T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вс"
+        },
+        {
+            "date": new Date("2021-05-09T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-05-10T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-05-11T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Ср"
+        },
+        {
+            "date": new Date("2021-05-12T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Чт"
+        },
+        {
+            "date": new Date("2021-05-13T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-05-14T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-05-15T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вс"
+        },
+        {
+            "date": new Date("2021-05-16T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-05-17T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-05-18T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Ср"
+        },
+        {
+            "date": new Date("2021-05-19T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Чт"
+        },
+        {
+            "date": new Date("2021-05-20T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-05-21T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-05-22T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вс"
+        },
+        {
+            "date": new Date("2021-05-23T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-05-24T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-05-25T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Ср"
+        },
+        {
+            "date": new Date("2021-05-26T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Чт"
+        },
+        {
+            "date": new Date("2021-05-27T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-05-28T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-05-29T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вс"
+        },
+        {
+            "date": new Date("2021-05-30T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-05-31T19:00:00.000Z"),
+            "disable": true,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-06-01T19:00:00.000Z"),
+            "disable": true,
+            "weekday": "Ср"
+        },
+        {
+            "date": new Date("2021-06-02T19:00:00.000Z"),
+            "disable": true,
+            "weekday": "Чт"
+        },
+        {
+            "date": new Date("2021-06-03T19:00:00.000Z"),
+            "disable": true,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-06-04T19:00:00.000Z"),
+            "disable": true,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-06-05T19:00:00.000Z"),
+            "disable": true,
+            "weekday": "Вс"
+        }
+    ],
+    [
+        {
+            "date": new Date("2021-01-31T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-02-01T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-02-02T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Ср"
+        },
+        {
+            "date": new Date("2021-02-03T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Чт"
+        },
+        {
+            "date": new Date("2021-02-04T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-02-05T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-02-06T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вс"
+        },
+        {
+            "date": new Date("2021-02-07T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-02-08T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-02-09T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Ср"
+        },
+        {
+            "date": new Date("2021-02-10T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Чт"
+        },
+        {
+            "date": new Date("2021-02-11T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-02-12T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-02-13T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вс"
+        },
+        {
+            "date": new Date("2021-02-14T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-02-15T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-02-16T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Ср"
+        },
+        {
+            "date": new Date("2021-02-17T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Чт"
+        },
+        {
+            "date": new Date("2021-02-18T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-02-19T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-02-20T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вс"
+        },
+        {
+            "date": new Date("2021-02-21T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пн"
+        },
+        {
+            "date": new Date("2021-02-22T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вт"
+        },
+        {
+            "date": new Date("2021-02-23T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Ср"
+        },
+        {
+            "date": new Date("2021-02-24T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Чт"
+        },
+        {
+            "date": new Date("2021-02-25T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Пт"
+        },
+        {
+            "date": new Date("2021-02-26T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Сб"
+        },
+        {
+            "date": new Date("2021-02-27T19:00:00.000Z"),
+            "disable": false,
+            "weekday": "Вс"
+        }
+    ]
+]
