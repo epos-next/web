@@ -5,7 +5,10 @@ import styled from "styled-components";
 import Input, { Props as BaseProps } from "@components/input";
 
 export type Props = {
+    /** When user select new date state will call this callback with new date inside */
     onChange?: (date: Date) => any,
+
+    /** A date which will displayed as a value inside input */
     value?: Date,
 } & Omit<Omit<BaseProps, "onChange">, "value">
 
@@ -33,7 +36,8 @@ const DateInput: React.FC<Props> = (props: PropsWithChildren<Props>) => {
     </Container>
 }
 
-const formatSelectedDate = (date: Date | null) => {
+// export for testing
+export const formatSelectedDate = (date: Date | null) => {
     if (date === null) return "";
     return moment(date).format("DD.MM.yyyy");
 }
