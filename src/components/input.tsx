@@ -44,6 +44,7 @@ const Input: React.FC<Props> = (props: PropsWithChildren<Props>) => {
         }
 
         <InputBase
+            data-testid="input-base"
             data-error={ error }
             type={type}
             onKeyPress={ handleKeyPress }

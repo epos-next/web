@@ -30,7 +30,7 @@ const DateInput: React.FC<Props> = (props: PropsWithChildren<Props>) => {
             value={ formatSelectedDate(props.value ?? selectedDate) }
             onFocus={ () => setShowCalendar(true) }/>
         <CalendarIcon src="/icons/calendar.png"/>
-        <CalendarContainer data-show={ showCalendar }>
+        <CalendarContainer data-testid="calendar-container" data-show={ showCalendar }>
             <CalendarComponent onDayChanged={ handleChange }/>
         </CalendarContainer>
     </Container>

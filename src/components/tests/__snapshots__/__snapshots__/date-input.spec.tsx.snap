@@ -1,0 +1,573 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should math snapshot 1`] = `
+<DocumentFragment>
+  .c11 {
+  width: 100%;
+  height: 36px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 15px;
+  line-height: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  color: white;
+}
+
+.c11:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: linear-gradient(328.45deg,#656DFD 11.68%,#949EFD 85.36%);
+  width: 36px;
+  height: 36px;
+  z-index: -1;
+}
+
+.c12 {
+  width: 100%;
+  height: 36px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 15px;
+  line-height: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.c13 {
+  width: 100%;
+  height: 36px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 15px;
+  line-height: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: var(--light-primary);
+  cursor: pointer;
+}
+
+.c9 {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  margin-top: 5px;
+}
+
+.c10 {
+  font-size: 15px;
+  line-height: 18px;
+  color: var(--secondary);
+  width: 100%;
+  height: 36px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 15px;
+  line-height: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c7 {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--primary);
+}
+
+.c8 {
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--primary);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+  outline: none;
+  text-align: right;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 calc((100% / 7 - 18px) / 2);
+}
+
+.c5 {
+  width: 282px;
+}
+
+.c2 {
+  width: 100%;
+  border: 2px solid var(--light-primary);
+  border-radius: 10px;
+  outline: none;
+  padding: 14px;
+  font-size: 18px;
+  color: var(--primary);
+  -webkit-transition: 150ms border;
+  transition: 150ms border;
+}
+
+.c2::-webkit-input-placeholder {
+  color: var(--light-primary);
+}
+
+.c2::-moz-placeholder {
+  color: var(--light-primary);
+}
+
+.c2:-ms-input-placeholder {
+  color: var(--light-primary);
+}
+
+.c2::placeholder {
+  color: var(--light-primary);
+}
+
+.c2:focus {
+  border: 2px solid var(--contrast);
+}
+
+.c2[data-error=true] {
+  color: var(--error);
+  border: 2px solid var(--error);
+}
+
+.c2[data-error=true]:focus {
+  border: 2px solid var(--error);
+}
+
+.c1 {
+  width: 100%;
+  position: relative;
+}
+
+.c4 {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  border: 1px solid var(--light-primary);
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 100000;
+  -webkit-transition: -webkit-transform 300ms ease,opacity 300ms ease;
+  -webkit-transition: transform 300ms ease,opacity 300ms ease;
+  transition: transform 300ms ease,opacity 300ms ease;
+  -webkit-transform-origin: top left;
+  -ms-transform-origin: top left;
+  transform-origin: top left;
+}
+
+.c4[data-show=false] {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition-delay: 400ms;
+  transition-delay: 400ms;
+}
+
+.c3 {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+
+.c0 {
+  width: 100%;
+  position: relative;
+}
+
+@media screen and (max-width:960px) {
+  .c5 {
+    width: calc(100%);
+  }
+}
+
+@media screen and (max-width:768px) {
+  .c2 {
+    padding: 13px;
+  }
+}
+
+<div
+    class="c0"
+  >
+    <div
+      class="c1 input "
+    >
+      <input
+        class="c2"
+        data-error="false"
+        data-testid="input-base"
+        readonly=""
+        type="text"
+        value="01.02.2021"
+      />
+    </div>
+    <img
+      class="c3"
+      src="/icons/calendar.png"
+    />
+    <div
+      class="c4"
+      data-show="false"
+      data-testid="calendar-container"
+    >
+      <div
+        class="c5"
+      >
+        <div
+          class="c6"
+        >
+          <h5
+            class="c7"
+          >
+            Календарь
+          </h5>
+          <select
+            class="c8"
+            data-testid="month"
+            dir="rtl"
+          >
+            <option
+              value="0"
+            >
+              Январь
+            </option>
+            <option
+              value="1"
+            >
+              Февраль
+            </option>
+            <option
+              value="2"
+            >
+              Март
+            </option>
+            <option
+              value="3"
+            >
+              Апрель
+            </option>
+            <option
+              value="4"
+            >
+              Май
+            </option>
+            <option
+              value="5"
+            >
+              Июнь
+            </option>
+            <option
+              value="6"
+            >
+              Июль
+            </option>
+            <option
+              value="7"
+            >
+              Август
+            </option>
+            <option
+              value="8"
+            >
+              Сентябрь
+            </option>
+            <option
+              value="9"
+            >
+              Октябрь
+            </option>
+            <option
+              value="10"
+            >
+              Ноябрь
+            </option>
+            <option
+              value="11"
+            >
+              Декабрь
+            </option>
+          </select>
+        </div>
+        <div
+          class="c9"
+        >
+          <div
+            class="c10"
+          >
+            Пн
+          </div>
+          <div
+            class="c10"
+          >
+            Вт
+          </div>
+          <div
+            class="c10"
+          >
+            Ср
+          </div>
+          <div
+            class="c10"
+          >
+            Чт
+          </div>
+          <div
+            class="c10"
+          >
+            Пт
+          </div>
+          <div
+            class="c10"
+          >
+            Сб
+          </div>
+          <div
+            class="c10"
+          >
+            Вс
+          </div>
+          <div
+            class="c11"
+            data-testid="date-2021-01-31T19:00:00.000Z"
+          >
+            1
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-01T19:00:00.000Z"
+          >
+            2
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-02T19:00:00.000Z"
+          >
+            3
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-03T19:00:00.000Z"
+          >
+            4
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-04T19:00:00.000Z"
+          >
+            5
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-05T19:00:00.000Z"
+          >
+            6
+          </div>
+          <div
+            class="c13"
+            data-testid="date-2021-02-06T19:00:00.000Z"
+          >
+            7
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-07T19:00:00.000Z"
+          >
+            8
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-08T19:00:00.000Z"
+          >
+            9
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-09T19:00:00.000Z"
+          >
+            10
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-10T19:00:00.000Z"
+          >
+            11
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-11T19:00:00.000Z"
+          >
+            12
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-12T19:00:00.000Z"
+          >
+            13
+          </div>
+          <div
+            class="c13"
+            data-testid="date-2021-02-13T19:00:00.000Z"
+          >
+            14
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-14T19:00:00.000Z"
+          >
+            15
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-15T19:00:00.000Z"
+          >
+            16
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-16T19:00:00.000Z"
+          >
+            17
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-17T19:00:00.000Z"
+          >
+            18
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-18T19:00:00.000Z"
+          >
+            19
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-19T19:00:00.000Z"
+          >
+            20
+          </div>
+          <div
+            class="c13"
+            data-testid="date-2021-02-20T19:00:00.000Z"
+          >
+            21
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-21T19:00:00.000Z"
+          >
+            22
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-22T19:00:00.000Z"
+          >
+            23
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-23T19:00:00.000Z"
+          >
+            24
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-24T19:00:00.000Z"
+          >
+            25
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-25T19:00:00.000Z"
+          >
+            26
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-02-26T19:00:00.000Z"
+          >
+            27
+          </div>
+          <div
+            class="c13"
+            data-testid="date-2021-02-27T19:00:00.000Z"
+          >
+            28
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
