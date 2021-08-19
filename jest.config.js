@@ -25,5 +25,6 @@ module.exports = {
     roots: [
         '<rootDir>/src'
     ],
-    resetMocks: true
+    resetMocks: true,
+    setupFilesAfterEnv: ['<rootDir>/jest-setup.js']
 }
