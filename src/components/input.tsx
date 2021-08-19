@@ -32,11 +32,12 @@ const Input: React.FC<Props> = (props: PropsWithChildren<Props>) => {
         if (event.key === 'Enter' && props.onEnterPressed) props.onEnterPressed(event);
     }
 
-    return <Container className={ className }>
+    return <Container data-testid="container" className={ className }>
         {/* Password eye */ }
         {
             props.password
                 ? <PasswordEye
+                    data-testid="password-eye"
                     data-open={isPasswordEyeOpened}
                     onClick={ () => setIsPasswordEyeOpened(!isPasswordEyeOpened) }
                     src={ isPasswordEyeOpened ? "/icons/eye-icon_opened.png" : "/icons/eye-icon_closed.png" }/>
@@ -47,13 +48,13 @@ const Input: React.FC<Props> = (props: PropsWithChildren<Props>) => {
             data-testid="input-base"
             data-error={ error }
             type={type}
-            onKeyPress={ handleKeyPress }
+            onKeyDown={ handleKeyPress }
             { ...props } />
 
         {/* Error text */ }
         {
             props.errorText
-                ? <ErrorText>{ props.errorText }</ErrorText>
+                ? <ErrorText data-testid="error">{ props.errorText }</ErrorText>
                 : <React.Fragment/>
         }
     </Container>

@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  .c1 {
+  width: 100%;
+  border: 2px solid var(--light-primary);
+  border-radius: 10px;
+  outline: none;
+  padding: 14px;
+  font-size: 18px;
+  color: var(--primary);
+  -webkit-transition: 150ms border;
+  transition: 150ms border;
+}
+
+.c1::-webkit-input-placeholder {
+  color: var(--light-primary);
+}
+
+.c1::-moz-placeholder {
+  color: var(--light-primary);
+}
+
+.c1:-ms-input-placeholder {
+  color: var(--light-primary);
+}
+
+.c1::placeholder {
+  color: var(--light-primary);
+}
+
+.c1:focus {
+  border: 2px solid var(--contrast);
+}
+
+.c1[data-error=true] {
+  color: var(--error);
+  border: 2px solid var(--error);
+}
+
+.c1[data-error=true]:focus {
+  border: 2px solid var(--error);
+}
+
+.c0 {
+  width: 100%;
+  position: relative;
+}
+
+@media screen and (max-width:768px) {
+  .c1 {
+    padding: 13px;
+  }
+}
+
+<div
+    class="c0 input "
+    data-testid="container"
+  >
+    <input
+      class="c1"
+      data-error="false"
+      data-testid="input-base"
+      type="text"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`testing main logic should use password icon if password=true 1`] = `
+<DocumentFragment>
+  .c2 {
+  position: absolute;
+  top: 16px;
+  right: 14px;
+  cursor: pointer;
+}
+
+.c4 {
+  width: 100%;
+  border: 2px solid var(--light-primary);
+  border-radius: 10px;
+  outline: none;
+  padding: 14px;
+  font-size: 18px;
+  color: var(--primary);
+  -webkit-transition: 150ms border;
+  transition: 150ms border;
+}
+
+.c4::-webkit-input-placeholder {
+  color: var(--light-primary);
+}
+
+.c4::-moz-placeholder {
+  color: var(--light-primary);
+}
+
+.c4:-ms-input-placeholder {
+  color: var(--light-primary);
+}
+
+.c4::placeholder {
+  color: var(--light-primary);
+}
+
+.c4:focus {
+  border: 2px solid var(--contrast);
+}
+
+.c4[data-error=true] {
+  color: var(--error);
+  border: 2px solid var(--error);
+}
+
+.c4[data-error=true]:focus {
+  border: 2px solid var(--error);
+}
+
+.c0 {
+  width: 100%;
+  position: relative;
+}
+
+.c0 .c1[data-open=false] ~ .c3:not(:placeholder-shown) {
+  -webkit-letter-spacing: 10px;
+  -moz-letter-spacing: 10px;
+  -ms-letter-spacing: 10px;
+  letter-spacing: 10px;
+  font-size: 14px;
+  height: 52px;
+}
+
+@media screen and (max-width:768px) {
+  .c4 {
+    padding: 13px;
+  }
+}
+
+<div
+    class="c0 input "
+    data-testid="container"
+  >
+    <img
+      class="c1 c2"
+      data-open="false"
+      data-testid="password-eye"
+      src="/icons/eye-icon_closed.png"
+    />
+    <input
+      class="c3 c4"
+      data-error="false"
+      data-testid="input-base"
+      type="password"
+    />
+  </div>
+</DocumentFragment>
+`;
