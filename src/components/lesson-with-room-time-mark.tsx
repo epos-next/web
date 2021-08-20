@@ -10,7 +10,7 @@ export type Props = {
 const LessonWithRoomTimeMark: React.FC<Props> = (props) => {
     return <Container className="lesson-with-room-time-mark">
         <LessonWithRoomAndTime {...props} className="" />
-        <Mark>{ props.mark }</Mark>
+        <Mark data-testid="mark">{ props.mark }</Mark>
     </Container>
 }
 
