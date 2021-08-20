@@ -16,6 +16,7 @@ it("should match snapshot", () => {
     const { asFragment } = render(<LessonWithDate date={date} subject="Алгебра" />)
     expect(asFragment()).toMatchSnapshot()
 });
+
 it("should use date prop", () => {
     const { getByTestId } = render(<LessonWithDate date={date} subject="Алгебра" />)
     expect(getByTestId("date")).toHaveTextContent("11 Ноября")

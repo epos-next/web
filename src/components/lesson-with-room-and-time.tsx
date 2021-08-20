@@ -14,7 +14,7 @@ export type Props = {
 
     /** will used for animations */
     style?: CSSProperties;
-} & LessonProps
+} & Omit<LessonProps, "subtitle">
 
 const LessonWithRoomAndTime: React.FC<Props> = (props: PropsWithChildren<Props>) => {
     const Subtitle = () => {

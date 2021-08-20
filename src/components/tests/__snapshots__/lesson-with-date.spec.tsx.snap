@@ -87,6 +87,7 @@ exports[`should match snapshot 1`] = `
   >
     <div
       class="c1 lesson"
+      data-testid="lesson-container"
     >
       <div
         class="c2"

@@ -28,7 +28,6 @@ export default function useIndexPage() {
     useEffect(() => {
         getData(
             data => {
-                console.log(data.lessons);
                 const todayLessons = extractTodayLessons(DateHelper.now, data.lessons);
 
                 // save user

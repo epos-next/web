@@ -10,9 +10,7 @@ export type Props = {
 
 const CalendarComponent: React.FC<Props> = (props) => {
     const { values, handlers } = useCalendar(props.onDayChanged);
-
-    console.log(JSON.stringify(values.days, null, 2))
-
+    
     return <Container>
         {/* Header */ }
         <Header>

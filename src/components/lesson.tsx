@@ -21,7 +21,7 @@ export type Props = {
 const Lesson: React.FC<Props> = (props) => {
     const colors = UiHelper.getLessonColor(props.subject);
 
-    return <Container className={props.className ?? "lesson"} {...props}>
+    return <Container data-testid="lesson-container" className={props.className ?? "lesson"} {...props}>
         <Avatar data-testid="avatar" {...colors}>{ props.subject[0] }</Avatar>
         <Information>
             <LessonName data-testid="lesson-name">{ props.subject }</LessonName>

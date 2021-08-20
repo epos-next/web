@@ -62,13 +62,6 @@ exports[`should match snapshot 1`] = `
 }
 
 .c6 {
-  font-size: 15px;
-  line-height: 18px;
-  font-weight: 500;
-  color: var(--primary);
-}
-
-.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -77,17 +70,25 @@ exports[`should match snapshot 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+}
+
+.c0 {
+  overflow: hidden;
+}
+
+.c7 {
+  width: 3px;
+  height: 3px;
+  background: #696969;
+  border-radius: 50%;
+  margin: 0 10px;
 }
 
 <div
-    class="c0 lesson-with-mark"
+    class="c0"
   >
     <div
-      class="c1 lesson"
+      class="c1 lesson-with-room-and-time"
       data-testid="lesson-container"
     >
       <div
@@ -109,15 +110,19 @@ exports[`should match snapshot 1`] = `
         <span
           class="c5"
           data-testid="lesson-subtitle"
-        />
+        >
+          <div
+            class="c6"
+          >
+            202
+            <div
+              class="c7"
+            />
+            11:00 - 12:00
+          </div>
+        </span>
       </div>
     </div>
-    <span
-      class="c6"
-      data-testid="mark"
-    >
-      5
-    </span>
   </div>
 </DocumentFragment>
 `;
