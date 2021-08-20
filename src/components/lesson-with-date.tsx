@@ -16,7 +16,7 @@ const LessonWithDate: React.FC<Props> = (props) => {
 
     return <Container className="lesson-with-date" style={props.style}>
         <Lesson {...props} />
-        <DateText>{ formattedDate }</DateText>
+        <DateText data-testid={"date"}>{ formattedDate }</DateText>
     </Container>
 }
 
