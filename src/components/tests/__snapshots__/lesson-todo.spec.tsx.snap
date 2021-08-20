@@ -1,0 +1,211 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  .c4 {
+  font-size: 17px;
+  line-height: 20px;
+  color: var(--primary);
+}
+
+.c5 {
+  font-size: 15px;
+  line-height: 18px;
+  color: var(--secondary);
+}
+
+.c2 {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #F8CBC4;
+  color: #F18477;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-weight: 500;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.c6 {
+  --active: #68D676;
+  --active-inner: white;
+  --focus: transparent;
+  --border: var(--light-primary);
+  --border-hover: var(--light-primary);
+  --background: white;
+  --disabled: #F6F8FF;
+  --disabled-inner: #E1E6F9;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: 25px;
+  outline: none;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  margin: 0;
+  cursor: pointer;
+  border: 1px solid var(--bc,var(--border));
+  background: var(--b,var(--background));
+  -webkit-transition: background .3s,border-color .3s,box-shadow .2s;
+  transition: background .3s,border-color .3s,box-shadow .2s;
+  border-radius: 7px;
+}
+
+.c6:after {
+  content: '';
+  display: block;
+  left: 0;
+  top: 0;
+  position: absolute;
+  -webkit-transition: -webkit-transform var(--d-t,.3s) var(--d-t-e,ease),opacity var(--d-o,.2s);
+  -webkit-transition: transform var(--d-t,.3s) var(--d-t-e,ease),opacity var(--d-o,.2s);
+  transition: transform var(--d-t,.3s) var(--d-t-e,ease),opacity var(--d-o,.2s);
+}
+
+.c6:checked {
+  --b: var(--active);
+  --bc: var(--active);
+  --d-o: .3s;
+  --d-t: .6s;
+  --d-t-e: cubic-bezier(.2,.85,.32,1.2);
+}
+
+.c6:disabled {
+  --b: var(--disabled);
+  cursor: not-allowed;
+  opacity: .9;
+}
+
+.c6:disabled:checked {
+  --b: var(--disabled-inner);
+  --bc: var(--border);
+}
+
+.c6:disabled + label {
+  cursor: not-allowed;
+}
+
+.c6:hover:not(:checked):not(:disabled) {
+  --bc: var(--border-hover);
+}
+
+.c6:focus {
+  box-shadow: 0 0 0 var(--focus);
+}
+
+.c6:not(.switch) {
+  width: 25px;
+}
+
+.c6:not(.switch):after {
+  opacity: var(--o,0);
+}
+
+.c6:not(.switch):checked {
+  --o: 1;
+}
+
+.c6:after {
+  width: 5px;
+  height: 9px;
+  border: 2px solid var(--active-inner);
+  border-top: 0;
+  border-left: 0;
+  left: 8px;
+  top: 4px;
+  -webkit-transform: rotate(var(--r,20deg));
+  -ms-transform: rotate(var(--r,20deg));
+  transform: rotate(var(--r,20deg));
+}
+
+.c6:checked {
+  --r: 43deg;
+}
+
+<div
+    class="c0 lesson-todo"
+    data-testid="container"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+        color="#F8CBC4"
+        data-testid="avatar"
+      >
+        А
+      </div>
+      <div
+        class="c3"
+      >
+        <span
+          class="c4"
+          data-testid="lesson-name"
+        >
+          Алгебра
+        </span>
+        <span
+          class="c5"
+          data-testid="lesson-subtitle"
+        />
+      </div>
+    </div>
+    <input
+      class="c6"
+      type="checkbox"
+    />
+  </div>
+</DocumentFragment>
+`;

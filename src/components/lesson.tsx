@@ -22,10 +22,10 @@ const Lesson: React.FC<Props> = (props) => {
     const colors = UiHelper.getLessonColor(props.subject);
 
     return <Container className={props.className ?? "lesson"} {...props}>
-        <Avatar {...colors}>{ props.subject[0] }</Avatar>
+        <Avatar data-testid="avatar" {...colors}>{ props.subject[0] }</Avatar>
         <Information>
-            <LessonName>{ props.subject }</LessonName>
-            <Subtitle>{ props.subtitle }</Subtitle>
+            <LessonName data-testid="lesson-name">{ props.subject }</LessonName>
+            <Subtitle data-testid="lesson-subtitle">{ props.subtitle }</Subtitle>
         </Information>
     </Container>
 }

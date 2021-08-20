@@ -1,0 +1,551 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render disabled button 1`] = `
+<DocumentFragment>
+  .c0 {
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 150px;
+  min-height: 55px;
+  padding: 10px 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+  width: 100%;
+}
+
+.c0[data-type=primary] {
+  background-color: var(--contrast);
+  color: white;
+}
+
+.c0[data-type=secondary] {
+  background-color: var(--light-contrast);
+  color: var(--contrast);
+}
+
+.c0[data-type=disabled] {
+  background-color: var(--disable);
+  color: var(--light-primary);
+  cursor: initial;
+}
+
+@media screen and (max-width:768px) {
+  .c0 {
+    padding: 13px 30px;
+    font-size: 18px;
+    height: 50px;
+  }
+}
+
+<div
+    class="react-ripples button-ripple button-type-disabled button"
+    style="position: relative; display: inline-flex; overflow: hidden;"
+  >
+    <button
+      class="c0 button-base"
+      data-loading="false"
+      data-type="disabled"
+      disabled=""
+    />
+    <s
+      style="position: absolute; border-radius: 50%; opacity: 0; width: 35px; height: 35px; transform: translate(-50%, -50%); pointer-events: none;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should render loading disabled button 1`] = `
+<DocumentFragment>
+  .c1 .dot-stretching {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: var(--light-primary);
+  color: var(--light-primary);
+  -webkit-transform: scale(1.25,1.25);
+  -ms-transform: scale(1.25,1.25);
+  transform: scale(1.25,1.25);
+  -webkit-animation: dotStretching 2s infinite ease-in;
+  animation: dotStretching 2s infinite ease-in;
+}
+
+.c1 .dot-stretching::before,
+.c1 .dot-stretching::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.c1 .dot-stretching::before {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--light-primary);
+  color: var(--light-primary);
+  -webkit-animation: dotStretchingBefore 2s infinite ease-in;
+  animation: dotStretchingBefore 2s infinite ease-in;
+}
+
+.c1 .dot-stretching::after {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--light-primary);
+  color: var(--light-primary);
+  -webkit-animation: dotStretchingAfter 2s infinite ease-in;
+  animation: dotStretchingAfter 2s infinite ease-in;
+}
+
+.c0 {
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 150px;
+  min-height: 55px;
+  padding: 10px 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+  width: 100%;
+}
+
+.c0[data-type=primary] {
+  background-color: var(--contrast);
+  color: white;
+}
+
+.c0[data-type=secondary] {
+  background-color: var(--light-contrast);
+  color: var(--contrast);
+}
+
+.c0[data-type=disabled] {
+  background-color: var(--disable);
+  color: var(--light-primary);
+  cursor: initial;
+}
+
+@media screen and (max-width:768px) {
+  .c0 {
+    padding: 13px 30px;
+    font-size: 18px;
+    height: 50px;
+  }
+}
+
+<div
+    class="c0 button"
+    data-type="disabled"
+  >
+    <div
+      class="c1"
+      color="var(--light-primary)"
+      radius="10"
+    >
+      <div
+        class="dot-stretching"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should render loading primary button 1`] = `
+<DocumentFragment>
+  .c1 .dot-stretching {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: white;
+  color: white;
+  -webkit-transform: scale(1.25,1.25);
+  -ms-transform: scale(1.25,1.25);
+  transform: scale(1.25,1.25);
+  -webkit-animation: dotStretching 2s infinite ease-in;
+  animation: dotStretching 2s infinite ease-in;
+}
+
+.c1 .dot-stretching::before,
+.c1 .dot-stretching::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.c1 .dot-stretching::before {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+  color: white;
+  -webkit-animation: dotStretchingBefore 2s infinite ease-in;
+  animation: dotStretchingBefore 2s infinite ease-in;
+}
+
+.c1 .dot-stretching::after {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+  color: white;
+  -webkit-animation: dotStretchingAfter 2s infinite ease-in;
+  animation: dotStretchingAfter 2s infinite ease-in;
+}
+
+.c0 {
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 150px;
+  min-height: 55px;
+  padding: 10px 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+  width: 100%;
+}
+
+.c0[data-type=primary] {
+  background-color: var(--contrast);
+  color: white;
+}
+
+.c0[data-type=secondary] {
+  background-color: var(--light-contrast);
+  color: var(--contrast);
+}
+
+.c0[data-type=disabled] {
+  background-color: var(--disable);
+  color: var(--light-primary);
+  cursor: initial;
+}
+
+@media screen and (max-width:768px) {
+  .c0 {
+    padding: 13px 30px;
+    font-size: 18px;
+    height: 50px;
+  }
+}
+
+<div
+    class="c0 button"
+    data-type="primary"
+  >
+    <div
+      class="c1"
+      color="white"
+      radius="10"
+    >
+      <div
+        class="dot-stretching"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should render loading secondary button 1`] = `
+<DocumentFragment>
+  .c1 .dot-stretching {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: var(--contrast);
+  color: var(--contrast);
+  -webkit-transform: scale(1.25,1.25);
+  -ms-transform: scale(1.25,1.25);
+  transform: scale(1.25,1.25);
+  -webkit-animation: dotStretching 2s infinite ease-in;
+  animation: dotStretching 2s infinite ease-in;
+}
+
+.c1 .dot-stretching::before,
+.c1 .dot-stretching::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.c1 .dot-stretching::before {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--contrast);
+  color: var(--contrast);
+  -webkit-animation: dotStretchingBefore 2s infinite ease-in;
+  animation: dotStretchingBefore 2s infinite ease-in;
+}
+
+.c1 .dot-stretching::after {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--contrast);
+  color: var(--contrast);
+  -webkit-animation: dotStretchingAfter 2s infinite ease-in;
+  animation: dotStretchingAfter 2s infinite ease-in;
+}
+
+.c0 {
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 150px;
+  min-height: 55px;
+  padding: 10px 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+  width: 100%;
+}
+
+.c0[data-type=primary] {
+  background-color: var(--contrast);
+  color: white;
+}
+
+.c0[data-type=secondary] {
+  background-color: var(--light-contrast);
+  color: var(--contrast);
+}
+
+.c0[data-type=disabled] {
+  background-color: var(--disable);
+  color: var(--light-primary);
+  cursor: initial;
+}
+
+@media screen and (max-width:768px) {
+  .c0 {
+    padding: 13px 30px;
+    font-size: 18px;
+    height: 50px;
+  }
+}
+
+<div
+    class="c0 button"
+    data-type="secondary"
+  >
+    <div
+      class="c1"
+      color="var(--contrast)"
+      radius="10"
+    >
+      <div
+        class="dot-stretching"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should render secondary button 1`] = `
+<DocumentFragment>
+  .c0 {
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 150px;
+  min-height: 55px;
+  padding: 10px 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+  width: 100%;
+}
+
+.c0[data-type=primary] {
+  background-color: var(--contrast);
+  color: white;
+}
+
+.c0[data-type=secondary] {
+  background-color: var(--light-contrast);
+  color: var(--contrast);
+}
+
+.c0[data-type=disabled] {
+  background-color: var(--disable);
+  color: var(--light-primary);
+  cursor: initial;
+}
+
+@media screen and (max-width:768px) {
+  .c0 {
+    padding: 13px 30px;
+    font-size: 18px;
+    height: 50px;
+  }
+}
+
+<div
+    class="react-ripples button-ripple button-type-secondary button"
+    style="position: relative; display: inline-flex; overflow: hidden;"
+  >
+    <button
+      class="c0 button-base"
+      data-loading="false"
+      data-type="secondary"
+    />
+    <s
+      style="position: absolute; border-radius: 50%; opacity: 0; width: 35px; height: 35px; transform: translate(-50%, -50%); pointer-events: none;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should renders correctly with default props 1`] = `
+<DocumentFragment>
+  .c0 {
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 150px;
+  min-height: 55px;
+  padding: 10px 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+  width: 100%;
+}
+
+.c0[data-type=primary] {
+  background-color: var(--contrast);
+  color: white;
+}
+
+.c0[data-type=secondary] {
+  background-color: var(--light-contrast);
+  color: var(--contrast);
+}
+
+.c0[data-type=disabled] {
+  background-color: var(--disable);
+  color: var(--light-primary);
+  cursor: initial;
+}
+
+@media screen and (max-width:768px) {
+  .c0 {
+    padding: 13px 30px;
+    font-size: 18px;
+    height: 50px;
+  }
+}
+
+<div
+    class="react-ripples button-ripple button-type-primary button"
+    style="position: relative; display: inline-flex; overflow: hidden;"
+  >
+    <button
+      class="c0 button-base"
+      data-loading="false"
+      data-type="primary"
+    />
+    <s
+      style="position: absolute; border-radius: 50%; opacity: 0; width: 35px; height: 35px; transform: translate(-50%, -50%); pointer-events: none;"
+    />
+  </div>
+</DocumentFragment>
+`;

@@ -16,7 +16,7 @@ const LessonTodo: React.FC<Props> = (props) => {
         if (props.onClick) props.onClick(!props.done);
     }
 
-    return <Container onClick={ handleClick } className="lesson-todo">
+    return <Container onClick={ handleClick } data-testid="container" className="lesson-todo">
         <Lesson
             subject={ props.subject }
             subtitle={ props.subtitle }
