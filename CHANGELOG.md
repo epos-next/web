@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/epos-next/web/compare/v0.0.0...v0.0.4) (2021-08-20)
+
+
+### Features
+
+* **ads:** handle error on advertisement list ([1ef50ed](https://github.com/epos-next/web/commit/1ef50ed0b10b4ccf77acf7bee002bd7465de30c2))
+* **controlWorks:** handle error on control work list ([9fe9e72](https://github.com/epos-next/web/commit/9fe9e721fc7f1e78d7ec24edc64fd02080a7a4b6))
+
+
+### Bug Fixes
+
+* **apiService:** remove success bool from return type of authenticate() ([f205af4](https://github.com/epos-next/web/commit/f205af4e0bcc39c5acb614fb23df65f58f4d9cac))
+* **test:** change date-input location ([72b6953](https://github.com/epos-next/web/commit/72b69539bf7f3c7af2e5fb9293547686032a5d0b))
+
 ## [0.0.3](https://github.com/epos-next/web/compare/0.0.2...0.0.3) - 2021-08-12
 
 ### Commits
