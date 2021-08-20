@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  .c3 {
+  font-size: 17px;
+  line-height: 20px;
+  color: var(--primary);
+}
+
+.c4 {
+  font-size: 15px;
+  line-height: 18px;
+  color: var(--secondary);
+}
+
+.c1 {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #456456;
+  color: #123123;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-weight: 500;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+<div
+    class="c0 lesson"
+    data-testid="lesson-container"
+  >
+    <div
+      class="c1"
+      color="#456456"
+      data-testid="avatar"
+    >
+      Ф
+    </div>
+    <div
+      class="c2"
+    >
+      <span
+        class="c3"
+        data-testid="lesson-name"
+      >
+        Физика
+      </span>
+      <span
+        class="c4"
+        data-testid="lesson-subtitle"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
