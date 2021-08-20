@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  .c0 .dot-stretching {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: var(--disabled);
+  color: var(--disabled);
+  -webkit-transform: scale(1.25,1.25);
+  -ms-transform: scale(1.25,1.25);
+  transform: scale(1.25,1.25);
+  -webkit-animation: dotStretching 2s infinite ease-in;
+  animation: dotStretching 2s infinite ease-in;
+}
+
+.c0 .dot-stretching::before,
+.c0 .dot-stretching::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.c0 .dot-stretching::before {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--disabled);
+  color: var(--disabled);
+  -webkit-animation: dotStretchingBefore 2s infinite ease-in;
+  animation: dotStretchingBefore 2s infinite ease-in;
+}
+
+.c0 .dot-stretching::after {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--disabled);
+  color: var(--disabled);
+  -webkit-animation: dotStretchingAfter 2s infinite ease-in;
+  animation: dotStretchingAfter 2s infinite ease-in;
+}
+
+<div
+    class="c0"
+    color="var(--disabled)"
+    radius="10"
+  >
+    <div
+      class="dot-stretching"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should use color 1`] = `
+<DocumentFragment>
+  .c0 .dot-stretching {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #ccc123;
+  color: #ccc123;
+  -webkit-transform: scale(1.25,1.25);
+  -ms-transform: scale(1.25,1.25);
+  transform: scale(1.25,1.25);
+  -webkit-animation: dotStretching 2s infinite ease-in;
+  animation: dotStretching 2s infinite ease-in;
+}
+
+.c0 .dot-stretching::before,
+.c0 .dot-stretching::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.c0 .dot-stretching::before {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc123;
+  color: #ccc123;
+  -webkit-animation: dotStretchingBefore 2s infinite ease-in;
+  animation: dotStretchingBefore 2s infinite ease-in;
+}
+
+.c0 .dot-stretching::after {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc123;
+  color: #ccc123;
+  -webkit-animation: dotStretchingAfter 2s infinite ease-in;
+  animation: dotStretchingAfter 2s infinite ease-in;
+}
+
+<div
+    class="c0"
+    color="#ccc123"
+    radius="10"
+  >
+    <div
+      class="dot-stretching"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should use radius 1`] = `
+<DocumentFragment>
+  .c0 .dot-stretching {
+  position: relative;
+  width: 2000px;
+  height: 2000px;
+  border-radius: 5px;
+  background-color: var(--disabled);
+  color: var(--disabled);
+  -webkit-transform: scale(1.25,1.25);
+  -ms-transform: scale(1.25,1.25);
+  transform: scale(1.25,1.25);
+  -webkit-animation: dotStretching 2s infinite ease-in;
+  animation: dotStretching 2s infinite ease-in;
+}
+
+.c0 .dot-stretching::before,
+.c0 .dot-stretching::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.c0 .dot-stretching::before {
+  width: 2000px;
+  height: 2000px;
+  border-radius: 50%;
+  background-color: var(--disabled);
+  color: var(--disabled);
+  -webkit-animation: dotStretchingBefore 2s infinite ease-in;
+  animation: dotStretchingBefore 2s infinite ease-in;
+}
+
+.c0 .dot-stretching::after {
+  width: 2000px;
+  height: 2000px;
+  border-radius: 50%;
+  background-color: var(--disabled);
+  color: var(--disabled);
+  -webkit-animation: dotStretchingAfter 2s infinite ease-in;
+  animation: dotStretchingAfter 2s infinite ease-in;
+}
+
+<div
+    class="c0"
+    color="var(--disabled)"
+    radius="2000"
+  >
+    <div
+      class="dot-stretching"
+    />
+  </div>
+</DocumentFragment>
+`;
