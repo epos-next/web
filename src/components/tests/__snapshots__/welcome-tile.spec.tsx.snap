@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  .c8 {
+  position: absolute;
+  width: 84px;
+  height: 100px;
+  top: -20px;
+  right: 70px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 16px;
+  -webkit-animation: hGeGpm 1.5s ease;
+  animation: hGeGpm 1.5s ease;
+  -webkit-animation-delay: 0ms;
+  animation-delay: 0ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.c9 {
+  position: absolute;
+  width: 95px;
+  height: 110px;
+  top: 50px;
+  right: 100px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 16px;
+  -webkit-animation: hGeGpm 1.5s ease;
+  animation: hGeGpm 1.5s ease;
+  -webkit-animation-delay: 200ms;
+  animation-delay: 200ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.c10 {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 130px;
+  right: 30px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 16px;
+  -webkit-animation: hGeGpm 1.5s ease;
+  animation: hGeGpm 1.5s ease;
+  -webkit-animation-delay: 400ms;
+  animation-delay: 400ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.c7 {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 20px;
+  color: rgba(255,255,255,0.75);
+  margin-top: 10px;
+}
+
+.c6 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  color: #FFFFFF;
+  margin-top: 5px;
+}
+
+.c5 {
+  font-size: 17px;
+  line-height: 20px;
+  color: rgba(255,255,255,0.75);
+}
+
+.c4 {
+  margin-left: 220px;
+}
+
+.c11 {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+}
+
+.c3 {
+  position: absolute;
+  height: 220px;
+  bottom: 0;
+  left: 30px;
+}
+
+.c2 {
+  background: linear-gradient(270deg,#9665FD 0%,#8C96FF 100%);
+  border-radius: 16px;
+  width: 100%;
+  height: 200px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  -webkit-transition: 700ms -webkit-transform ease-in-out;
+  -webkit-transition: 700ms transform ease-in-out;
+  transition: 700ms transform ease-in-out;
+}
+
+.c0 {
+  padding-top: 20px;
+  height: 220px;
+  -webkit-transition: 700ms ease-in-out;
+  transition: 700ms ease-in-out;
+  overflow: hidden;
+}
+
+.c0[data-show=false] {
+  padding: 0;
+  height: 0;
+  margin-bottom: 0;
+}
+
+.c0[data-show=false] .c1 {
+  -webkit-transform: translateY(20px);
+  -ms-transform: translateY(20px);
+  transform: translateY(20px);
+}
+
+@media screen and (max-width:1024px) {
+  .c0 {
+    display: none;
+  }
+}
+
+<div
+    class="c0 welcome-tile"
+    data-show="true"
+  >
+    <div
+      class="c1 c2"
+    >
+      <img
+        class="c3"
+        draggable="false"
+        height="220"
+        src="/images/girl-student.png"
+        width="142"
+      />
+      <div
+        class="c4"
+      >
+        <span
+          class="c5"
+        >
+          Привет, Максим!
+        </span>
+        <h2
+          class="c6"
+        >
+          Добро пожаловать в Эпос Next
+        </h2>
+        <h2
+          class="c7"
+        >
+          Новый многофункциональный клиент
+          <br />
+          для электронного дневника Эпос
+        </h2>
+      </div>
+      <div
+        class="c8"
+        r="70"
+      />
+      <div
+        class="c9"
+        r="100"
+      />
+      <div
+        class="c10"
+        r="30"
+      />
+      <img
+        alt="close"
+        class="c11"
+        height="20"
+        src="/icons/close-icon.png"
+        width="20"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`shouldn't show anything if show=false 1`] = `<DocumentFragment />`;

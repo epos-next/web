@@ -42,6 +42,7 @@ const WelcomeTile: React.FC<Props> = (props: Props) => {
             <AbstractRect w={ 95 } h={ 110 } r={ 100 } t={ 50 } i={ 1 }/>
             <AbstractRect w={ 50 } h={ 50 } r={ 30 } t={ 130 } i={ 2 }/>
             <CloseButton
+                alt="close"
                 onClick={ handleClose }
                 width={ 20 }
                 height={ 20 }
