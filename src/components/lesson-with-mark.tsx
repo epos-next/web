@@ -10,7 +10,7 @@ export type Props = {
 const LessonWithMark: React.FC<Props> = (props) => {
     return <Container className="lesson-with-mark">
         <Lesson {...props} />
-        <Mark>{ props.mark }</Mark>
+        <Mark data-testid="mark">{ props.mark }</Mark>
     </Container>
 }
 

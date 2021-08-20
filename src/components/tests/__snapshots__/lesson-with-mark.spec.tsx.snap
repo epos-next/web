@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  .c4 {
+  font-size: 17px;
+  line-height: 20px;
+  color: var(--primary);
+}
+
+.c5 {
+  font-size: 15px;
+  line-height: 18px;
+  color: var(--secondary);
+}
+
+.c2 {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #BBEDBF;
+  color: #68D676;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-weight: 500;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c6 {
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+<div
+    class="c0 lesson-with-mark"
+  >
+    <div
+      class="c1 lesson"
+    >
+      <div
+        class="c2"
+        color="#BBEDBF"
+        data-testid="avatar"
+      >
+        Ф
+      </div>
+      <div
+        class="c3"
+      >
+        <span
+          class="c4"
+          data-testid="lesson-name"
+        >
+          Физика
+        </span>
+        <span
+          class="c5"
+          data-testid="lesson-subtitle"
+        />
+      </div>
+    </div>
+    <span
+      class="c6"
+      data-testid="mark"
+    >
+      5
+    </span>
+  </div>
+</DocumentFragment>
+`;

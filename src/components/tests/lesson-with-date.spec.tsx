@@ -22,7 +22,6 @@ it("should use date prop", () => {
     expect(FormatHelper.formatDate).toHaveBeenCalledWith(date)
 });
 
-
 it("should show subject", () => {
     const subject = "Физика"
     const { getByTestId } = render(<LessonWithDate date={date} subject={subject}/>)
