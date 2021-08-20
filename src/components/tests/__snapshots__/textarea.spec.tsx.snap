@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  .c0 {
+  width: 100%;
+  border: 2px solid var(--light-primary);
+  border-radius: 10px;
+  outline: none;
+  padding: 14px;
+  font-size: 18px;
+  color: var(--primary);
+  -webkit-transition: 150ms border;
+  transition: 150ms border;
+}
+
+.c0::-webkit-input-placeholder {
+  color: var(--light-primary);
+}
+
+.c0::-moz-placeholder {
+  color: var(--light-primary);
+}
+
+.c0:-ms-input-placeholder {
+  color: var(--light-primary);
+}
+
+.c0::placeholder {
+  color: var(--light-primary);
+}
+
+.c0:focus {
+  border: 2px solid var(--contrast);
+}
+
+.c0[data-error=true] {
+  color: var(--error);
+  border: 2px solid var(--error);
+}
+
+.c0[data-error=true]:focus {
+  border: 2px solid var(--error);
+}
+
+@media screen and (max-width:768px) {
+  .c0 {
+    padding: 13px;
+  }
+}
+
+<textarea
+    class="c0"
+  />
+</DocumentFragment>
+`;
+
+exports[`should use error state 1`] = `
+<DocumentFragment>
+  .c0 {
+  width: 100%;
+  border: 2px solid var(--light-primary);
+  border-radius: 10px;
+  outline: none;
+  padding: 14px;
+  font-size: 18px;
+  color: var(--primary);
+  -webkit-transition: 150ms border;
+  transition: 150ms border;
+}
+
+.c0::-webkit-input-placeholder {
+  color: var(--light-primary);
+}
+
+.c0::-moz-placeholder {
+  color: var(--light-primary);
+}
+
+.c0:-ms-input-placeholder {
+  color: var(--light-primary);
+}
+
+.c0::placeholder {
+  color: var(--light-primary);
+}
+
+.c0:focus {
+  border: 2px solid var(--contrast);
+}
+
+.c0[data-error=true] {
+  color: var(--error);
+  border: 2px solid var(--error);
+}
+
+.c0[data-error=true]:focus {
+  border: 2px solid var(--error);
+}
+
+@media screen and (max-width:768px) {
+  .c0 {
+    padding: 13px;
+  }
+}
+
+<textarea
+    class="c0"
+    data-error="true"
+  />
+</DocumentFragment>
+`;
