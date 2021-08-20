@@ -13,7 +13,7 @@ const ModalWindowBase: React.FC<Props> = (props) => {
     return <Container data-open={ props.isOpen }>
         <Window>
             <CloseButton
-                alt=""
+                alt="close"
                 width={ 28 }
                 height={ 28 }
                 onClick={ props.onClose }
