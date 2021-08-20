@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1629457430113" clover="3.2.0">
-  <project timestamp="1629457430113" name="All files">
-    <metrics statements="666" coveredstatements="569" conditionals="317" coveredconditionals="216" methods="204" coveredmethods="160" elements="1187" coveredelements="945" complexity="0" loc="666" ncloc="666" packages="11" files="44" classes="44"/>
+<coverage generated="1629476469294" clover="3.2.0">
+  <project timestamp="1629476469294" name="All files">
+    <metrics statements="665" coveredstatements="570" conditionals="317" coveredconditionals="219" methods="204" coveredmethods="161" elements="1186" coveredelements="950" complexity="0" loc="665" ncloc="665" packages="11" files="44" classes="44"/>
     <package name="src.components">
-      <metrics statements="204" coveredstatements="203" conditionals="78" coveredconditionals="75" methods="52" coveredmethods="51"/>
+      <metrics statements="204" coveredstatements="203" conditionals="78" coveredconditionals="74" methods="52" coveredmethods="51"/>
       <file name="advertisement.tsx" path="/Users/zotovy/Documents/epos-next/web/src/components/advertisement.tsx">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="4" count="1" type="stmt"/>
@@ -113,16 +113,16 @@
         <line num="72" count="1" type="stmt"/>
       </file>
       <file name="input.tsx" path="/Users/zotovy/Documents/epos-next/web/src/components/input.tsx">
-        <metrics statements="15" coveredstatements="15" conditionals="18" coveredconditionals="18" methods="3" coveredmethods="3"/>
+        <metrics statements="15" coveredstatements="15" conditionals="18" coveredconditionals="17" methods="3" coveredmethods="3"/>
         <line num="18" count="4" type="stmt"/>
-        <line num="20" count="37" type="stmt"/>
-        <line num="23" count="36" type="cond" truecount="2" falsecount="0"/>
-        <line num="24" count="36" type="cond" truecount="2" falsecount="0"/>
-        <line num="27" count="36" type="stmt"/>
-        <line num="28" count="36" type="cond" truecount="4" falsecount="0"/>
-        <line num="31" count="36" type="stmt"/>
-        <line num="32" count="2" type="cond" truecount="4" falsecount="0"/>
-        <line num="35" count="36" type="stmt"/>
+        <line num="20" count="36" type="stmt"/>
+        <line num="23" count="35" type="cond" truecount="2" falsecount="0"/>
+        <line num="24" count="35" type="cond" truecount="2" falsecount="0"/>
+        <line num="27" count="35" type="stmt"/>
+        <line num="28" count="35" type="cond" truecount="4" falsecount="0"/>
+        <line num="31" count="35" type="stmt"/>
+        <line num="32" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="35" count="35" type="stmt"/>
         <line num="42" count="2" type="stmt"/>
         <line num="65" count="4" type="stmt"/>
         <line num="72" count="4" type="stmt"/>
@@ -136,9 +136,9 @@
         <line num="15" count="8" type="stmt"/>
         <line num="16" count="3" type="cond" truecount="2" falsecount="0"/>
         <line num="19" count="8" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="39" count="1" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
       </file>
       <file name="lesson-with-date.tsx" path="/Users/zotovy/Documents/epos-next/web/src/components/lesson-with-date.tsx">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -312,30 +312,29 @@
       </file>
     </package>
     <package name="src.helpers">
-      <metrics statements="79" coveredstatements="38" conditionals="69" coveredconditionals="8" methods="24" coveredmethods="14"/>
+      <metrics statements="78" coveredstatements="39" conditionals="69" coveredconditionals="12" methods="24" coveredmethods="15"/>
       <file name="auth-helper.ts" path="/Users/zotovy/Documents/epos-next/web/src/helpers/auth-helper.ts">
-        <metrics statements="21" coveredstatements="19" conditionals="6" coveredconditionals="2" methods="6" coveredmethods="5"/>
-        <line num="7" count="4" type="stmt"/>
-        <line num="8" count="4" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="15" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="33" count="1" type="stmt"/>
-        <line num="37" count="4" type="cond" truecount="1" falsecount="1"/>
-        <line num="38" count="4" type="stmt"/>
-        <line num="42" count="4" type="stmt"/>
-        <line num="44" count="4" type="stmt"/>
-        <line num="51" count="5" type="stmt"/>
-        <line num="52" count="5" type="stmt"/>
-        <line num="53" count="5" type="stmt"/>
-        <line num="54" count="5" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="59" count="0" type="cond" truecount="0" falsecount="2"/>
+        <metrics statements="20" coveredstatements="20" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="6"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="8" count="6" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="14" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="36" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="37" count="5" type="stmt"/>
+        <line num="41" count="5" type="stmt"/>
+        <line num="43" count="5" type="stmt"/>
+        <line num="50" count="7" type="stmt"/>
+        <line num="51" count="7" type="stmt"/>
+        <line num="52" count="7" type="stmt"/>
+        <line num="53" count="7" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="58" count="2" type="cond" truecount="2" falsecount="0"/>
       </file>
       <file name="date-helper.ts" path="/Users/zotovy/Documents/epos-next/web/src/helpers/date-helper.ts">
         <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="1"/>
@@ -691,12 +690,12 @@
         <line num="97" count="2" type="stmt"/>
         <line num="107" count="2" type="stmt"/>
         <line num="109" count="2" type="stmt"/>
-        <line num="110" count="429" type="stmt"/>
-        <line num="113" count="429" type="cond" truecount="4" falsecount="0"/>
+        <line num="110" count="249" type="stmt"/>
+        <line num="113" count="249" type="cond" truecount="4" falsecount="0"/>
         <line num="114" count="1" type="stmt"/>
         <line num="115" count="1" type="stmt"/>
-        <line num="119" count="428" type="cond" truecount="4" falsecount="0"/>
-        <line num="120" count="420" type="stmt"/>
+        <line num="119" count="248" type="cond" truecount="4" falsecount="0"/>
+        <line num="120" count="240" type="stmt"/>
         <line num="124" count="8" type="cond" truecount="1" falsecount="1"/>
         <line num="125" count="8" type="stmt"/>
         <line num="126" count="8" type="stmt"/>
@@ -826,7 +825,7 @@
         <line num="140" count="7" type="stmt"/>
         <line num="142" count="7" type="stmt"/>
         <line num="143" count="49" type="stmt"/>
-        <line num="144" count="2489" type="stmt"/>
+        <line num="144" count="2643" type="stmt"/>
         <line num="149" count="49" type="stmt"/>
         <line num="152" count="7" type="stmt"/>
         <line num="154" count="7" type="stmt"/>

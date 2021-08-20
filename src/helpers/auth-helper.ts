@@ -9,7 +9,6 @@ export default class AuthHelper {
     }
 
     static set tokens(data: TokensBody) {
-        console.log("calling", data);
         const cookies = new Cookies();
 
         if (typeof window === "undefined") return;
