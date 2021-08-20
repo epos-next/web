@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should display error state 1`] = `
+<DocumentFragment>
+  .c1 {
+  width: 100%;
+  border: 2px solid var(--light-primary);
+  border-radius: 10px;
+  outline: none;
+  padding: 14px;
+  font-size: 18px;
+  color: var(--primary);
+  -webkit-transition: 150ms border;
+  transition: 150ms border;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c1::-webkit-input-placeholder {
+  color: var(--light-primary);
+}
+
+.c1::-moz-placeholder {
+  color: var(--light-primary);
+}
+
+.c1:-ms-input-placeholder {
+  color: var(--light-primary);
+}
+
+.c1::placeholder {
+  color: var(--light-primary);
+}
+
+.c1:focus {
+  border: 2px solid var(--contrast);
+}
+
+.c1[data-error=true] {
+  color: var(--error);
+  border: 2px solid var(--error);
+}
+
+.c1[data-error=true]:focus {
+  border: 2px solid var(--error);
+}
+
+.c2 {
+  position: absolute;
+  top: 16px;
+  right: 14px;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+}
+
+.c0 select:invalid {
+  color: var(--light-primary);
+}
+
+@media screen and (max-width:768px) {
+  .c1 {
+    padding: 13px;
+  }
+}
+
+<div
+    class="c0"
+  >
+    <select
+      class="c1"
+      data-error="true"
+    />
+    <img
+      class="c2"
+      src="/icons/arrow-icon.png"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  .c1 {
+  width: 100%;
+  border: 2px solid var(--light-primary);
+  border-radius: 10px;
+  outline: none;
+  padding: 14px;
+  font-size: 18px;
+  color: var(--primary);
+  -webkit-transition: 150ms border;
+  transition: 150ms border;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c1::-webkit-input-placeholder {
+  color: var(--light-primary);
+}
+
+.c1::-moz-placeholder {
+  color: var(--light-primary);
+}
+
+.c1:-ms-input-placeholder {
+  color: var(--light-primary);
+}
+
+.c1::placeholder {
+  color: var(--light-primary);
+}
+
+.c1:focus {
+  border: 2px solid var(--contrast);
+}
+
+.c1[data-error=true] {
+  color: var(--error);
+  border: 2px solid var(--error);
+}
+
+.c1[data-error=true]:focus {
+  border: 2px solid var(--error);
+}
+
+.c2 {
+  position: absolute;
+  top: 16px;
+  right: 14px;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+}
+
+.c0 select:invalid {
+  color: var(--light-primary);
+}
+
+@media screen and (max-width:768px) {
+  .c1 {
+    padding: 13px;
+  }
+}
+
+<div
+    class="c0"
+  >
+    <select
+      class="c1"
+    />
+    <img
+      class="c2"
+      src="/icons/arrow-icon.png"
+    />
+  </div>
+</DocumentFragment>
+`;
