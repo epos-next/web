@@ -36,5 +36,5 @@ export function isTokensBody(obj: any): obj is TokensBody {
     return typeof obj.tokens === "object"
         && typeof obj.tokens.access === "string"
         && typeof obj.tokens.refresh === "string"
-        && typeof obj.id === "string";
+        && typeof obj.id === "number";
 }

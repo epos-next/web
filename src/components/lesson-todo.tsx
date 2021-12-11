@@ -56,6 +56,7 @@ const Checkbox = styled.input`
   border: 1px solid var(--bc, var(--border));
   background: var(--b, var(--background));
   transition: background .3s, border-color .3s, box-shadow .2s;
+  flex: 0 0 auto;
 
   &:after {
     content: '';

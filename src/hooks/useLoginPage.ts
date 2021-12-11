@@ -31,6 +31,8 @@ export default function useLoginPage() {
                     await AppRouter.goHome();
                 }
 
+                console.log(response);
+
                 if (isInvalidCredentialsApiError(response)) UiHelper.showErrorToast(
                     "Неверный Email или пароль. Проверьте корректность введённых данных."
                 );

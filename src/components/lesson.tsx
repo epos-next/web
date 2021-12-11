@@ -55,6 +55,7 @@ const Avatar = styled.div<LessonColor>`
   align-items: center;
   user-select: none;
   font-weight: 500;
+  flex: 0 0 auto;
 `;
 
 const Information = styled.div`

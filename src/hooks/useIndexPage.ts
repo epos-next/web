@@ -115,8 +115,10 @@ export const calculateNextLesson = async (lessons: Lesson[], dispatch: Dispatch)
 
     const now = moment(DateHelper.now);
 
+    console.info(lessons)
+
     // sort lessons
-    lessons = lessons.sort(
+    lessons = lessons.slice().sort(
         (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
     );
 
