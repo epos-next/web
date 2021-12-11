@@ -28,7 +28,7 @@ const MarksTab: React.FC = () => {
         });
 
         if (state.marks[key].periods.length !== 0) {
-            for (let i = state.marks[key].periods.length; i < 4; i++) {
+            for (let i = state.marks[key].periods.length; i < periodsAmount; i++) {
                 periods[i].push({ all: [] });
             }
         }
@@ -67,7 +67,7 @@ const MarksTab: React.FC = () => {
                                             subject.all.map((mark, markIndex) => {
                                                 return <PrimaryMark
                                                     key={ `mark-${ subjectIndex }-${ markIndex }` }>
-                                                    { mark }
+                                                    { mark.value }
                                                 </PrimaryMark>
                                             })
                                         }
@@ -75,9 +75,11 @@ const MarksTab: React.FC = () => {
                                         {
                                             subject.total
                                                 ? <TotalMark>{ subject.total }</TotalMark>
-                                                : <PreTotalMark>{
-                                                    Math.ceil(lodash.sum(subject.all) / subject.all.length)
-                                                }</PreTotalMark>
+                                                : <PreTotalMark>
+                                                    {
+                                                        Math.ceil(lodash.sum(subject.all.map(e => e.value)) / subject.all.length)
+                                                    }
+                                                </PreTotalMark>
                                         }
                                     </MarksGroup>
                                 })
@@ -123,7 +125,7 @@ const TotalMark = styled.div`
   width: 100%;
   text-align: right;
   margin-bottom: 16px;
-  
+
   @media screen and (max-width: 960px) {
     font-size: 14px;
     line-height: 18px;
