@@ -32,7 +32,10 @@ const useHomePage = () => {
             }
         },
         handlers: {
-            closeWelcomeTile: () => setShowWelcomeTile(false)
+            closeWelcomeTile: () => {
+                setShowWelcomeTile(false);
+                CacheService.doNotShowWelcomeTile();
+            }
         }
     }
 }
