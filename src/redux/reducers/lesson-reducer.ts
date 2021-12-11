@@ -39,7 +39,7 @@ export const lessonSlice = createSlice({
 export const { setNextLesson, setLessons, setLessonsLoading } = lessonSlice.actions;
 
 
-export const selectLessons = (state: RootState) => state.lessonsState.lessons;
+export const selectLessons = (state: RootState) => state.lessonsState.lessons.slice().sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 export const selectLessonLoading = (state: RootState) => state.lessonsState.loading;
 export const selectNextLesson = (state: RootState) => state.lessonsState.nextLesson;
 export const selectTimeLeftToNextLesson = (state: RootState) => state.lessonsState.timeLeftToNextLesson;
