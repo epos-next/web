@@ -86,7 +86,7 @@
     "eslint-config-airbnb": "^18.2.1",
     "gatsby-plugin-sass": "^4.6.0",
     "gatsby-plugin-typescript": "^3.6.0",
-    "husky": "^7.0.1",
+    "husky": "^7.0.4",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.6",
     "jest-styled-components": "^7.0.5",
