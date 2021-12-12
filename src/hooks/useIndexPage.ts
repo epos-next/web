@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "@redux/hooks";
 import { selectUser } from "@redux/reducers/user-reducer";
 import CacheService from "@services/cache-service";
 import { getData } from "@services/data-service";
+import { uiMessages } from "@utils/constants";
 import moment from "moment";
 import { useEffect } from "react";
 import { Dispatch } from "redux";
@@ -63,9 +64,7 @@ export default function useIndexPage() {
 
                 if (e === "server-error") {
                     if (!CacheService.isEmpty()) {
-                        UiHelper.showErrorToast(
-                            "Похоже что наши сервисы сейчас недоступны. Повторите попытку чуть позже"
-                        )
+                        UiHelper.showErrorToast(uiMessages.serverError)
                     } else {
                         return navigate("/login");
                     }
