@@ -1,7 +1,9 @@
 import DateHelper from "@helpers/date-helper";
+import { getAcademicMonthIndex, getMonthFromAcademicYear } from "@utils/functions";
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
-import { months, weekdays } from "@utils/constants";
+import { schoolMonths, weekdays } from "@utils/constants";
 
 export type Props = {
     /** Triggers when user select new day */
@@ -15,12 +17,12 @@ const CalendarComponent: React.FC<Props> = (props) => {
         {/* Header */ }
         <Header>
             <Title>Календарь</Title>
-            <Month dir="rtl" data-testid="month" onChange={ handlers.onMonthChanged } value={ values.selectedMonth }>
+            <Month dir="rtl" data-testid="month" onChange={ handlers.onMonthChanged } value={ getAcademicMonthIndex(values.selectedMonth) }>
                 {
-                    months.map((e, i) => <option
-                        key={ `calendar-month_option-${ e }` }
+                    schoolMonths.map((e, i) => <option
+                        key={ `calendar-month_option-${ e.name }` }
                         value={ i }>
-                        { e }
+                        { e.name }
                     </option>)
                 }
             </Month>
@@ -72,11 +74,11 @@ export default CalendarComponent;
 export const useCalendar = (onDayChanged?: Props["onDayChanged"]) => {
     const [selectedMonth, setSelectedMonth] = useState(DateHelper.now.getMonth());
     const [selectedDate, setSelectedDate] = useState(DateHelper.now.getDate());
+    const [selectedYear, setSelectedYear] = useState(DateHelper.now.getFullYear());
 
     useEffect(() => {
-        const now = DateHelper.now;
         if (onDayChanged) {
-            onDayChanged(new Date(now.getFullYear(), selectedMonth, selectedDate));
+            onDayChanged(new Date(selectedYear, selectedMonth, selectedDate));
         }
     }, [selectedMonth, selectedDate]);
 
@@ -84,7 +86,7 @@ export const useCalendar = (onDayChanged?: Props["onDayChanged"]) => {
         values: {
             selectedMonth,
             selectedDate,
-            days: getDates(DateHelper.now.getFullYear(), selectedMonth),
+            days: getDates(selectedYear, selectedMonth),
         },
         handlers: {
             onDateChanged: (day: Date) => () => {
@@ -92,7 +94,13 @@ export const useCalendar = (onDayChanged?: Props["onDayChanged"]) => {
                 if (day.getMonth() !== selectedMonth) setSelectedMonth(day.getMonth());
             },
             onMonthChanged: (event: React.ChangeEvent<HTMLSelectElement>) => {
-                setSelectedMonth(parseInt(event.target.value))
+                const value = parseInt(event.target.value);
+
+                const startOfSchoolYear = moment().startOf("year").add(9, "months")
+                const selected = startOfSchoolYear.add(value - 1, "months").set("days", selectedDate)
+
+                setSelectedYear(selected.year());
+                setSelectedMonth(selected.month());
             },
         }
     }
