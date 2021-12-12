@@ -1,37 +1,29 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+<img src="https://sun9-2.userapi.com/impg/zxw61FgNIL37GI2OIm_KA86NJ6ot5VadwD3-IA/y2SaRmpHbUI.jpg?size=2560x1280&quality=96&sign=a8b997c4489bd54525ec74abbd5ed664&type=album" align="center"/>
+
+# 🎓 &nbsp;**Epos Next** web app
+### Brand new EPOS client!
 
 ## 🚀 Quick start
 
-1.  **Create a Gatsby site.**
-
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+1.  **Clone this repository.**
 
     ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
+    # Just use Git
+    git clone https://github.com/epos-next/web.git
     ```
 
-2.  **Start developing.**
+2.  **Start application.**
 
     Navigate into your new site’s directory and start it up.
 
     ```shell
-    cd my-gatsby-site/
+    cd web/
     npm run develop
     ```
 
 3.  **Open the code and start customizing!**
 
     Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.js` to see your site update in real-time!
 
 4.  **Learn more**
 
@@ -51,4 +43,4 @@
 
 Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
 
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/epos-next/web)
