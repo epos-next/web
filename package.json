@@ -27,7 +27,7 @@
     "release": "standard-version"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.5.1",
+    "@reduxjs/toolkit": "^1.7.0",
     "axios": "^0.21.1",
     "axios-rate-limit": "^1.3.0",
     "babel-plugin-styled-components": "^1.12.0",
