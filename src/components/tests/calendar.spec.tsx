@@ -42,14 +42,14 @@ describe("testing calendar component", () => {
         const date = new Date(2021, 10, 30)
         fireEvent.click(getByTestId(`date-${ date.toISOString() }`))
         expect(callback).toBeCalledWith(date)
-        expect(getByTestId("month")).toHaveProperty("value", "10")
+        expect(getByTestId("month")).toHaveProperty("value", "2")
     });
 
     it("should change month on on user select", () => {
         const callback = jest.fn()
         const { getByTestId } = render(<CalendarComponent onDayChanged={ callback }/>)
         fireEvent.change(getByTestId("month"), { target: { value: 3 } })
-        expect(callback).toBeCalledWith(new Date(2021, 3, 21))
+        expect(callback).toBeCalledWith(new Date(2021, 11, 21))
         expect(getByTestId("month")).toHaveProperty("value", "3")
     });
 

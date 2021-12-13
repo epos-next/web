@@ -84,7 +84,7 @@ describe("testing onSubmit()", () => {
         }))
 
         expect(UiHelper.showErrorToast).toBeCalledWith(
-            "Неверный Email или пароль. Проверьте корректность введённых данных."
+            "Неверный Email или пароль. Проверьте корректность введённых данных"
         )
     });
 
@@ -107,7 +107,7 @@ describe("testing onSubmit()", () => {
         }))
 
         expect(UiHelper.showErrorToast).toBeCalledWith(
-            "Похоже что наши сервисы сейчас недоступны. Повторите попытку чуть позже"
+            "Похоже, наши сервисы сейчас недоступны. Повторите попытку чуть позже"
         )
     });
 

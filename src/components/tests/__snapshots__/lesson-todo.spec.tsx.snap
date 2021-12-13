@@ -37,6 +37,9 @@ exports[`should match snapshot 1`] = `
   -ms-user-select: none;
   user-select: none;
   font-weight: 500;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 .c3 {
@@ -99,6 +102,9 @@ exports[`should match snapshot 1`] = `
   background: var(--b,var(--background));
   -webkit-transition: background .3s,border-color .3s,box-shadow .2s;
   transition: background .3s,border-color .3s,box-shadow .2s;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
   border-radius: 7px;
 }
 
