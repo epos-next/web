@@ -69,8 +69,6 @@ export default function useIndexPage() {
                         return navigate("/login");
                     }
                 }
-
-                console.error(e);
             });
     }, []);
 
@@ -113,8 +111,6 @@ export const calculateNextLesson = async (lessons: Lesson[], dispatch: Dispatch)
     if (lessons.length === 0) return dispatch(setNextLesson(noLessonAction));
 
     const now = moment(DateHelper.now);
-
-    console.info(lessons)
 
     // sort lessons
     lessons = lessons.slice().sort(
