@@ -14,6 +14,7 @@ export default class ApiRoutes {
     );
     static createControlWork = ApiRoutes.buildRoute("/control-work")
     static createAd = ApiRoutes.buildRoute("/advertisement")
+
     static setHomeworkStatus = (id: number, status: boolean) => ApiRoutes.buildRoute(
         `/homework/${ id }/${ status ? "complete" : "cancel-complete" }`
     )
