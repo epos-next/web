@@ -149,14 +149,15 @@ export default class ApiService {
     }
 
     /**
-     * mark homework as completed
-     * @param id – homework id which user would like to mark as completed
+     * mark homework as completed or not completed
+     * @param id – homework id which user would like to change status
+     * @param completed – true if user would like to mark as completed otherwise false
      * @throws {@link ForbiddenApiError}
      * @throws {@link BadRequestApiError}
      * @throws {@link ServerErrorApiError}
      */
-    static async completeHomework(id: number): Promise<void> {
-        const response = await client.put(ApiRoutes.completeHomework(id));
+    static async changeHomeworkStatus(id: number, completed: boolean): Promise<void> {
+        const response = await client.put(ApiRoutes.setHomeworkStatus(id, completed));
 
         // Ok
         if (response.status === 200 && response.data.success === true) {
