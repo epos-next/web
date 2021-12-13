@@ -1,3 +1,4 @@
+import lodash from "lodash";
 import React, { PropsWithChildren, useState } from "react";
 import styled, { css } from "styled-components";
 
@@ -49,7 +50,7 @@ const Input: React.FC<Props> = (props: PropsWithChildren<Props>) => {
             data-error={ error }
             type={type}
             onKeyDown={ handleKeyPress }
-            { ...props } />
+            { ...lodash.omit(props, "onEnterPressed")  }/>
 
         {/* Error text */ }
         {

@@ -187,62 +187,62 @@ exports[`testing calendar component should match snapshot 1`] = `
         <option
           value="0"
         >
-          Январь
+          Сентябрь
         </option>
         <option
           value="1"
         >
-          Февраль
+          Октябрь
         </option>
         <option
           value="2"
         >
-          Март
+          Ноябрь
         </option>
         <option
           value="3"
         >
-          Апрель
+          Декабрь
         </option>
         <option
           value="4"
         >
-          Май
+          Январь
         </option>
         <option
           value="5"
         >
-          Июнь
+          Февраль
         </option>
         <option
           value="6"
         >
-          Июль
+          Март
         </option>
         <option
           value="7"
         >
-          Август
+          Апрель
         </option>
         <option
           value="8"
         >
-          Сентябрь
+          Май
         </option>
         <option
           value="9"
         >
-          Октябрь
+          Июнь
         </option>
         <option
           value="10"
         >
-          Ноябрь
+          Июль
         </option>
         <option
           value="11"
         >
-          Декабрь
+          Август
         </option>
       </select>
     </div>

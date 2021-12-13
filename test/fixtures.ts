@@ -157,7 +157,7 @@ export const tokensBody = {
         access: '123.123.123',
         refresh: '456.456.456',
     },
-    id: "1",
+    id: 1,
 }
 
 export const getDatesAnswers = [

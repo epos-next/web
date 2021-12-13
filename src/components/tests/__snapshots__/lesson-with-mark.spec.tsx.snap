@@ -37,6 +37,9 @@ exports[`should match snapshot 1`] = `
   -ms-user-select: none;
   user-select: none;
   font-weight: 500;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 .c3 {

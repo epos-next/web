@@ -2,7 +2,7 @@
 
 exports[`should math snapshot 1`] = `
 <DocumentFragment>
-  .c11 {
+  .c13 {
   width: 100%;
   height: 36px;
   display: -webkit-box;
@@ -27,7 +27,7 @@ exports[`should math snapshot 1`] = `
   color: white;
 }
 
-.c11:after {
+.c13:after {
   content: "";
   position: absolute;
   top: 0;
@@ -66,7 +66,7 @@ exports[`should math snapshot 1`] = `
   cursor: pointer;
 }
 
-.c13 {
+.c11 {
   width: 100%;
   height: 36px;
   display: -webkit-box;
@@ -270,7 +270,7 @@ exports[`should math snapshot 1`] = `
         data-testid="input-base"
         readonly=""
         type="text"
-        value="01.02.2021"
+        value="13.12.2021"
       />
     </div>
     <img
@@ -301,62 +301,62 @@ exports[`should math snapshot 1`] = `
             <option
               value="0"
             >
-              Январь
+              Сентябрь
             </option>
             <option
               value="1"
             >
-              Февраль
+              Октябрь
             </option>
             <option
               value="2"
             >
-              Март
+              Ноябрь
             </option>
             <option
               value="3"
             >
-              Апрель
+              Декабрь
             </option>
             <option
               value="4"
             >
-              Май
+              Январь
             </option>
             <option
               value="5"
             >
-              Июнь
+              Февраль
             </option>
             <option
               value="6"
             >
-              Июль
+              Март
             </option>
             <option
               value="7"
             >
-              Август
+              Апрель
             </option>
             <option
               value="8"
             >
-              Сентябрь
+              Май
             </option>
             <option
               value="9"
             >
-              Октябрь
+              Июнь
             </option>
             <option
               value="10"
             >
-              Ноябрь
+              Июль
             </option>
             <option
               value="11"
             >
-              Декабрь
+              Август
             </option>
           </select>
         </div>
@@ -400,171 +400,213 @@ exports[`should math snapshot 1`] = `
           </div>
           <div
             class="c11"
-            data-testid="date-2021-01-31T19:00:00.000Z"
+            data-testid="date-2021-11-28T19:00:00.000Z"
+          >
+            29
+          </div>
+          <div
+            class="c11"
+            data-testid="date-2021-11-29T19:00:00.000Z"
+          >
+            30
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-11-30T19:00:00.000Z"
           >
             1
           </div>
           <div
             class="c12"
-            data-testid="date-2021-02-01T19:00:00.000Z"
+            data-testid="date-2021-12-01T19:00:00.000Z"
           >
             2
           </div>
           <div
             class="c12"
-            data-testid="date-2021-02-02T19:00:00.000Z"
+            data-testid="date-2021-12-02T19:00:00.000Z"
           >
             3
           </div>
           <div
             class="c12"
-            data-testid="date-2021-02-03T19:00:00.000Z"
+            data-testid="date-2021-12-03T19:00:00.000Z"
           >
             4
           </div>
           <div
-            class="c12"
-            data-testid="date-2021-02-04T19:00:00.000Z"
+            class="c11"
+            data-testid="date-2021-12-04T19:00:00.000Z"
           >
             5
           </div>
           <div
             class="c12"
-            data-testid="date-2021-02-05T19:00:00.000Z"
+            data-testid="date-2021-12-05T19:00:00.000Z"
           >
             6
           </div>
           <div
-            class="c13"
-            data-testid="date-2021-02-06T19:00:00.000Z"
+            class="c12"
+            data-testid="date-2021-12-06T19:00:00.000Z"
           >
             7
           </div>
           <div
             class="c12"
-            data-testid="date-2021-02-07T19:00:00.000Z"
+            data-testid="date-2021-12-07T19:00:00.000Z"
           >
             8
           </div>
           <div
             class="c12"
-            data-testid="date-2021-02-08T19:00:00.000Z"
+            data-testid="date-2021-12-08T19:00:00.000Z"
           >
             9
           </div>
           <div
             class="c12"
-            data-testid="date-2021-02-09T19:00:00.000Z"
+            data-testid="date-2021-12-09T19:00:00.000Z"
           >
             10
           </div>
           <div
             class="c12"
-            data-testid="date-2021-02-10T19:00:00.000Z"
+            data-testid="date-2021-12-10T19:00:00.000Z"
           >
             11
           </div>
           <div
-            class="c12"
-            data-testid="date-2021-02-11T19:00:00.000Z"
+            class="c11"
+            data-testid="date-2021-12-11T19:00:00.000Z"
           >
             12
           </div>
           <div
-            class="c12"
-            data-testid="date-2021-02-12T19:00:00.000Z"
+            class="c13"
+            data-testid="date-2021-12-12T19:00:00.000Z"
           >
             13
           </div>
           <div
-            class="c13"
-            data-testid="date-2021-02-13T19:00:00.000Z"
+            class="c12"
+            data-testid="date-2021-12-13T19:00:00.000Z"
           >
             14
           </div>
           <div
             class="c12"
-            data-testid="date-2021-02-14T19:00:00.000Z"
+            data-testid="date-2021-12-14T19:00:00.000Z"
           >
             15
           </div>
           <div
             class="c12"
-            data-testid="date-2021-02-15T19:00:00.000Z"
+            data-testid="date-2021-12-15T19:00:00.000Z"
           >
             16
           </div>
           <div
             class="c12"
-            data-testid="date-2021-02-16T19:00:00.000Z"
+            data-testid="date-2021-12-16T19:00:00.000Z"
           >
             17
           </div>
           <div
             class="c12"
-            data-testid="date-2021-02-17T19:00:00.000Z"
+            data-testid="date-2021-12-17T19:00:00.000Z"
           >
             18
           </div>
           <div
-            class="c12"
-            data-testid="date-2021-02-18T19:00:00.000Z"
+            class="c11"
+            data-testid="date-2021-12-18T19:00:00.000Z"
           >
             19
           </div>
           <div
             class="c12"
-            data-testid="date-2021-02-19T19:00:00.000Z"
+            data-testid="date-2021-12-19T19:00:00.000Z"
           >
             20
           </div>
           <div
-            class="c13"
-            data-testid="date-2021-02-20T19:00:00.000Z"
+            class="c12"
+            data-testid="date-2021-12-20T19:00:00.000Z"
           >
             21
           </div>
           <div
             class="c12"
-            data-testid="date-2021-02-21T19:00:00.000Z"
+            data-testid="date-2021-12-21T19:00:00.000Z"
           >
             22
           </div>
           <div
             class="c12"
-            data-testid="date-2021-02-22T19:00:00.000Z"
+            data-testid="date-2021-12-22T19:00:00.000Z"
           >
             23
           </div>
           <div
             class="c12"
-            data-testid="date-2021-02-23T19:00:00.000Z"
+            data-testid="date-2021-12-23T19:00:00.000Z"
           >
             24
           </div>
           <div
             class="c12"
-            data-testid="date-2021-02-24T19:00:00.000Z"
+            data-testid="date-2021-12-24T19:00:00.000Z"
           >
             25
           </div>
           <div
-            class="c12"
-            data-testid="date-2021-02-25T19:00:00.000Z"
+            class="c11"
+            data-testid="date-2021-12-25T19:00:00.000Z"
           >
             26
           </div>
           <div
             class="c12"
-            data-testid="date-2021-02-26T19:00:00.000Z"
+            data-testid="date-2021-12-26T19:00:00.000Z"
           >
             27
           </div>
           <div
-            class="c13"
-            data-testid="date-2021-02-27T19:00:00.000Z"
+            class="c12"
+            data-testid="date-2021-12-27T19:00:00.000Z"
           >
             28
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-12-28T19:00:00.000Z"
+          >
+            29
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-12-29T19:00:00.000Z"
+          >
+            30
+          </div>
+          <div
+            class="c12"
+            data-testid="date-2021-12-30T19:00:00.000Z"
+          >
+            31
+          </div>
+          <div
+            class="c11"
+            data-testid="date-2021-12-31T19:00:00.000Z"
+          >
+            1
+          </div>
+          <div
+            class="c11"
+            data-testid="date-2022-01-01T19:00:00.000Z"
+          >
+            2
           </div>
         </div>
       </div>
