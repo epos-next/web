@@ -21,16 +21,9 @@ module.exports = {
                 start_url: `/`,
                 background_color: `#FFF`,
                 theme_color: `#9569FD`,
+                display: "standalone",
                 icon: `static/favicon.png`,
             },
-        },
-        {
-            resolve: `gatsby-plugin-offline`,
-            options: {
-                workboxConfig: {
-                    globPatterns: ['*.html']
-                }
-            }
-        },
+        }
     ],
 };
