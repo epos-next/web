@@ -8,7 +8,7 @@ import lodash from "lodash";
 import React from "react";
 import useIsLoading from "../hooks/useIsLoading";
 
-const HomeworkList: React.FC= () => {
+const HomeworkList: React.FC = () => {
     const homework = useAppSelector(selectHomework)
     const isLoading = useIsLoading()
     const dispatch = useAppDispatch()
@@ -26,14 +26,17 @@ const HomeworkList: React.FC= () => {
                     ? lodash.times(2).map((_, i) => {
                         return <LessonSkeleton key={ `homework-skeleton-${ i }` }/>
                     })
-                    : homework.map(({ content, done, lesson, id }, i) => {
-                        return <LessonTodo
-                            onClick={ (done) => onHomeworkClick(id, done) }
-                            key={ `homework-lesson-${ i }` }
-                            done={ done }
-                            subject={ lesson }
-                            subtitle={ content }/>
-                    })
+                    : homework
+                        .slice()
+                        .sort((a, b) => a.id - b.id)
+                        .map(({ content, done, lesson, id }, i) => {
+                            return <LessonTodo
+                                onClick={ (done) => onHomeworkClick(id, done) }
+                                key={ `homework-lesson-${ i }` }
+                                done={ done }
+                                subject={ lesson }
+                                subtitle={ content }/>
+                        })
             }
         </GridComponentContainer>
     }
