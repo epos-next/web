@@ -19,16 +19,35 @@ jobs:
         node-version: [ 16.x ]
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout 🛎️
+        uses: actions/checkout@master
+        with:
+          persist-credentials: false
+
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
+
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ matrix.node-version }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies 🔧
         run: yarn
-      - name: Build
+
+      - name: Test 🚨
+        run: yarn test
+
+      - name: Build 🏗️
         run: yarn build
-      - name: Deploy build to vps
+
+      - name: Deploy build to vps 🚀
         uses: wlixcc/SFTP-Deploy-Action@v1.2.1
         with:
           username: '${{ secrets.USERNAME }}'
