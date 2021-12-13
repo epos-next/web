@@ -1,7 +1,7 @@
 {
   "name": "epos-next",
-  "version": "0.0.4",
-  "private": true,
+  "version": "0.0.5",
+  "private": false,
   "description": "epos-next",
   "author": "Yaroslav Zotov",
   "keywords": [

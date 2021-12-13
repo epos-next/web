@@ -9,6 +9,7 @@ export default function ProfilePage() {
     return <Page>
         <Title>Эта страница пока в разработке, но вы можете</Title>
         <Button onClick={ handlers.logout }>Выйти</Button>
+        <AppVersion>{ process.env.APP_VERSION }</AppVersion>
     </Page>
 }
 
@@ -30,4 +31,14 @@ const Page = styled.main`
   align-items: center;
   flex-direction: column;
   padding: 20px;
+`;
+
+const AppVersion = styled.p`
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  text-align: center;
+  color: var(--light-primary);
 `;
