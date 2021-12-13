@@ -5,11 +5,13 @@ on:
     paths:
       - 'src/**'
       - 'package.json'
+      - '.github/workflows/deployment.yml'
   pull_request:
     branches: [ master ]
     paths:
       - 'src/**'
       - 'package.json'
+      - '.github/workflows/deployment.yml'
 
 jobs:
   build_and_deploy:
@@ -45,6 +47,13 @@ jobs:
 
       - name: Install dependencies 🔧
         run: yarn
+
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_GATSBY_SERVER_URL: ${{ secrets.GATSBY_SERVER_URL }}
+          envkey_APP_VERSION: ${{ secrets.APP_VERSION }}
+          file_name: .env.production
 
       - name: Test 🚨
         run: yarn test
