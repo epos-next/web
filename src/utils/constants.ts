@@ -12,7 +12,9 @@ export const schoolMonths = [
     { name: "Июль", number: 7 },
     { name: "Август", number: 8 },
 ]
+
 export const weekdays = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+
 export const uiMessages = {
     serverError: "Похоже, наши сервисы сейчас недоступны. Повторите попытку чуть позже"
 }
