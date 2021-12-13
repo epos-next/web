@@ -147,6 +147,31 @@ export default class ApiService {
         // Server error
         throw "server-error";
     }
+
+    /**
+     * mark homework as completed
+     * @param id – homework id which user would like to mark as completed
+     * @throws {@link ForbiddenApiError}
+     * @throws {@link BadRequestApiError}
+     * @throws {@link ServerErrorApiError}
+     */
+    static async completeHomework(id: number): Promise<void> {
+        const response = await client.put(ApiRoutes.completeHomework(id));
+
+        // Ok
+        if (response.status === 200 && response.data.success === true) {
+            return;
+        }
+
+        // Bad request
+        if (response.status === 400) throw "bad-request";
+
+        // Forbidden
+        if (response.status === 403 || response.status === 401) throw "forbidden";
+
+        // Server error
+        throw "server-error";
+    }
 }
 
 export type BigDataObject = {
