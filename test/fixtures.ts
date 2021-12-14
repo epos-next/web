@@ -122,9 +122,9 @@ export const bdoJson = {
 }
 
 export const schedule = {
-    "2021-12-20T19:00:00.000Z": lodash.times(6).map(() => ({ ...lesson, date: new Date(2021, 11, 21).toISOString() })),
-    "2021-12-21T19:00:00.000Z": lodash.times(7).map(() => ({ ...lesson, date: new Date(2021, 11, 22).toISOString() })),
-    "2021-12-22T19:00:00.000Z": lodash.times(5).map(() => ({ ...lesson, date: new Date(2021, 11, 23).toISOString() })),
+    "2021-12-21T00:00:00.000Z": lodash.times(6).map(() => ({ ...lesson, date: new Date(2021, 11, 21).toISOString() })),
+    "2021-12-22T00:00:00.000Z": lodash.times(7).map(() => ({ ...lesson, date: new Date(2021, 11, 22).toISOString() })),
+    "2021-12-23T00:00:00.000Z": lodash.times(5).map(() => ({ ...lesson, date: new Date(2021, 11, 23).toISOString() })),
 }
 
 const lessonsDates = [

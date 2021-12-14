@@ -1,4 +1,3 @@
-import DateHelper from "@helpers/date-helper";
 import { getAcademicMonthIndex, getMonthFromAcademicYear } from "@utils/functions";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
@@ -72,9 +71,9 @@ const CalendarComponent: React.FC<Props> = (props) => {
 export default CalendarComponent;
 
 export const useCalendar = (onDayChanged?: Props["onDayChanged"]) => {
-    const [selectedMonth, setSelectedMonth] = useState(DateHelper.now.getMonth());
-    const [selectedDate, setSelectedDate] = useState(DateHelper.now.getDate());
-    const [selectedYear, setSelectedYear] = useState(DateHelper.now.getFullYear());
+    const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
+    const [selectedDate, setSelectedDate] = useState(new Date().getDate());
+    const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
 
     useEffect(() => {
         if (onDayChanged) {

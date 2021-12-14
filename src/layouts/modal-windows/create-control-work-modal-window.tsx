@@ -1,5 +1,4 @@
 import DateInput from "@components/date-input";
-import DateHelper from "@helpers/date-helper";
 import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "@components/button";
@@ -56,7 +55,7 @@ const useCreateControlWorkModalWindow = (
     close: () => any,
 ) => {
     const [lesson, setLesson] = useState("");
-    const [date, setDate] = useState(DateHelper.now);
+    const [date, setDate] = useState(new Date());
     const [name, setName] = useState("");
 
     const [lessonError, setLessonError] = useState(false);
@@ -90,7 +89,7 @@ const useCreateControlWorkModalWindow = (
                     anyError = true;
                     setLessonError(true);
                 }
-                if (date.getTime() < DateHelper.now.getTime()) {
+                if (date.getTime() < new Date().getTime()) {
                     anyError = true;
                     setDateError(true);
                 }
@@ -104,7 +103,7 @@ const useCreateControlWorkModalWindow = (
 
                 // clear all inputs
                 setLesson("");
-                setDate(DateHelper.now);
+                setDate(new Date());
                 setName("");
 
                 confirm({ lesson, date, name });

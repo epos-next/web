@@ -4,6 +4,8 @@ const paths = pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: "<rootDir>/",
 })
 
+process.env.TZ = 'UTC';
+
 module.exports = {
     transform: {
         "^.+\\.[jt]sx?$": "<rootDir>/jest-preprocess.js",
@@ -26,5 +28,5 @@ module.exports = {
         '<rootDir>/src'
     ],
     resetMocks: true,
-    setupFilesAfterEnv: ['<rootDir>/jest-setup.js']
+    setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
 }

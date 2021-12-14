@@ -10,7 +10,6 @@ import ModalWindowBase, {
     ButtonRow,
     CancelText
 } from "@components/modal-window-base";
-import DateHelper from "@helpers/date-helper";
 
 export type Props = BaseProps & {
     /** Calling it when user passed correct data and clicked on confirm button */
@@ -50,7 +49,7 @@ const useCreateAdModalWindow = (
     close: () => any,
 ) => {
     const [content, setContent] = useState("");
-    const [date, setDate] = useState(DateHelper.now);
+    const [date, setDate] = useState(new Date());
 
     const [contentError, setContentError] = useState(false);
     const [dateError, setDateError] = useState(false);
@@ -78,7 +77,7 @@ const useCreateAdModalWindow = (
                     anyError = true;
                     setContentError(true);
                 }
-                if (date.getTime() < DateHelper.now.getTime()) {
+                if (date.getTime() < new Date().getTime()) {
                     anyError = true;
                     setDateError(true);
                 }
@@ -86,7 +85,7 @@ const useCreateAdModalWindow = (
                 if (anyError) return;
 
                 setContent("")
-                setDate(DateHelper.now)
+                setDate(new Date())
                 confirm({
                     content,
                     targetDate: date,

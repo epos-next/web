@@ -1,4 +1,3 @@
-import DateHelper from "@helpers/date-helper";
 import { useAppDispatch, useAppSelector } from "@redux/hooks";
 import { selectLessonLoading, selectLessons, setLessons, setLessonsLoading } from "@redux/reducers/lesson-reducer";
 import ApiService from "@services/api-service";
@@ -8,7 +7,7 @@ import { useState } from "react";
 import { extractTodayLessons } from "./useIndexPage";
 
 export default function useSideMenu() {
-    const [selectedDate, setSelectedDate] = useState(DateHelper.now);
+    const [selectedDate, setSelectedDate] = useState(new Date());
 
     const dispatch = useAppDispatch();
 

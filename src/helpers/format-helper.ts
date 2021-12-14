@@ -1,4 +1,3 @@
-import DateHelper from "@helpers/date-helper";
 import { Advertisement } from "../models/advertisement";
 import { ControlWork } from "../models/control-work";
 import { Marks } from "../models/marks";
@@ -28,8 +27,8 @@ export default class FormatHelper {
     }
 
     static formatDate(date: Date): string {
-        const delta = this._deltaDateInDay(DateHelper.now, date);
-        if (delta <= 1 && date.getDate() === DateHelper.now.getDate()) return "Сегодня";
+        const delta = this._deltaDateInDay(new Date(), date);
+        if (delta <= 1 && date.getDate() === new Date().getDate()) return "Сегодня";
         if (delta <= 1) return "Завтра";
         return this.formatDayAndMonth(date.getDate(), date.getMonth());
     }

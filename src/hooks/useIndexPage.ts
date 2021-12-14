@@ -1,5 +1,4 @@
 import { TabQuery } from "@components/header";
-import DateHelper from "@helpers/date-helper";
 import UiHelper from "@helpers/ui-helper";
 import { useAppDispatch, useAppSelector } from "@redux/hooks";
 import { selectUser } from "@redux/reducers/user-reducer";
@@ -29,7 +28,7 @@ export default function useIndexPage() {
     useEffect(() => {
         getData(
             data => {
-                const todayLessons = extractTodayLessons(DateHelper.now, data.lessons);
+                const todayLessons = extractTodayLessons(new Date(), data.lessons);
 
                 // save user
                 dispatch(setUser(data.user));
@@ -110,7 +109,7 @@ export const calculateNextLesson = async (lessons: Lesson[], dispatch: Dispatch)
     // checking lessons for today
     if (lessons.length === 0) return dispatch(setNextLesson(noLessonAction));
 
-    const now = moment(DateHelper.now);
+    const now = moment();
 
     // sort lessons
     lessons = lessons.slice().sort(

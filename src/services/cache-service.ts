@@ -1,9 +1,7 @@
-import DateHelper from "@helpers/date-helper";
 import FormatHelper from "@helpers/format-helper";
 import { BigDataObject } from "@services/api-service";
 import { bigDataObjectIsoStringToDate } from "@utils/index";
 import moment from "moment";
-import { extractTodayLessons } from "../hooks/useIndexPage";
 import { Advertisement } from "../models/advertisement";
 import { ControlWork } from "../models/control-work";
 import { Homework } from "../models/homework";
@@ -28,7 +26,7 @@ export default class CacheService {
         if (!user) return null;
 
         // lessons
-        const lessons = this.getScheduleAt(DateHelper.now);
+        const lessons = this.getScheduleAt(new Date());
         if (!lessons) return null;
 
         // homework

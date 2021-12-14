@@ -4,11 +4,10 @@ import HomeworkList from "@layouts/homework-list";
 import NextLessonComponent from "@layouts/next-lesson";
 import React from "react";
 import styled from "styled-components";
-import DateHelper from "@helpers/date-helper";
 import SummerMainContent from "@layouts/summer-main-content";
 
 const MainContentLayout: React.FC = () => {
-    if (DateHelper.isSummer()) {
+    if (new Date().getMonth() <= 7 && new Date().getMonth() >= 5) {
         return <SummerMainContent/>
     }
 

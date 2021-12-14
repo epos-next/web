@@ -99,22 +99,6 @@
     "start-server-and-test": "^1.13.1",
     "ts-jest": "^27.0.4"
   },
-  "jest": {
-    "globals": {
-      "ts-jest": {
-        "tsConfigFile": "tsconfig.json"
-      }
-    },
-    "transform": {
-      "\\.ts$": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
-  },
   "globals": {
     "ts-jest": {
       "diagnostics": false
