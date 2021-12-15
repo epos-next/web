@@ -1,5 +1,7 @@
 import LessonSkeleton from "@components/lesson-skeleton";
 import LessonWithRoomAndTime from "@components/lesson-with-room-and-time";
+import FormatHelper from "@helpers/format-helper";
+import UiHelper from "@helpers/ui-helper";
 import { GridComponentContainer } from "@layouts/main-content";
 import { useAppSelector } from "@redux/hooks";
 import {
@@ -46,9 +48,9 @@ const NextLessonComponent: React.FC = () => {
                     {
                         !isLoading && nextLesson != null
                             ? <LessonWithRoomAndTime
-                                subject={ nextLesson.subject }
-                                room="209"
-                                time="13:00 – 13:45"/>
+                                subject={ UiHelper.formatSubjectName(nextLesson.subject) }
+                                room={ nextLesson.room }
+                                time={ FormatHelper.formatLessonTime(nextLesson) }/>
                             : <LessonSkeleton key={ `nextLesson-skeleton` }/>
                     }
 

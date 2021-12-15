@@ -1,5 +1,6 @@
 import { Advertisement } from "../models/advertisement";
 import { ControlWork } from "../models/control-work";
+import { Lesson } from "../models/lesson";
 import { Marks } from "../models/marks";
 
 export default class FormatHelper {
@@ -66,5 +67,13 @@ export default class FormatHelper {
             })
         }
         return marks
+    }
+
+    static formatLessonTime(lesson: Lesson): string {
+        const date = lesson.date;
+        const duration = lesson.duration;
+        const startDate = new Date(date);
+        const endDate = new Date(startDate.getTime() + duration * 60000);
+        return `${ FormatHelper.formatTime(startDate) } – ${ FormatHelper.formatTime(endDate) }`;
     }
 }
