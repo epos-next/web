@@ -13,7 +13,7 @@ const Container = styled.div`
     span {
         display: block;
         position: absolute;
-        height: 4px;
+        height: 2.5px;
         width: 100%;
         background: var(--light-primary);
         border-radius: 3px;
