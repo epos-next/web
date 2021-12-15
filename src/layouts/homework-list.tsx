@@ -5,8 +5,10 @@ import { useAppDispatch, useAppSelector } from "@redux/hooks";
 import { selectHomework, invertHomeworkDone } from "@redux/reducers/homework-reducer";
 import ApiService from "@services/api-service";
 import CacheService from "@services/cache-service";
+import { urlify } from "@utils/functions";
 import lodash from "lodash";
 import React from "react";
+import styled from "styled-components";
 import useIsLoading from "../hooks/useIsLoading";
 
 const HomeworkList: React.FC = () => {
@@ -32,12 +34,24 @@ const HomeworkList: React.FC = () => {
                         .slice()
                         .sort((a, b) => a.date.getTime() - b.date.getTime())
                         .map(({ content, done, lesson, id }, i) => {
+                            // urlify
+                            const text = urlify(
+                                content,
+                                (s, href) => <HomeworkLink
+                                    onClick={ (e) => e.stopPropagation() }
+                                    target="__blank"
+                                    href={ href }>
+                                    { s }
+                                </HomeworkLink>,
+                                (s) => <p>{ s }</p>
+                            )
+
                             return <LessonTodo
                                 onClick={ (done) => onHomeworkClick(id, done) }
                                 key={ `homework-lesson-${ i }` }
                                 done={ done }
                                 subject={ lesson }
-                                subtitle={ content }/>
+                                subtitle={ <React.Fragment>{ text }</React.Fragment> }/>
                         })
             }
         </GridComponentContainer>
@@ -47,3 +61,11 @@ const HomeworkList: React.FC = () => {
 }
 
 export default HomeworkList;
+
+const HomeworkLink = styled.a`
+  color: var(--secondary);
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;

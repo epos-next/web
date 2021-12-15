@@ -3,6 +3,8 @@
  * @param month The month as a number between 0 and 11 (January to December)
  * @return Index in academic year (0 is September, 1 is October, etc)
  */
+import React from "react";
+
 export function getAcademicMonthIndex(month: number): number {
     if (month == 8) return 0;
     if (month == 9) return 1;
@@ -26,4 +28,18 @@ export function getAcademicMonthIndex(month: number): number {
  */
 export function getMonthFromAcademicYear(month: number): number {
     return ((month + 9) % 12 == 0 ? 12 : (month + 9) % 12) - 1;
+}
+
+export function urlify<T>(
+    content: string,
+    link: (content: string, href: string) => T,
+    text: (content: string) => T
+): T[] {
+    const urlRegex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gm
+    return content
+        .split(urlRegex)
+        .map(part => {
+            if (part.match(urlRegex)) return link(part.replace(/(^\w+:|^)\/\//, ''), part);
+            return text(part);
+        });
 }
