@@ -3,4 +3,5 @@ export type Homework = {
     lesson: string,
     content: string,
     done: boolean,
+    date: Date,
 }

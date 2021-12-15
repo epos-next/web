@@ -18,7 +18,7 @@ const SideMenuLayout: React.FC = () => {
     const isNowSummer = selectedDate.getMonth() >= 5 && selectedDate.getMonth() <= 7;
 
     return <SideMenu className="side_menu-layout">
-        <CalendarComponent onDayChanged={ onDateChanged }/>
+        { typeof  window !== "undefined" && <CalendarComponent onDayChanged={ onDateChanged }/> }
         <Lessons>
             <h3>Уроки</h3>
 
@@ -28,11 +28,7 @@ const SideMenuLayout: React.FC = () => {
                     ? lodash.times(6).map((e, i) => {
                         return <LessonSkeleton key={ `lesson-skeleton-${ i }` }/>
                     })
-                    : lessons.map(({ subject, room, date, duration }, i) => {
-                        const startDate = new Date(date);
-                        const endDate = new Date(startDate.getTime() + duration * 60000);
-                        const time = `${ FormatHelper.formatTime(startDate) } – ${ FormatHelper.formatTime(endDate) }`;
-
+                    : lessons.map((lesson, i) => {
                         // transition animations
                         const style: CSSProperties = {
                             animationDelay: `${ i * 50 }ms`,
@@ -40,10 +36,10 @@ const SideMenuLayout: React.FC = () => {
 
                         return <LessonWithRoomAndTime
                             style={ style }
-                            key={ `lesson-${ date }-${ subject }` }
-                            subject={ UiHelper.formatSubjectName(subject) }
-                            room={ room }
-                            time={ time }/>
+                            key={ `lesson-${ lesson.date }-${ lesson.subject }` }
+                            subject={ UiHelper.formatSubjectName(lesson.subject) }
+                            room={ lesson.room }
+                            time={ FormatHelper.formatLessonTime(lesson) }/>
                     })
             }
 

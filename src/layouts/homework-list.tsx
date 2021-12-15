@@ -30,7 +30,7 @@ const HomeworkList: React.FC = () => {
                     })
                     : homework
                         .slice()
-                        .sort((a, b) => a.id - b.id)
+                        .sort((a, b) => a.date.getTime() - b.date.getTime())
                         .map(({ content, done, lesson, id }, i) => {
                             return <LessonTodo
                                 onClick={ (done) => onHomeworkClick(id, done) }

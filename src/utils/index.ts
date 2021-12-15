@@ -1,6 +1,10 @@
 import { BigDataObject } from "@services/api-service";
 
 export const bigDataObjectIsoStringToDate = (data: BigDataObject): BigDataObject => {
+    data.homework = data.homework.map(e => ({
+        ...e,
+        date: new Date(e.date),
+    }));
     data.controlWorks = data.controlWorks.map(e => ({
         ...e,
         date: new Date(e.date),
