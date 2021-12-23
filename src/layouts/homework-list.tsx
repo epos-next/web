@@ -1,5 +1,6 @@
 import LessonSkeleton from "@components/lesson-skeleton";
 import LessonTodo from "@components/lesson-todo";
+import UiHelper from "@helpers/ui-helper";
 import { GridComponentContainer } from "@layouts/main-content";
 import { useAppDispatch, useAppSelector } from "@redux/hooks";
 import { selectHomework, invertHomeworkDone } from "@redux/reducers/homework-reducer";
@@ -50,7 +51,7 @@ const HomeworkList: React.FC = () => {
                                 onClick={ (done) => onHomeworkClick(id, done) }
                                 key={ `homework-lesson-${ i }` }
                                 done={ done }
-                                subject={ lesson }
+                                subject={ UiHelper.formatSubjectName(lesson) }
                                 subtitle={ <React.Fragment>{ text }</React.Fragment> }/>
                         })
             }

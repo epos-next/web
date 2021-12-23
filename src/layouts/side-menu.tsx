@@ -1,3 +1,6 @@
+import { useAppSelector } from "@redux/hooks";
+import { selectLessonLoading } from "@redux/reducers/lesson-reducer";
+import { useSelect } from "downshift";
 import React, { CSSProperties } from "react";
 import lodash from "lodash";
 import styled, { keyframes } from "styled-components";
@@ -13,7 +16,7 @@ import useSideMenu from "../hooks/useSideMenu";
 const SideMenuLayout: React.FC = () => {
     // Side menu
     const { lessons, onDateChanged, selectedDate } = useSideMenu();
-    const loading = useIsLoading();
+    const loading = useAppSelector(selectLessonLoading);
 
     const isNowSummer = selectedDate.getMonth() >= 5 && selectedDate.getMonth() <= 7;
 

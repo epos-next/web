@@ -24,7 +24,7 @@ const NextLessonComponent: React.FC = () => {
         {/* time left */ }
         {
             timeLeftToNextLesson !== "" || isLoading
-                ? <GridComponentContainer id="time_left-desktop">
+                ? <GridComponentContainer id="time_left-desktop1">
                     <h4>Осталось</h4>
                     {
                         !isLoading && timeLeftToNextLesson !== ""
