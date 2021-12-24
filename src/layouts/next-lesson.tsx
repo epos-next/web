@@ -1,5 +1,6 @@
 import LessonSkeleton from "@components/lesson-skeleton";
 import LessonWithRoomAndTime from "@components/lesson-with-room-and-time";
+import LessonWithTimeLeft from "@components/lesson-with-time-left";
 import FormatHelper from "@helpers/format-helper";
 import UiHelper from "@helpers/ui-helper";
 import { GridComponentContainer } from "@layouts/main-content";
@@ -24,7 +25,7 @@ const NextLessonComponent: React.FC = () => {
         {/* time left */ }
         {
             timeLeftToNextLesson !== "" || isLoading
-                ? <GridComponentContainer id="time_left-desktop1">
+                ? <GridComponentContainer id="time_left-desktop">
                     <h4>Осталось</h4>
                     {
                         !isLoading && timeLeftToNextLesson !== ""
@@ -82,3 +83,28 @@ const TimeLeftContainer = styled.div`
   display: flex;
   align-items: center;
 `;
+
+export const NextLessonMobileComponent: React.FC = () => {
+    const nextLesson = useAppSelector(selectNextLesson)
+    const timeLeftToNextLesson = useAppSelector(selectTimeLeftToNextLesson)
+    const isLoading = useIsLoading()
+
+    return nextLesson !== null && timeLeftToNextLesson !== "" || isLoading
+        ? <GridComponentContainer id="next_lesson-mobile">
+            <h4>Следующий урок</h4>
+            {
+                !isLoading && nextLesson != null && timeLeftToNextLesson !== ""
+                    ? <LessonWithTimeLeft
+                        subject={ UiHelper.formatSubjectName(nextLesson.subject) }
+                        room={ nextLesson.room }
+                        timeLeft={ timeLeftToNextLesson }
+                        time={ FormatHelper.formatLessonTime(nextLesson) }/>
+                    : <LessonSkeleton key={ `nextLesson-mobile` }/>
+            }
+
+        </GridComponentContainer>
+        : timeLeftToNextLesson === ""
+            ? <React.Fragment/>
+            : <span/>
+
+}

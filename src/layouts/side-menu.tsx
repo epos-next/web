@@ -1,3 +1,4 @@
+import { NextLessonMobileComponent } from "@layouts/next-lesson";
 import { useAppSelector } from "@redux/hooks";
 import { selectLessonLoading } from "@redux/reducers/lesson-reducer";
 import { useSelect } from "downshift";
@@ -21,7 +22,12 @@ const SideMenuLayout: React.FC = () => {
     const isNowSummer = selectedDate.getMonth() >= 5 && selectedDate.getMonth() <= 7;
 
     return <SideMenu className="side_menu-layout">
-        { typeof  window !== "undefined" && <CalendarComponent onDayChanged={ onDateChanged }/> }
+
+        {/* Next lesson component for mobile devices  */ }
+        <NextLessonMobileComponent/>
+
+
+        { typeof window !== "undefined" && <CalendarComponent onDayChanged={ onDateChanged }/> }
         <Lessons>
             <h3>Уроки</h3>
 
@@ -106,7 +112,16 @@ const Lessons = styled.section`
 const SideMenu = styled.menu`
   margin-top: 40px;
 
+  #next_lesson-mobile {
+    display: none;
+  }
+
   @media screen and (max-width: 960px) {
     grid-row: 1;
+
+    #next_lesson-mobile {
+      margin-bottom: 25px;
+      display: block;
+    }
   }
 `;

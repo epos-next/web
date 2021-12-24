@@ -6,7 +6,8 @@ import LessonWithDate from "../../components/lesson-with-date";
 import LessonWithMark from "../../components/lesson-with-mark";
 import LessonWithRoomAndTime from "../../components/lesson-with-room-and-time";
 import LessonWithRoomTimeMark from "../../components/lesson-with-room-time-mark";
-import LessonSkeleton from "../../components/lesson-skeleton";
+import LessonSkeleton from "../../components/lesson-skeleton"; import LessonWithTimeLeft
+    from "../../components/lesson-with-time-left";
 
 export const LessonStory = ({...args}) => {
     return <Lesson { ...args } />
@@ -31,6 +32,10 @@ export const LessonWithRoomAndTimeStory = ({...args}) => {
 
 export const LessonWithRoomTimeMarkStory = ({...args}) => {
     return <LessonWithRoomTimeMark { ...args } />
+}
+
+export const LessonWithTimeLeftStory = ({...args}) => {
+    return <LessonWithTimeLeft { ...args } />
 }
 
 
@@ -73,6 +78,12 @@ export const LessonWithRoomTimeMarkStory = ({...args}) => {
 <Canvas>
     <Story name="With room, time and mark" args={ {subject: "Физика", room: "201", time: "13:00 – 13:45", mark: 5} }>
         { LessonWithRoomTimeMark.bind({}) }
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="With time left" args={ {subject: "Физика", room: "201", time: "13:00 – 13:45", timeLeft: "22:55"} }>
+        { LessonWithTimeLeftStory.bind({}) }
     </Story>
 </Canvas>
 
