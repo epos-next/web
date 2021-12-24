@@ -22,7 +22,7 @@ module.exports = {
                 background_color: `#FFF`,
                 theme_color: `#9569FD`,
                 display: "standalone",
-                icon: `static/logo-80x80.webp`,
+                icon: `static/favicon.png`,
             },
         }
     ],
