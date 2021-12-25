@@ -1,10 +1,18 @@
 import Calendar from "../../components/calendar";
-import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import {Meta, Story, Canvas} from '@storybook/addon-docs/blocks';
+import CalendarSkeleton from "../../components/calendar-skeleton";
 
-<Meta title="Components/Calendar" component={Calendar} />
+<Meta title="Components/Calendar" component={ Calendar }/>
 
 <Canvas>
     <Story name="Default">
         <Calendar/>
+    </Story>
+</Canvas>
+
+
+<Canvas>
+    <Story name="Skeleton">
+        <CalendarSkeleton/>
     </Story>
 </Canvas>

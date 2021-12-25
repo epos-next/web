@@ -1,3 +1,4 @@
+import CalendarSkeleton from "@components/calendar-skeleton";
 import { NextLessonMobileComponent } from "@layouts/next-lesson";
 import { useAppSelector } from "@redux/hooks";
 import { selectLessonLoading } from "@redux/reducers/lesson-reducer";
@@ -26,8 +27,7 @@ const SideMenuLayout: React.FC = () => {
         {/* Next lesson component for mobile devices  */ }
         <NextLessonMobileComponent/>
 
-
-        { typeof window !== "undefined" && <CalendarComponent onDayChanged={ onDateChanged }/> }
+        { typeof window !== "undefined" ? <CalendarComponent onDayChanged={ onDateChanged }/> : <CalendarSkeleton/> }
         <Lessons>
             <h3>Уроки</h3>
 

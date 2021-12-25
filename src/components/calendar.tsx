@@ -201,7 +201,7 @@ const DisabledGridElement = styled.div`
   cursor: pointer;
 `;
 
-const Grid = styled.div`
+export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   margin-top: 5px;
@@ -214,7 +214,7 @@ const WeekDayElement = styled.div`
   ${ GridElementStyles };
 `;
 
-const Title = styled.h5`
+export const Title = styled.h5`
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
@@ -233,14 +233,14 @@ const Month = styled.select`
   text-align: right;
 `;
 
-const Header = styled.div`
+export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 calc((100% / 7 - 18px) / 2);
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
   width: 282px;
 
   @media screen and (max-width: 960px) {
