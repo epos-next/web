@@ -1,4 +1,4 @@
-import { getAcademicMonthIndex, getMonthFromAcademicYear } from "@utils/functions";
+import { getAcademicMonthIndex } from "@utils/functions";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";

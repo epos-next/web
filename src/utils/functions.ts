@@ -3,7 +3,7 @@
  * @param month The month as a number between 0 and 11 (January to December)
  * @return Index in academic year (0 is September, 1 is October, etc)
  */
-import React from "react";
+import { Lesson } from "../models/lesson";
 
 export function getAcademicMonthIndex(month: number): number {
     if (month == 8) return 0;
@@ -41,5 +41,13 @@ export function urlify<T>(
         .map(part => {
             if (part.match(urlRegex)) return link(part.replace(/(^\w+:|^)\/\//, ''), part);
             return text(part);
+        });
+}
+
+export function sortSchedule(schedule: Lesson[]): Lesson[] {
+    return schedule
+        .slice()
+        .sort((a, b) => {
+            return new Date(a.date).getTime() - new Date(b.date).getTime();
         });
 }
