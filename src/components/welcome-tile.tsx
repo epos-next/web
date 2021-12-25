@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 export type Props = {
     /** Will display in greetings message: "hello, { name }" */
@@ -38,9 +38,9 @@ const WelcomeTile: React.FC<Props> = (props: Props) => {
                 <Title>Добро пожаловать в Эпос Next</Title>
                 <Subtitle>Новый многофункциональный клиент<br/>для электронного дневника Эпос</Subtitle>
             </Content>
-            <AbstractRect w={ 84 } h={ 100 } r={ 70 } t={ -20 } i={ 0 }/>
-            <AbstractRect w={ 95 } h={ 110 } r={ 100 } t={ 50 } i={ 1 }/>
-            <AbstractRect w={ 50 } h={ 50 } r={ 30 } t={ 130 } i={ 2 }/>
+            <AbstractRect w={ 84 } h={ 100 } r={ 70 } t={ -20 }/>
+            <AbstractRect w={ 95 } h={ 110 } r={ 100 } t={ 50 }/>
+            <AbstractRect w={ 50 } h={ 50 } r={ 30 } t={ 130 }/>
             <CloseButton
                 alt="close"
                 onClick={ handleClose }
@@ -53,16 +53,7 @@ const WelcomeTile: React.FC<Props> = (props: Props) => {
 
 export default WelcomeTile;
 
-const AbstractRectAnimation = keyframes`
-  from {
-    transform: translateX(30px) translateY(-50px) rotate(10deg);
-  }
-  to {
-    transform: translateX(0) translateY(0) rotate(0deg);
-  }
-`;
-
-const AbstractRect = styled.div<{ t: number, r: number; w: number, h: number, i: number }>`
+const AbstractRect = styled.div <{ t: number, r: number; w: number, h: number }>`
   position: absolute;
   width: ${ props => props.w }px;
   height: ${ props => props.h }px;
@@ -70,9 +61,6 @@ const AbstractRect = styled.div<{ t: number, r: number; w: number, h: number, i:
   right: ${ props => props.r }px;
   background: rgba(255, 255, 255, 0.3);
   border-radius: 16px;
-  animation: ${ AbstractRectAnimation } 1.5s ease;
-  animation-delay: ${ props => props.i * 200 }ms;
-  animation-fill-mode: both;
 `;
 
 const Subtitle = styled.h2`
@@ -141,7 +129,7 @@ const Wrapper = styled.div`
       transform: translateY(20px);
     }
   }
-  
+
   @media screen and (max-width: 1024px) {
     display: none;
   }
