@@ -44,10 +44,36 @@ export function urlify<T>(
         });
 }
 
+/**
+ * Sort list of lessons by date
+ * @param schedule list of lessons, which should be sorted
+ * @return sorted lessons in the order of the beginning of lessons
+ */
 export function sortSchedule(schedule: Lesson[]): Lesson[] {
     return schedule
         .slice()
         .sort((a, b) => {
             return new Date(a.date).getTime() - new Date(b.date).getTime();
         });
+}
+
+/**
+ * Remove time from date
+ * @param date Date object, from which function should to delete time
+ * @return date without time
+ */
+export function dateWithoutTime(date: Date): Date {
+    const newDate = new Date(date.getTime())
+    newDate.setHours(0, 0, 0, 0)
+    return newDate
+}
+
+/**
+ * Compare 2 Date object, comparing only date
+ * @param date1 first date object
+ * @param date2 second date object
+ * @return true date1 == date2
+ */
+export function isTheSameDate(date1: Date, date2: Date): boolean {
+    return dateWithoutTime(date1).getTime() == dateWithoutTime(date2).getTime()
 }

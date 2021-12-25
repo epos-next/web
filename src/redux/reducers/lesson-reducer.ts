@@ -3,7 +3,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Lesson } from "../../models/lesson";
 
 export type LessonsState = {
-    lessons: Lesson[],
     nextLesson: Lesson | null,
     timeLeftToNextLesson: string, // 22:55
     nextLessonType: string, // до конца 5 урока
@@ -11,7 +10,6 @@ export type LessonsState = {
 }
 
 export const initialState: LessonsState = {
-    lessons: [],
     nextLesson: null,
     nextLessonType: "",
     timeLeftToNextLesson: "",
@@ -22,9 +20,6 @@ export const lessonSlice = createSlice({
     name: "lessons",
     initialState,
     reducers: {
-        setLessons: (state, action: PayloadAction<Lesson[]>) => {
-            state.lessons = action.payload;
-        },
         setNextLesson: (state, action: PayloadAction<SetNextLessonAction>) => {
             state.nextLesson = action.payload.nextLesson;
             state.timeLeftToNextLesson = action.payload.timeLeftToNextLesson;
@@ -36,10 +31,9 @@ export const lessonSlice = createSlice({
     }
 })
 
-export const { setNextLesson, setLessons, setLessonsLoading } = lessonSlice.actions;
+export const { setNextLesson, setLessonsLoading } = lessonSlice.actions;
 
 
-export const selectLessons = (state: RootState) => state.lessonsState.lessons.slice().sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 export const selectLessonLoading = (state: RootState) => state.lessonsState.loading;
 export const selectNextLesson = (state: RootState) => state.lessonsState.nextLesson;
 export const selectTimeLeftToNextLesson = (state: RootState) => state.lessonsState.timeLeftToNextLesson;

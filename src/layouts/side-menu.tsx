@@ -33,7 +33,7 @@ const SideMenuLayout: React.FC = () => {
 
             {/* Lessons list */ }
             {
-                loading
+                loading || typeof lessons == "undefined"
                     ? lodash.times(6).map((e, i) => {
                         return <LessonSkeleton key={ `lesson-skeleton-${ i }` }/>
                     })
@@ -56,7 +56,7 @@ const SideMenuLayout: React.FC = () => {
             {
                 isNowSummer && !loading
                     ? <NoFoundText>Сейчас лето, дурачек)<br/>Иди отдыхай</NoFoundText>
-                    : lessons.length === 0 && !loading
+                    : lessons?.length === 0 && !loading
                     ? <NoFoundText>
                         Уроков в этот день нет
                     </NoFoundText>

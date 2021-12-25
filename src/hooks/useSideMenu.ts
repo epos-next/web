@@ -1,32 +1,36 @@
 import { useAppDispatch, useAppSelector } from "@redux/hooks";
-import { selectLessonLoading, selectLessons, setLessons, setLessonsLoading } from "@redux/reducers/lesson-reducer";
+import {
+    selectIsScheduleLoading,
+    selectSchedule,
+    selectSelectedDate,
+    setNewSchedule,
+    setSelectedDate,
+} from "@redux/reducers/schedule-reducer";
 import ApiService from "@services/api-service";
 import CacheService from "@services/cache-service";
 import moment from "moment";
-import { useState } from "react";
 import { extractTodayLessons } from "./useIndexPage";
 
 export default function useSideMenu() {
-    const [selectedDate, setSelectedDate] = useState(new Date());
-
     const dispatch = useAppDispatch();
 
     // Lessons selectors
-    const lessons = useAppSelector(selectLessons);
-    const lessonsLoading = useAppSelector(selectLessonLoading);
+    const selectedDate = useAppSelector(selectSelectedDate)
+    const lessons = useAppSelector(selectSchedule);
+    const lessonsLoading = useAppSelector(selectIsScheduleLoading);
 
     return {
         lessons,
         lessonsLoading,
         selectedDate,
         onDateChanged: async (date: Date) => {
-            setSelectedDate(date);
-
             // if (moment(date).startOf("isoWeek").format("YYYY-MM-DD")
             //     == moment().startOf("isoWeek").format("YYYY-MM-DD")) return;
 
+            console.log(date);
+
             const isSummer = date.getMonth() >= 5 && date.getMonth() <= 7;
-            if (isSummer) return dispatch(setLessons([]));
+            if (isSummer) return dispatch(setNewSchedule({ date, schedule: [] }));
 
             const cachedSchedule = CacheService.getScheduleAt(date);
 
@@ -37,24 +41,20 @@ export default function useSideMenu() {
 
             if (!cachedSchedule) {
                 // show loading state
-                dispatch(setLessonsLoading(true));
+                dispatch(setSelectedDate(date));
 
                 // Fetching lessons
                 const lessons = await ApiService.getLessons(from, to);
 
                 // Saving lessons in redux store
-                dispatch(setLessons(extractTodayLessons(date, lessons)));
+                dispatch(setNewSchedule({ date, schedule: extractTodayLessons(date, lessons) }));
 
                 // Caching lessons
                 CacheService.setWeekSchedule(lessons);
-
-                // show normal state view
-                dispatch(setLessonsLoading(false));
             } else {
                 // Get lessons from cache and save in redux store
-                dispatch(setLessons(cachedSchedule));
+                dispatch(setNewSchedule({ date, schedule: cachedSchedule }));
             }
-
         },
     }
 }

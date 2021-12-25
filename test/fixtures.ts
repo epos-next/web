@@ -85,7 +85,8 @@ export const homework: Homework = {
     done: false,
     id: 213,
     lesson: "Физика",
-    content: "Some test data adsadasd"
+    content: "Some test data adsadasd",
+    date: new Date(),
 }
 export const homeworkList = lodash.times(123).map((_, i) => ({ ...homework, id: i }))
 

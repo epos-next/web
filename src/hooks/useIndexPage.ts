@@ -1,6 +1,7 @@
 import { TabQuery } from "@components/header";
 import UiHelper from "@helpers/ui-helper";
 import { useAppDispatch, useAppSelector } from "@redux/hooks";
+import { selectSelectedDate, setNewSchedule } from "@redux/reducers/schedule-reducer";
 import { selectUser } from "@redux/reducers/user-reducer";
 import CacheService from "@services/cache-service";
 import { getData } from "@services/data-service";
@@ -12,7 +13,7 @@ import { useQueryParam } from "use-query-params";
 import { Lesson } from "../models/lesson";
 import { navigate } from "gatsby-link";
 import { setUser } from "@redux/reducers/user-reducer";
-import { setLessons, setLessonsLoading, setNextLesson, SetNextLessonAction } from "@redux/reducers/lesson-reducer";
+import { setLessonsLoading, setNextLesson, SetNextLessonAction } from "@redux/reducers/lesson-reducer";
 import { setControlWorks, setControlWorksLoading } from "@redux/reducers/control-work-reducer";
 import { setHomework, setHomeworkLoading } from "@redux/reducers/homework-reducer";
 import { setAdvertisements, setAdvertisementsLoading } from "@redux/reducers/advertisement-reducer";
@@ -22,6 +23,7 @@ export default function useIndexPage() {
     const [tab, setTab] = useQueryParam<TabQuery>("tab");
     const handleTabChanged = (tab: TabQuery) => setTab(tab);
     const user = useAppSelector(selectUser)
+    const scheduleSelectedDate = useAppSelector(selectSelectedDate)
 
     const dispatch = useAppDispatch();
 
@@ -34,7 +36,7 @@ export default function useIndexPage() {
                 dispatch(setUser(data.user));
 
                 // save lessons
-                dispatch(setLessons(todayLessons));
+                dispatch(setNewSchedule({ date: scheduleSelectedDate!, schedule: todayLessons }));
 
                 // calculate next lesson
                 calculateNextLesson(todayLessons, dispatch);
