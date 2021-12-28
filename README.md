@@ -1,4 +1,4 @@
-<img src="https://sun9-2.userapi.com/impg/zxw61FgNIL37GI2OIm_KA86NJ6ot5VadwD3-IA/y2SaRmpHbUI.jpg?size=2560x1280&quality=96&sign=a8b997c4489bd54525ec74abbd5ed664&type=album" align="center"/>
+<img src="https://raw.githubusercontent.com/epos-next/web/master/banner.png" align="center"/>
 
 # 🎓 &nbsp;**Epos Next** web app
 ### Brand new EPOS client!
