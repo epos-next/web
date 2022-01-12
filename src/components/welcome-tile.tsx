@@ -16,7 +16,7 @@ export type Props = {
 const WelcomeTile: React.FC<Props> = (props: Props) => {
     // used to don't show if show initially false
     const [shouldRender] = useState(props.show ?? true);
-    if (!shouldRender) return <React.Fragment/>
+    if (!shouldRender) return <div/>
 
     // handlers
     const handleClose = () => {

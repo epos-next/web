@@ -8,14 +8,14 @@ import WelcomeTile from "@components/welcome-tile";
 const HomePage: React.FC = () => {
     const { values, handlers } = useHomePage()
 
-    return <React.Fragment>
+    return <div>
         <WelcomeTile
             name={ values.welcomeTile.name }
             onClose={ handlers.closeWelcomeTile }
             show={ values.welcomeTile.show }/>
 
         <MainContentLayout/>
-    </React.Fragment>
+    </div>
 }
 
 export default HomePage;
