@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "develop": "NODE_ENV=development gatsby develop --https",
-    "start": "NODE_ENV=production gatsby develop",
+    "start": "gatsby build && gatsby serve -p 8000",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
