@@ -35,10 +35,6 @@ export default function IndexRoute() {
 
 const Content = styled.section`
   margin-top: 40px;
-
-  .welcome-tile[data-show=true] {
-    margin-bottom: 35px;
-  }
 `;
 
 const Divider = styled.div`

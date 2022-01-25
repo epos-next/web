@@ -1,5 +1,11 @@
+<<<<<<< Updated upstream
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
+=======
+import renderOnClient from "@components/render-on-client";
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+>>>>>>> Stashed changes
 
 export type Props = {
     /** Will display in greetings message: "hello, { name }" */
@@ -13,20 +19,26 @@ export type Props = {
 }
 
 
+<<<<<<< Updated upstream
 const WelcomeTile: React.FC<Props> = (props: Props) => {
     // used to don't show if show initially false
     const [shouldRender] = useState(props.show ?? true);
     if (!shouldRender) return <React.Fragment/>
+=======
+const WelcomeTile: React.FC<Props> = React.memo((props: Props) => {
+    const shouldRender = props.show ?? true;
+
+    console.log(props.show, shouldRender);
+
+    if (!shouldRender) return <Wrapper show={ shouldRender }/>
+>>>>>>> Stashed changes
 
     // handlers
     const handleClose = () => {
         if (props.onClose) props.onClose();
     }
 
-    // props
-    const show = props.show ?? true;
-
-    return <Wrapper data-show={ show } className="welcome-tile">
+    return <Wrapper show={ shouldRender } className="welcome-tile">
         <Container>
             <StudentGirlImage
                 width={ 142 }
@@ -49,9 +61,9 @@ const WelcomeTile: React.FC<Props> = (props: Props) => {
                 src="/icons/close-icon.png"/>
         </Container>
     </Wrapper>
-}
+})
 
-export default WelcomeTile;
+export default renderOnClient(WelcomeTile);
 
 const AbstractRectAnimation = keyframes`
   from {
@@ -126,20 +138,15 @@ const Container = styled.div`
   transition: 700ms transform ease-in-out;
 `;
 
-const Wrapper = styled.div`
-  padding-top: 20px;
-  height: 220px;
+const Wrapper = styled.div<{ show: boolean }>`
+  padding-top: ${ props => props.show ? "20px" : "0" };
+  height: ${ props => props.show ? "220px" : "0" };
   transition: 700ms ease-in-out;
   overflow: hidden;
+  margin-bottom: ${ props => props.show ? "35px" : "0px" };
 
-  &[data-show=false] {
-    padding: 0;
-    height: 0;
-    margin-bottom: 0;
-
-    ${ Container } {
-      transform: translateY(20px);
-    }
+  ${ Container } {
+    transform: translateY(${ props => props.show ? "20px" : "0px" };);
   }
   
   @media screen and (max-width: 1024px) {

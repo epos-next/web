@@ -171,7 +171,7 @@ describe("Testing cache service", () => {
                     clear: jest.fn(),
                     getItem: jest.fn().mockReturnValueOnce(JSON.stringify(schedule))
                 };
-                expect(CacheService.getScheduleAt(new Date(2021, 11, 21))).toEqual(schedule["2021-12-20T19:00:00.000Z"])
+                expect(CacheService.getScheduleAt(new Date(2021, 11, 21))).toEqual(schedule["2021-12-21T00:00:00.000Z"])
             });
 
             it("should get correct schedule #2", () => {

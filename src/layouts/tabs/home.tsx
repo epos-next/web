@@ -1,7 +1,7 @@
 import { useAppSelector } from "@redux/hooks";
 import { selectUser } from "@redux/reducers/user-reducer";
 import CacheService from "@services/cache-service";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MainContentLayout from "@layouts/main-content";
 import WelcomeTile from "@components/welcome-tile";
 
@@ -23,6 +23,10 @@ export default HomePage;
 const useHomePage = () => {
     const [showWelcomeTile, setShowWelcomeTile] = useState(CacheService.showWelcomeTile);
     const user = useAppSelector(selectUser)
+
+    useEffect(() => {
+        setShowWelcomeTile(CacheService.showWelcomeTile);
+    }, [])
 
     return {
         values: {

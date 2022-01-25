@@ -21,7 +21,10 @@ module.exports = {
                 start_url: `/`,
                 background_color: `#FFF`,
                 theme_color: `#9569FD`,
+<<<<<<< Updated upstream
                 display: "standalone",
+=======
+>>>>>>> Stashed changes
                 icon: `static/favicon.png`,
             },
         }

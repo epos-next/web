@@ -16,7 +16,7 @@ export default class CacheService {
     static get showWelcomeTile() {
         const item = typeof localStorage !== "undefined"
             ? localStorage.getItem("need-show-welcome-tile")
-            : null;
+            : "false";
         return item === null || item === "true";
     }
 
